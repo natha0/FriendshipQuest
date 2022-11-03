@@ -12,7 +12,6 @@ public class EnemyHealth : MonoBehaviour
     public GameObject healthBarUI;
     public Slider slider;
 
-    public float ui;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +36,6 @@ public class EnemyHealth : MonoBehaviour
         {
             health = maxHealth;
         }
-
-        ui = slider.value;
-
     }
 
     float CalculateHealth()
