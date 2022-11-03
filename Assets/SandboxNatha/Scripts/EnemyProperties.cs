@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyProperties : MonoBehaviour
 {
-
     public float health;
-    public float maxHealth;
+    public float maxHealth = 10f;
+
+    public float playerDamage = 2f;
+
+    public float invulnerabilityTime = 0.5f;
+    private float lastDamageTime = 0;
 
     public GameObject healthBarUI;
     public Slider slider;
@@ -21,25 +25,21 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
-
 
     private void updateHealth(float damage)
     {
         health -= damage;
-
         if (health < maxHealth)
         {
             healthBarUI.SetActive(true);
         }
-
         if (health > maxHealth)
         {
             health = maxHealth;
         }
-
         slider.value = Mathf.Clamp(health / maxHealth, 0, 1f);
-
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -48,9 +48,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag("Weapon") && Time.time - lastDamageTime > invulnerabilityTime)
         {
-            float damage=other.GetComponent<WeaponProperties>().damage;
+            lastDamageTime = Time.time;
+            float damage = other.GetComponent<WeaponProperties>().damage;
             updateHealth(damage);
         }
     }
