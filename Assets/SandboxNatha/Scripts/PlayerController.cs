@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 6.0f;
+    public float rotationSmoothness=40f;
     private float horizontalInput;
     private float verticallInput;
 
@@ -29,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
             transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
 
-            transform.rotation = Quaternion.LookRotation(movementDirection);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * 5f);
+            //transform.rotation = Quaternion.LookRotation(movementDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
 
 
         }
