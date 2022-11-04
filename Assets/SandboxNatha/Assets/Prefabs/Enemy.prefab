@@ -396,6 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
+  playerDamage: 1
+  invulnerabilityTime: 0.5
   healthBarUI: {fileID: 3827009263815013787}
   slider: {fileID: 2728627471217651053}
 --- !u!1 &4734418785925775387

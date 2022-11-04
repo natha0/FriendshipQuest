@@ -8,7 +8,7 @@ public class EnemyProperties : MonoBehaviour
     public float health;
     public float maxHealth = 10f;
 
-    public float playerDamage = 2f;
+    public float playerDamage = 1f;
 
     public float invulnerabilityTime = 0.5f;
     private float lastDamageTime = 0;
