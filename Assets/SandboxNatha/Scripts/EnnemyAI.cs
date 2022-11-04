@@ -5,11 +5,8 @@ using UnityEngine.AI;
 
 public class EnnemyAI : MonoBehaviour
 {
-
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patrolling
@@ -26,13 +23,10 @@ public class EnnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-
-
     }
 
     private void Update()
@@ -56,7 +50,6 @@ public class EnnemyAI : MonoBehaviour
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
         //Walkpoint reached
 
         if (distanceToWalkPoint.magnitude < 1f)
