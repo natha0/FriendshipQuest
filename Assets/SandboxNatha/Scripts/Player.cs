@@ -45,4 +45,15 @@ public class Player : MonoBehaviour
             lastDamageTime = Time.time;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyProjectile") && Time.time - lastDamageTime > invulnerabilityTime)
+        {
+            float damage = other.gameObject.GetComponent<ProjectileProperties>().playerDamage;
+            TakeDamage(damage);
+            lastDamageTime = Time.time;
+        }
+    }
+
 }
