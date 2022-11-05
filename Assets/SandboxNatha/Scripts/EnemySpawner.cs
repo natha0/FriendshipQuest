@@ -6,9 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemyToSpawn;
-    public float xPos, zPos;
+    private float xPos, zPos;
     public int enemyNumber;
-    public int enemyCount;
+    private int enemyCount;
 
     private float xMin, xMax, zMin, zMax;
 
@@ -22,9 +22,6 @@ public class EnemySpawner : MonoBehaviour
         float z = transform.position.z;
         zMin = z - transform.localScale.z / 2;
         zMax = z + transform.localScale.z / 2;
-
-        
-
     }
 
     IEnumerator EnemyDrop()
@@ -43,8 +40,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
-
         if (other.CompareTag("Player"))
         {
             StartCoroutine(EnemyDrop());

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticallInput = Input.GetAxis("Vertical");
@@ -27,20 +27,11 @@ public class PlayerController : MonoBehaviour
 
         if (movementDirection.magnitude>=0.1)
         {
-
             transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
 
             //transform.rotation = Quaternion.LookRotation(movementDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
-
-
         }
-
-        
-
-
-
-
 
 
     }

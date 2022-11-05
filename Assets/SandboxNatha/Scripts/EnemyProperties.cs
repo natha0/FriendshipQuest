@@ -25,7 +25,7 @@ public class EnemyProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        healthBarUI.transform.LookAt(Camera.main.transform);
     }
 
     private void updateHealth(float damage)
