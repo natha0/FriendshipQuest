@@ -994,5 +994,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6381738761062665775, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381738761062665775, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381738761062665775, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}

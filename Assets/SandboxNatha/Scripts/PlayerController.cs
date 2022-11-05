@@ -10,29 +10,31 @@ public class PlayerController : MonoBehaviour
     private float verticallInput;
 
     private Vector3 movementDirection;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticallInput = Input.GetAxis("Vertical");
 
         movementDirection = (verticallInput * Vector3.forward + horizontalInput * Vector3.right).normalized;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        rb.velocity = speed * movementDirection;
 
         if (movementDirection.magnitude>=0.1)
         {
-            transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
-
-            //transform.rotation = Quaternion.LookRotation(movementDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
+            transform.rotation = Quaternion.LookRotation(movementDirection);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
         }
-
-
     }
 }
