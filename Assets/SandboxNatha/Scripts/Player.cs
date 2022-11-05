@@ -13,25 +13,30 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public List<GameObject> shittyFriendsList = new();
+
     public void TakeDamage(float damage)
     {
-        // Use your own damage handling code, or this example one.
         health -= damage;
         healthBar.UpdateHealthBar();
     }
 
-    // Start is called before the first frame update
+    public void HealPlayer(float heal)
+    {
+        health += heal;
+        healthBar.UpdateHealthBar();
+    }
+
     void Start()
     {
         health = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && shittyFriendsList.Count>=1)
         {
-            TakeDamage(1f);
+            UseShittyFriend();
         }
     }
 
@@ -39,7 +44,6 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy") && Time.time - lastDamageTime >invulnerabilityTime)
         {
-
             float damage = collision.gameObject.GetComponent<EnemyProperties>().playerDamage;
             TakeDamage(damage);
             lastDamageTime = Time.time;
@@ -50,10 +54,41 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("EnemyProjectile") && Time.time - lastDamageTime > invulnerabilityTime)
         {
-            float damage = other.gameObject.GetComponent<ProjectileProperties>().playerDamage;
+            float damage = other.gameObject.GetComponent<ProjectileProperties>().damage;
             TakeDamage(damage);
             lastDamageTime = Time.time;
         }
     }
+
+    public void AddShittyFriend(GameObject shittyFriend)
+    {
+        shittyFriendsList.Add(shittyFriend);
+    }
+
+    public GameObject GetShittyFriend(int id)
+    {
+        if (shittyFriendsList.Count>=id)
+        {
+            return shittyFriendsList[id];
+        }
+        Debug.LogWarningFormat("The shitty friend with id: {0} doesn't exist!", id);
+        return null;
+    }
+
+    public void UseShittyFriend()
+    {
+        if (shittyFriendsList.Count >= 1)
+        {
+            shittyFriendsList[0].GetComponent<ShittyFriendProperties>().usePower();
+            Destroy(shittyFriendsList[0]);
+            shittyFriendsList.RemoveAt(0);
+
+            foreach (GameObject shittyFriend in shittyFriendsList)
+            {
+                shittyFriend.GetComponent<ShittyFriendProperties>().number--;
+            }
+        }
+    }
+
 
 }

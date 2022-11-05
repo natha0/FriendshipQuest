@@ -54,5 +54,10 @@ public class EnemyProperties : MonoBehaviour
             float damage = other.GetComponent<WeaponProperties>().damage;
             updateHealth(damage);
         }
+        else if (other.CompareTag("AllyProjectile"))
+        {
+            float damage = other.GetComponent<ProjectileProperties>().damage;
+            updateHealth(damage);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class ProjectileProperties : MonoBehaviour
     public float lifeTime = 3f;
     private float spawnTime;
 
-    public float playerDamage = 1;
+    public float damage = 1;
 
     void Start()
     {

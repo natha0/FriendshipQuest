@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Weapon
   - EnemyProjectile
+  - ShittyFriend
+  - AllyProjectile
   layers:
   - Default
   - TransparentFX
