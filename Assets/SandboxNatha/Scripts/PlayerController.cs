@@ -36,5 +36,9 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movementDirection);
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
         }
+        else
+        {
+            rb.angularVelocity = new Vector3(0, 0, 0);
+        }
     }
 }
