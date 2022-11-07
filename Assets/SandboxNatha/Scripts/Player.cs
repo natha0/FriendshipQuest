@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
         {
             UseShittyFriend();
         }
+        if (Input.GetKeyDown(KeyCode.E)  && shittyFriendsList.Count >= 1)
+        {
+            SwitchShittyFriends();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -85,10 +89,20 @@ public class Player : MonoBehaviour
 
             foreach (GameObject shittyFriend in shittyFriendsList)
             {
-                shittyFriend.GetComponent<ShittyFriendProperties>().number--;
+                shittyFriend.GetComponent<ShittyFriendProperties>().playerNumber--;
             }
         }
     }
 
+    public void SwitchShittyFriends()
+    {
+        shittyFriendsList.Add(shittyFriendsList[0]);
+        shittyFriendsList.RemoveAt(0);
+
+        for (int i=0;i< shittyFriendsList.Count; i++)
+        {
+            shittyFriendsList[i].GetComponent<ShittyFriendProperties>().playerNumber = i;
+        }
+    }
 
 }

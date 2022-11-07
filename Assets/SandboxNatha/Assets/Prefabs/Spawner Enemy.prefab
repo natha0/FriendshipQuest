@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyToSpawn: {fileID: 4284522320891589157, guid: 5875312ef6bb478498a5b5aa26724df8, type: 3}
-  enemyNumber: 0
+  enemyNumber: 2
+  timeBetweenSpawn: 0.01
   deltaSpawn: {x: 3, y: 0, z: 3}
   wallWidth: 1
-  randomSpawn: 1
+  randomSpawn: 0
 --- !u!65 &2034938926582131171
 BoxCollider:
   m_ObjectHideFlags: 0

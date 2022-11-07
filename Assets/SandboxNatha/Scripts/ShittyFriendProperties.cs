@@ -9,7 +9,7 @@ public class ShittyFriendProperties : MonoBehaviour
     public ShittyFriendType type;
     private Player player;
 
-    public int number;
+    public int playerNumber;
     private bool attached = false;
     public float distanceFromPlayer = 1.5f;
     public float distanceBetweenFriends = 1.2f;
@@ -41,18 +41,18 @@ public class ShittyFriendProperties : MonoBehaviour
     {
         if (attached)
         {
-            if (number == 0)
+            if (playerNumber == 0)
             {
                 transform.LookAt(player.transform);
                 targetPosition = player.transform.position - distanceFromPlayer * transform.forward;
             }
             else
             {
-                previousShittyFriend = player.GetComponent<Player>().GetShittyFriend(number-1);
+                previousShittyFriend = player.GetComponent<Player>().GetShittyFriend(playerNumber - 1);
                 transform.LookAt(previousShittyFriend.transform);
                 targetPosition = previousShittyFriend.transform.position -  distanceBetweenFriends * transform.forward;
             }
-            delay = number * Mathf.PI / 3;
+            delay = playerNumber * Mathf.PI / 3;
             floatyness = new Vector3(0, floatAmplitude * Mathf.Sin(2 * Mathf.PI* floatFrequency*Time.time-delay),0);
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition + floatyness, ref velocity, smoothTime);
 
@@ -68,8 +68,8 @@ public class ShittyFriendProperties : MonoBehaviour
         if (other.CompareTag("Player") && !attached)
         {
             player = other.GetComponent<Player>();
-            number = player.shittyFriendsList.Count;
-            other.GetComponent<Player>().AddShittyFriend(gameObject);
+            playerNumber = player.shittyFriendsList.Count;
+            player.AddShittyFriend(gameObject);
             attached = true;
         }
     }
