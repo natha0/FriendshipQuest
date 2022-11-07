@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class ShittyFriendsSpawner : MonoBehaviour
 {
-    public GameObject enemyToSpawn;
+    public GameObject ShittyFriends;
     private float xPos, zPos;
-    public int enemyNumber;
+    public int shittyFriendsNumber;
     public float timeBetweenSpawn = 0.01f;
     private int spawnCount;
     private bool alreadySpawned;
+    public float spawnDelay = 5;
 
-    private List<GameObject> enemyInRoom = new();
+    private List<GameObject> shittyFriendsInRoom = new();
 
     public Vector3 deltaSpawn;
     public float wallWidth = 1;
 
-    private float x,z;
+    private float x, z;
     private float dx, dz;
     private float xMin, xMax, zMin, zMax;
     public bool randomSpawn;
@@ -30,8 +31,8 @@ public class EnemySpawner : MonoBehaviour
         x = transform.position.x;
         z = transform.position.z;
 
-        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2-wallWidth);
-        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2-wallWidth);
+        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2 - wallWidth);
+        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2 - wallWidth);
 
         xMin = x - dx;
         xMax = x + dx;
@@ -41,13 +42,13 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
-        while (spawnCount < enemyNumber)
-        { 
+        while (spawnCount < shittyFriendsNumber)
+        {
             xPos = Random.Range(xMin, xMax);
             zPos = Random.Range(zMin, zMax);
-            Instantiate(enemyToSpawn, new Vector3(xPos, 0, zPos),Quaternion.identity);
+            Instantiate(ShittyFriends, new Vector3(xPos, 0, zPos), Quaternion.identity);
             yield return new WaitForSeconds(timeBetweenSpawn);
-            spawnCount ++;
+            spawnCount++;
         }
 
     }
@@ -65,8 +66,8 @@ public class EnemySpawner : MonoBehaviour
                     alreadySpawned = true;
                 }
             }
-            
-            foreach (GameObject enemy in enemyInRoom)
+
+            foreach (GameObject enemy in shittyFriendsInRoom)
             {
                 enemy.SetActive(true);
             }
@@ -80,8 +81,8 @@ public class EnemySpawner : MonoBehaviour
 
             if (!other.gameObject.GetComponent<EnemyProperties>().addedToList)
             {
-                other.gameObject.GetComponent<EnemyProperties>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList);
-                enemyInRoom.Add(other.gameObject);
+                other.gameObject.GetComponent<EnemyProperties>().InitiateProperties(shittyFriendsInRoom.Count, RemoveEnnemyFromList);
+                shittyFriendsInRoom.Add(other.gameObject);
             }
         }
     }
@@ -90,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
-            foreach ( GameObject enemy in enemyInRoom)
+            foreach (GameObject enemy in shittyFriendsInRoom)
             {
                 enemy.SetActive(false);
             }
@@ -99,11 +100,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void RemoveEnnemyFromList(int number)
     {
-        enemyInRoom.RemoveAt(number);
-        for (int i=number;i<enemyInRoom.Count; i++)
+        shittyFriendsInRoom.RemoveAt(number);
+        for (int i = number; i < shittyFriendsInRoom.Count; i++)
         {
-            enemyInRoom[i].GetComponent<EnemyProperties>().number = i;
+            shittyFriendsInRoom[i].GetComponent<EnemyProperties>().number = i;
         }
     }
-
 }
