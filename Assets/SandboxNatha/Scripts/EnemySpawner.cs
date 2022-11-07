@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
                 if (randomSpawn)
                 {
                     StartCoroutine(EnemyDrop());
-                    alreadySpawned = false;
+                    alreadySpawned = true;
                 }
             }
             
@@ -92,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && alreadySpawned)
+        if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
             foreach ( GameObject enemy in enemyInRoom)
