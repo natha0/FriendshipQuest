@@ -8,32 +8,47 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyToSpawn;
     private float xPos, zPos;
     public int enemyNumber;
-    private int enemyCount;
+    public float timeBetweenSpawn = 0.01f;
+    private int spawnCount;
+    private bool alreadySpawned;
 
+    private List<GameObject> enemyInRoom = new();
+
+    public Vector3 deltaSpawn;
+    public float wallWidth = 1;
+
+    private float x,z;
+    private float dx, dz;
     private float xMin, xMax, zMin, zMax;
+    public bool randomSpawn;
+
+    private bool isPlayerInside = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        float x = transform.position.x;
-        xMin = x - transform.localScale.x / 2;
-        xMax = x + transform.localScale.x / 2; 
-        
-        float z = transform.position.z;
-        zMin = z - transform.localScale.z / 2;
-        zMax = z + transform.localScale.z / 2;
+        alreadySpawned = false;
+        x = transform.position.x;
+        z = transform.position.z;
+
+        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2-wallWidth);
+        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2-wallWidth);
+
+        xMin = x - dx;
+        xMax = x + dx;
+        zMin = z - dz;
+        zMax = z + dz;
     }
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < enemyNumber)
+        while (spawnCount < enemyNumber)
         { 
             xPos = Random.Range(xMin, xMax);
             zPos = Random.Range(zMin, zMax);
             Instantiate(enemyToSpawn, new Vector3(xPos, 0, zPos),Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
-
-            enemyCount += 1;
+            yield return new WaitForSeconds(timeBetweenSpawn);
+            spawnCount ++;
         }
 
     }
@@ -42,7 +57,57 @@ public class EnemySpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(EnemyDrop());
+            isPlayerInside = true;
+            if (!alreadySpawned)
+            {
+                if (randomSpawn)
+                {
+                    StartCoroutine(EnemyDrop());
+                    alreadySpawned = false;
+                }
+            }
+            
+            foreach (GameObject enemy in enemyInRoom)
+            {
+                enemy.SetActive(true);
+            }
+            
+            
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            if (!isPlayerInside)
+            {
+                other.gameObject.SetActive(false);
+            }
+
+            if (!other.gameObject.GetComponent<EnemyProperties>().addedToList)
+            {
+                other.gameObject.GetComponent<EnemyProperties>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList);
+                enemyInRoom.Add(other.gameObject);
+                
+            }
+            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && alreadySpawned)
+        {
+            isPlayerInside = false;
+            foreach ( GameObject enemy in enemyInRoom)
+            {
+                enemy.SetActive(false);
+            }
+        }
+    }
+
+    private void RemoveEnnemyFromList(int number)
+    {
+        enemyInRoom.RemoveAt(number);
+        for (int i=number;i<enemyInRoom.Count; i++)
+        {
+            enemyInRoom[i].GetComponent<EnemyProperties>().number = i;
         }
     }
 

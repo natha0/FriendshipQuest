@@ -10,6 +10,7 @@ TagManager:
   - EnemyProjectile
   - ShittyFriend
   - AllyProjectile
+  - Spawner
   layers:
   - Default
   - TransparentFX
