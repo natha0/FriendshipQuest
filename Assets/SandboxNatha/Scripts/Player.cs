@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
 
     public List<GameObject> shittyFriendsList = new();
+    public List<GameObject> ShittyFriendsType = new();
 
     public void TakeDamage(float damage)
     {
