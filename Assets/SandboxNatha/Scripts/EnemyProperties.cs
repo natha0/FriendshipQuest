@@ -43,6 +43,7 @@ public class EnemyProperties : MonoBehaviour
     private void updateHealth(float damage)
     {
         health -= damage;
+        slider.value = Mathf.Clamp(health / maxHealth, 0, 1f);
         if (health < maxHealth)
         {
             healthBarUI.SetActive(true);
@@ -51,7 +52,6 @@ public class EnemyProperties : MonoBehaviour
         {
             health = maxHealth;
         }
-        slider.value = Mathf.Clamp(health / maxHealth, 0, 1f);
         if (health <= 0)
         {
             spawnerCallback(number);
@@ -64,7 +64,7 @@ public class EnemyProperties : MonoBehaviour
         if (other.CompareTag("Weapon") && Time.time - lastDamageTime > invulnerabilityTime)
         {
             lastDamageTime = Time.time;
-            float damage = other.GetComponent<WeaponProperties>().damage;
+            int damage = other.GetComponent<IWeapon>().GetWeaponDamage();
             updateHealth(damage);
         }
         else if (other.CompareTag("AllyProjectile"))

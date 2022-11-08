@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShittyFriends: {fileID: 0}
-  xPos: 0
-  zPos: 0
+  xPos: -6
+  zPos: 4
   shittyFriendsNumber: 0
   timeBetweenSpawn: 0.01
   spawnDelay: 5

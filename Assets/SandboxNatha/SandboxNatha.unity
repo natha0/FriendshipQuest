@@ -1681,5 +1681,45 @@ PrefabInstance:
       propertyPath: ShittyFriendsType.Array.data[1]
       value: 
       objectReference: {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747163260701311683, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}

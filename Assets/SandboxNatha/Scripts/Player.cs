@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && shittyFriendsList.Count>=1)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1) && shittyFriendsList.Count>=1)
         {
             UseShittyFriend();
         }
