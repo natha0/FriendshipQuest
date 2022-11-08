@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/SandboxNatha/SandboxNatha.unity
+    guid: 368574c2d5d1143408bd803d4bf8af5a
   m_configObjects: {}
