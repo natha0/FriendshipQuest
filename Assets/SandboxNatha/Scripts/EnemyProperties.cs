@@ -38,7 +38,6 @@ public class EnemyProperties : MonoBehaviour
         addedToList = true;
         number = enemyNumber;
         spawnerCallback = callback;
-
     }
 
     private void updateHealth(float damage)

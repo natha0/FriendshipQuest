@@ -5,83 +5,66 @@ using UnityEngine;
 public class ShittyFriendsSpawner : MonoBehaviour
 {
     public GameObject ShittyFriends;
-    private float xPos, zPos;
+    public float xPos, zPos;
     public int shittyFriendsNumber;
     public float timeBetweenSpawn = 0.01f;
-    private int spawnCount;
     private bool alreadySpawned;
     public float spawnDelay = 5;
 
     private List<GameObject> shittyFriendsInRoom = new();
+    public List<GameObject> shittyFriendsType = new();
 
     public Vector3 deltaSpawn;
     public float wallWidth = 1;
 
-    private float x, z;
-    private float dx, dz;
-    private float xMin, xMax, zMin, zMax;
     public bool randomSpawn;
+    private float x, z;
 
     private bool isPlayerInside = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        alreadySpawned = false;
         x = transform.position.x;
         z = transform.position.z;
-
-        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2 - wallWidth);
-        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2 - wallWidth);
-
-        xMin = x - dx;
-        xMax = x + dx;
-        zMin = z - dz;
-        zMax = z + dz;
     }
 
-    IEnumerator EnemyDrop()
+    private void Update()
     {
-        while (spawnCount < shittyFriendsNumber)
+        if (isPlayerInside)
         {
-            xPos = Random.Range(xMin, xMax);
-            zPos = Random.Range(zMin, zMax);
-            Instantiate(ShittyFriends, new Vector3(xPos, 0, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(timeBetweenSpawn);
-            spawnCount++;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Instantiate(shittyFriendsType[0], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Instantiate(shittyFriendsType[1], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+            }
         }
-
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
-            if (!alreadySpawned)
-            {
-                if (randomSpawn)
-                {
-                    StartCoroutine(EnemyDrop());
-                    alreadySpawned = true;
-                }
-            }
 
-            foreach (GameObject enemy in shittyFriendsInRoom)
+            foreach (GameObject shittyFriend in shittyFriendsInRoom)
             {
-                enemy.SetActive(true);
+                shittyFriend.SetActive(true);
             }
         }
-        else if (other.CompareTag("Enemy"))
+        else if (other.CompareTag("ShittyFriend"))
         {
             if (!isPlayerInside)
             {
                 other.gameObject.SetActive(false);
             }
 
-            if (!other.gameObject.GetComponent<EnemyProperties>().addedToList)
+            if (!other.gameObject.GetComponent<ShittyFriendProperties>().addedToList)
             {
-                other.gameObject.GetComponent<EnemyProperties>().InitiateProperties(shittyFriendsInRoom.Count, RemoveEnnemyFromList);
+                other.gameObject.GetComponent<ShittyFriendProperties>().InitiateProperties(shittyFriendsInRoom.Count, RemoveShittyFriendFromList);
                 shittyFriendsInRoom.Add(other.gameObject);
             }
         }
@@ -98,12 +81,12 @@ public class ShittyFriendsSpawner : MonoBehaviour
         }
     }
 
-    private void RemoveEnnemyFromList(int number)
+    private void RemoveShittyFriendFromList(int number)
     {
         shittyFriendsInRoom.RemoveAt(number);
         for (int i = number; i < shittyFriendsInRoom.Count; i++)
         {
-            shittyFriendsInRoom[i].GetComponent<EnemyProperties>().number = i;
+            shittyFriendsInRoom[i].GetComponent<ShittyFriendProperties>().roomNumber = i;
         }
     }
 }

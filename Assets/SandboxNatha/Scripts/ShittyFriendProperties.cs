@@ -9,7 +9,9 @@ public class ShittyFriendProperties : MonoBehaviour
     public ShittyFriendType type;
     private Player player;
 
+    public int roomNumber;
     public int playerNumber;
+    public bool addedToList;
     private bool attached = false;
     public float distanceFromPlayer = 1.5f;
     public float distanceBetweenFriends = 1.2f;
@@ -24,6 +26,9 @@ public class ShittyFriendProperties : MonoBehaviour
     public float floatFrequency = .3f;
     private float delay;
     private Vector3 floatyness;
+
+    public delegate void SpawnerCallback(int num);
+    SpawnerCallback spawnerCallback;
 
     //attack
     //Pour test
@@ -63,6 +68,13 @@ public class ShittyFriendProperties : MonoBehaviour
         }
     }
 
+    public void InitiateProperties(int shittyFriendNumber, SpawnerCallback callback)
+    {
+        addedToList = true;
+        roomNumber = shittyFriendNumber;
+        spawnerCallback = callback;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !attached)
@@ -71,6 +83,7 @@ public class ShittyFriendProperties : MonoBehaviour
             playerNumber = player.shittyFriendsList.Count;
             player.AddShittyFriend(gameObject);
             attached = true;
+            spawnerCallback(roomNumber);
         }
     }
 

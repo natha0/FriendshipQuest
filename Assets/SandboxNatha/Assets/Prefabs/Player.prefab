@@ -93,8 +93,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6381738760057601793}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.0032163}
   m_Center: {x: 0, y: 0, z: -0.0016081333}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906c916d56776a544b66b0f8d24422a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 4
 --- !u!1 &6381738760382454450
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6381738761062665774}
   - component: {fileID: 6381738761062665761}
   - component: {fileID: 6381738761062665772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -206,8 +206,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.52
+  m_Height: 2.1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6381738761062665761
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43faea61c7eed64bb8700b6b55984e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 7.5
   rotationSmoothness: 40
 --- !u!114 &6381738761062665772
 MonoBehaviour:
@@ -241,6 +241,9 @@ MonoBehaviour:
   invulnerabilityTime: 1
   healthBar: {fileID: 0}
   shittyFriendsList: []
+  ShittyFriendsType:
+  - {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
+  - {fileID: 8681666898452057147, guid: d7dbf6c0af48f7c46815eccf0595b43c, type: 3}
 --- !u!1001 &8953421641687452134
 PrefabInstance:
   m_ObjectHideFlags: 0
