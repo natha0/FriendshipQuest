@@ -66,6 +66,10 @@ public class ShittyFriendProperties : MonoBehaviour
                 transform.position = new Vector3(transform.position.x,-0.2f,transform.position.z);
             }
         }
+        else
+        {
+
+        }
     }
 
     public void InitiateProperties(int shittyFriendNumber, SpawnerCallback callback)

@@ -16,20 +16,12 @@ public class Player : MonoBehaviour
     public List<GameObject> shittyFriendsList = new();
     public List<GameObject> ShittyFriendsType = new();
 
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        healthBar.UpdateHealthBar();
-    }
-
-    public void HealPlayer(float heal)
-    {
-        health += heal;
-        healthBar.UpdateHealthBar();
-    }
+    public string[] dialogue;
+    public string npcName;
 
     void Start()
     {
+        DialogueSystem.Instance.AddNewDialogue(dialogue,npcName);
         health = maxHealth;
     }
 
@@ -63,6 +55,18 @@ public class Player : MonoBehaviour
             TakeDamage(damage);
             lastDamageTime = Time.time;
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        healthBar.UpdateHealthBar();
+    }
+
+    public void HealPlayer(float heal)
+    {
+        health += heal;
+        healthBar.UpdateHealthBar();
     }
 
     public void AddShittyFriend(GameObject shittyFriend)
