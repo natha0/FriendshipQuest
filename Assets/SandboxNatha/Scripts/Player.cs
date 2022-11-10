@@ -18,10 +18,16 @@ public class Player : MonoBehaviour
 
     public string[] dialogue;
     public string npcName;
+    public bool showControls = false;
 
     void Start()
     {
-        DialogueSystem.Instance.AddNewDialogue(dialogue,npcName);
+        if (showControls)
+        {
+            healthBar = GameObject.Find("PlayerHealth").GetComponent<HealthBar>();
+            DialogueSystem.Instance.AddNewDialogue(dialogue, npcName);
+
+        }
         health = maxHealth;
     }
 

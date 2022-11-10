@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ChangeScene : MonoBehaviour
+{
+    public int sceneNumber;
+    private string[] sceneList = new string[] { "StarterScene", "SandboxNatha" };
+
+
+    // Start is called before the first frame update
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("scene changed");
+            SceneManager.LoadScene(sceneList[sceneNumber]);
+        }
+    }
+}

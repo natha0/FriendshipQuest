@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c57c00901f8e2489968fe091829452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDistance: 6
+  jumpDistance: 6.1
 --- !u!1 &4665894970980224342
 GameObject:
   m_ObjectHideFlags: 0

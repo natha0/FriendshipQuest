@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-
+    public GameObject healthBar;
     public Image healthBarImage;
     public Player player;
-    public void UpdateHealthBar()
-    {
-        healthBarImage.fillAmount = Mathf.Clamp(player.health / player.maxHealth, 0, 1f);
-    }
 
+    private void Awake()
+    {
+        player = GameObject.Find("Player").GetComponent<Player>();
+        healthBar.SetActive(true);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         UpdateHealthBar();
     }
-
-
+    public void UpdateHealthBar()
+    {
+        healthBarImage.fillAmount = Mathf.Clamp(player.health / player.maxHealth, 0, 1f);
+    }
 }

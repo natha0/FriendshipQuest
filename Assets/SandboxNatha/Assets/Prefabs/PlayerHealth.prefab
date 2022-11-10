@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5384398202518139513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -162,11 +162,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5384398202518139512}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9429388a3f1101945811814d5c9fcf66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   healthBarImage: {fileID: 5384398202097571746}
   player: {fileID: 0}
 --- !u!1 &5384398202702957899
@@ -181,6 +182,7 @@ GameObject:
   - component: {fileID: 5384398202702957894}
   - component: {fileID: 5384398202702957893}
   - component: {fileID: 5384398202702957892}
+  - component: {fileID: 7630604049376867439}
   m_Layer: 5
   m_Name: PlayerHealth
   m_TagString: Untagged
@@ -270,6 +272,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7630604049376867439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384398202702957899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9429388a3f1101945811814d5c9fcf66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 5384398202518139512}
+  healthBarImage: {fileID: 5384398202097571746}
+  player: {fileID: 0}
 --- !u!1 &5384398203656689757
 GameObject:
   m_ObjectHideFlags: 0
