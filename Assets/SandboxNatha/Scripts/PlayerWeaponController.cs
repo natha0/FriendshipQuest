@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    private IWeapon weapon;
+    public IWeapon weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +17,8 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            PerformWeaponAttack();
+            weapon.PerformAttack();
         }
-    }
-
-    public void PerformWeaponAttack()
-    {
-        weapon.PerformAttack();
     }
 
 }

@@ -15,16 +15,18 @@ public class EnnemyAI : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
+    private IWeapon weapon;
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
 
     //States 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    private bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
+        weapon = gameObject.GetComponentInChildren<IWeapon>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -73,6 +75,7 @@ public class EnnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        transform.LookAt(player);
     }
 
     private void AttackPlayer()
@@ -82,10 +85,8 @@ public class EnnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-
             //useAttack code
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f,ForceMode.Impulse);
+            weapon.PerformAttack();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

@@ -24,10 +24,9 @@ public class Player : MonoBehaviour
     {
         if (showControls)
         {
-            healthBar = GameObject.Find("PlayerHealth").GetComponent<HealthBar>();
             DialogueSystem.Instance.AddNewDialogue(dialogue, npcName);
-
         }
+        healthBar = GameObject.Find("UI/PlayerHealth").GetComponent<HealthBar>();
         health = maxHealth;
     }
 
@@ -55,12 +54,22 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyProjectile") && Time.time - lastDamageTime > invulnerabilityTime)
+        if (Time.time - lastDamageTime > invulnerabilityTime)
         {
-            float damage = other.gameObject.GetComponent<ProjectileProperties>().damage;
-            TakeDamage(damage);
-            lastDamageTime = Time.time;
+            if (other.CompareTag("EnemyProjectile"))
+            {
+                float damage = other.gameObject.GetComponent<ProjectileProperties>().damage;
+                TakeDamage(damage);
+                lastDamageTime = Time.time;
+            }
+            else if (other.CompareTag("EnemyWeapon"))
+            {
+                float damage = other.gameObject.GetComponent<IWeapon>().damage;
+                TakeDamage(damage);
+                lastDamageTime = Time.time;
+            }
         }
+        
     }
 
     public void TakeDamage(float damage)
@@ -94,7 +103,7 @@ public class Player : MonoBehaviour
     {
         if (shittyFriendsList.Count >= 1)
         {
-            shittyFriendsList[0].GetComponent<ShittyFriendProperties>().usePower();
+            shittyFriendsList[0].GetComponent<ShittyFriendProperties>().UsePower();
             Destroy(shittyFriendsList[0]);
             shittyFriendsList.RemoveAt(0);
 

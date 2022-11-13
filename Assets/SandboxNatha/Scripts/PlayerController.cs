@@ -15,9 +15,13 @@ public class PlayerController : MonoBehaviour
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
 
+    public bool lookAtMouse = true;
     private Vector3 movementDirection;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TrailRenderer tr;
+
+
+    public Vector3 mousePos;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +48,11 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
+
+
+
+
     }
 
     // Update is called once per frame
@@ -56,15 +65,33 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = speed * movementDirection;
 
-        if (movementDirection.magnitude>=0.1)
+        if (lookAtMouse)
         {
-            //transform.rotation = Quaternion.LookRotation(movementDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new(Vector3.up, Vector3.up);
+            float distance;
+            if (plane.Raycast(ray, out distance))
+            {
+                Vector3 target = ray.GetPoint(distance);
+                Vector3 direction = target - transform.position;
+                float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, rotation, 0);
+            }
         }
         else
         {
-            rb.angularVelocity = new Vector3(0, 0, 0);
+            if (movementDirection.magnitude >= 0.1)
+            {
+                //transform.rotation = Quaternion.LookRotation(movementDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * rotationSmoothness);
+            }
+            else
+            {
+                rb.angularVelocity = new Vector3(0, 0, 0);
+            }
         }
+
+        
     }
 
     private IEnumerator Dash()

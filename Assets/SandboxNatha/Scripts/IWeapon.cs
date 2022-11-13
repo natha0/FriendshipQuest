@@ -5,7 +5,9 @@ using UnityEngine;
 
 public interface IWeapon 
 {
-    int GetWeaponDamage();
+    //int GetWeaponDamage();
+
+    float damage { get; }
 
     void PerformAttack();
 }

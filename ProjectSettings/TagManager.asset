@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - Weapon
   - EnemyProjectile
   - ShittyFriend
   - AllyProjectile
   - Spawner
+  - EnemyWeapon
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

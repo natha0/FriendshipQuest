@@ -61,8 +61,8 @@ public class ShittyFriendsSpawner : MonoBehaviour
             {
                 other.gameObject.SetActive(false);
             }
-
-            if (!other.gameObject.GetComponent<ShittyFriendProperties>().addedToList)
+            ShittyFriendProperties properties = other.gameObject.GetComponent<ShittyFriendProperties>();
+            if (!properties.addedToList && !properties.attached)
             {
                 other.gameObject.GetComponent<ShittyFriendProperties>().InitiateProperties(shittyFriendsInRoom.Count, RemoveShittyFriendFromList);
                 shittyFriendsInRoom.Add(other.gameObject);

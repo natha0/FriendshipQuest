@@ -14,7 +14,6 @@ public class ChangeScene : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("scene changed");
             SceneManager.LoadScene(sceneList[sceneNumber]);
         }
     }

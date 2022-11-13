@@ -40,7 +40,7 @@ public class EnemyProperties : MonoBehaviour
         spawnerCallback = callback;
     }
 
-    private void updateHealth(float damage)
+    private void UpdateHealth(float damage)
     {
         health -= damage;
         slider.value = Mathf.Clamp(health / maxHealth, 0, 1f);
@@ -61,16 +61,16 @@ public class EnemyProperties : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && Time.time - lastDamageTime > invulnerabilityTime)
+        if (other.CompareTag("PlayerWeapon") && Time.time - lastDamageTime > invulnerabilityTime)
         {
             lastDamageTime = Time.time;
-            int damage = other.GetComponent<IWeapon>().GetWeaponDamage();
-            updateHealth(damage);
+            float damage = other.GetComponent<IWeapon>().damage;
+            UpdateHealth(damage);
         }
         else if (other.CompareTag("AllyProjectile"))
         {
             float damage = other.GetComponent<ProjectileProperties>().damage;
-            updateHealth(damage);
+            UpdateHealth(damage);
         }
     }
 }

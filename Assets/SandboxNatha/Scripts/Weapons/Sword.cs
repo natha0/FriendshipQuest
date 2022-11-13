@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour,IWeapon
 {
-    public int damage = 3;
     private Animator animator;
+    public float _damage = 3;
+
+    public float damage
+    {
+        get { return _damage; }
+    }
 
     private void Start()
     {
@@ -18,8 +23,5 @@ public class Sword : MonoBehaviour,IWeapon
     }
 
 
-    public int GetWeaponDamage()
-    {
-        return damage; ;
-    }
+
 }

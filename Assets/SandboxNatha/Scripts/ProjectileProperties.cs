@@ -8,15 +8,16 @@ public class ProjectileProperties : MonoBehaviour
     public float range = 5f;
     private Vector3 initialPosition;
 
-    public float lifeTime = 3f;
+    public float lifeTime = 2f;
     private float spawnTime;
 
-    public float damage = 1;
+    public float damage;
 
     void Start()
     {
         initialPosition = transform.position;
         spawnTime = Time.time;
+        
     }
 
     // Update is called once per frame

@@ -11,8 +11,8 @@ public class ShittyFriendProperties : MonoBehaviour
 
     public int roomNumber;
     public int playerNumber;
-    public bool addedToList;
-    private bool attached = false;
+    public bool addedToList=false;
+    public bool attached = false;
     public float distanceFromPlayer = 1.5f;
     public float distanceBetweenFriends = 1.2f;
 
@@ -35,12 +35,6 @@ public class ShittyFriendProperties : MonoBehaviour
     public GameObject projectile;
     //heal
     public float healthHealed=10;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     private void FixedUpdate()
     {
@@ -91,7 +85,7 @@ public class ShittyFriendProperties : MonoBehaviour
         }
     }
 
-    public void usePower()
+    public void UsePower()
     {
         switch (type) {
             case ShittyFriendType.Attack:
