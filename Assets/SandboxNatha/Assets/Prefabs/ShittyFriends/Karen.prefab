@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 8681666898452057144}
   - component: {fileID: 8681666898452057145}
   - component: {fileID: 8681666898452057146}
-  - component: {fileID: 8681666898452057150}
   - component: {fileID: 8681666898452057149}
+  - component: {fileID: 6458490637875310330}
   m_Layer: 0
   m_Name: Karen
   m_TagString: ShittyFriend
@@ -133,27 +133,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8681666898452057150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681666898452057147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6fd8010b670fe8438ca4549f1ebe714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  number: 0
-  distanceFromPlayer: 2
-  distanceBetweenFriends: 1.1
-  smoothTime: 0.2
-  floatAmplitude: 0.05
-  floatFrequency: 0.3
-  projectile: {fileID: 6932497953198856542, guid: c2ff7449b62f0a24eafba9123b5c4453, type: 3}
-  healthHealed: 4
 --- !u!54 &8681666898452057149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,6 +149,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &6458490637875310330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681666898452057147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07061c2c8ec32f24aaa3ea0035cbe862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  roomNumber: 0
+  playerNumber: 0
+  addedToList: 0
+  attached: 0
+  distanceFromPlayer: 1.5
+  distanceBetweenFriends: 1.2
+  smoothTime: 0.2
+  floatAmplitude: 0.05
+  floatFrequency: 0.3
+  projectile: {fileID: 6932497953198856542, guid: c2ff7449b62f0a24eafba9123b5c4453, type: 3}
 --- !u!1001 &895525738089179392
 PrefabInstance:
   m_ObjectHideFlags: 0

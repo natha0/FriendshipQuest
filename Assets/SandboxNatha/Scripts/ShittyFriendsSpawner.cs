@@ -61,10 +61,10 @@ public class ShittyFriendsSpawner : MonoBehaviour
             {
                 other.gameObject.SetActive(false);
             }
-            ShittyFriendProperties properties = other.gameObject.GetComponent<ShittyFriendProperties>();
-            if (!properties.addedToList && !properties.attached)
+            ShittyFriend shittyFriend = other.gameObject.GetComponent<ShittyFriend>();
+            if (!shittyFriend.addedToList && !shittyFriend.attached)
             {
-                other.gameObject.GetComponent<ShittyFriendProperties>().InitiateProperties(shittyFriendsInRoom.Count, RemoveShittyFriendFromList);
+                other.gameObject.GetComponent<ShittyFriend>().InitiateProperties(shittyFriendsInRoom.Count, RemoveShittyFriendFromList);
                 shittyFriendsInRoom.Add(other.gameObject);
             }
         }
@@ -86,7 +86,7 @@ public class ShittyFriendsSpawner : MonoBehaviour
         shittyFriendsInRoom.RemoveAt(number);
         for (int i = number; i < shittyFriendsInRoom.Count; i++)
         {
-            shittyFriendsInRoom[i].GetComponent<ShittyFriendProperties>().roomNumber = i;
+            shittyFriendsInRoom[i].GetComponent<ShittyFriend>().roomNumber = i;
         }
     }
 }

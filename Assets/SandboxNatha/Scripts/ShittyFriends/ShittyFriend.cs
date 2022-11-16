@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShittyFriendProperties : MonoBehaviour
+public class ShittyFriend : MonoBehaviour
 {
  
     public enum ShittyFriendType {Attack,Heal}
     public ShittyFriendType type;
-    private Player player;
+    private GameObject player;
 
     public int roomNumber;
     public int playerNumber;
@@ -30,11 +30,7 @@ public class ShittyFriendProperties : MonoBehaviour
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
 
-    //attack
-    //Pour test
-    public GameObject projectile;
-    //heal
-    public float healthHealed=10;
+
 
     private void FixedUpdate()
     {
@@ -60,10 +56,6 @@ public class ShittyFriendProperties : MonoBehaviour
                 transform.position = new Vector3(transform.position.x,-0.2f,transform.position.z);
             }
         }
-        else
-        {
-
-        }
     }
 
     public void InitiateProperties(int shittyFriendNumber, SpawnerCallback callback)
@@ -77,26 +69,11 @@ public class ShittyFriendProperties : MonoBehaviour
     {
         if (other.CompareTag("Player") && !attached)
         {
-            player = other.GetComponent<Player>();
-            playerNumber = player.shittyFriendsList.Count;
-            player.AddShittyFriend(gameObject);
+            player = other.gameObject;
+            playerNumber = player.GetComponent<Player>().shittyFriendsList.Count;
+            player.GetComponent<Player>().AddShittyFriend(gameObject);
             attached = true;
             spawnerCallback(roomNumber);
         }
     }
-
-    public void UsePower()
-    {
-        switch (type) {
-            case ShittyFriendType.Attack:
-                Transform playerTransform = GameObject.Find("Player").GetComponent<Transform>();
-                Rigidbody rb = Instantiate(projectile, playerTransform.position, playerTransform.rotation).GetComponent<Rigidbody>();
-                rb.AddForce(playerTransform.forward * 32f, ForceMode.Impulse);
-                break;
-            case ShittyFriendType.Heal:
-                player.HealPlayer(healthHealed);
-                break;
-        }
-    }
-
 }

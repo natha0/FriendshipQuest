@@ -20,11 +20,11 @@ public class Player : MonoBehaviour
     public string npcName;
     public bool showControls = false;
 
-    
+    private PlayerController playerController;
 
     void Start()
     {
-        
+        playerController = gameObject.GetComponent<PlayerController>();
 
         if (showControls)
         {
@@ -73,13 +73,15 @@ public class Player : MonoBehaviour
                 lastDamageTime = Time.time;
             }
         }
-        
     }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        healthBar.UpdateHealthBar();
+        if (!playerController.isDashing)
+        {
+            health -= damage;
+            healthBar.UpdateHealthBar();
+        }
     }
 
     public void HealPlayer(float heal)
@@ -107,13 +109,13 @@ public class Player : MonoBehaviour
     {
         if (shittyFriendsList.Count >= 1)
         {
-            shittyFriendsList[0].GetComponent<ShittyFriendProperties>().UsePower();
+            shittyFriendsList[0].GetComponent<IShittyFriends>().UsePower();
             Destroy(shittyFriendsList[0]);
             shittyFriendsList.RemoveAt(0);
 
             foreach (GameObject shittyFriend in shittyFriendsList)
             {
-                shittyFriend.GetComponent<ShittyFriendProperties>().playerNumber--;
+                shittyFriend.GetComponent<ShittyFriend>().playerNumber--;
             }
         }
     }
@@ -125,7 +127,7 @@ public class Player : MonoBehaviour
 
         for (int i=0;i< shittyFriendsList.Count; i++)
         {
-            shittyFriendsList[i].GetComponent<ShittyFriendProperties>().playerNumber = i;
+            shittyFriendsList[i].GetComponent<ShittyFriend>().playerNumber = i;
         }
     }
 
