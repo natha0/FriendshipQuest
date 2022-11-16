@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TrailRenderer tr;
 
+    public Animator animator;
 
     public Vector3 mousePos;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = gameObject.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -49,7 +51,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-
+        if (movementDirection.magnitude > .1f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
 
 
 
@@ -99,7 +108,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         rb.useGravity = false;
-        rb.velocity = dashingPower * transform.forward;
+        rb.velocity = dashingPower * movementDirection.normalized;
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;

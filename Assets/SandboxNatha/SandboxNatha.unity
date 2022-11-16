@@ -1729,7 +1729,8 @@ PrefabInstance:
       propertyPath: dialogue.Array.data[3]
       value: R and F to spawn Karen and Billys
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 453673109670565981, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
 --- !u!1001 &8860450739876869877
 PrefabInstance:

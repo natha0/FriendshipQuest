@@ -20,8 +20,12 @@ public class Player : MonoBehaviour
     public string npcName;
     public bool showControls = false;
 
+    
+
     void Start()
     {
+        
+
         if (showControls)
         {
             DialogueSystem.Instance.AddNewDialogue(dialogue, npcName);

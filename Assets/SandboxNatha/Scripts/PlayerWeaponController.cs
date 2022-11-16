@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    public IWeapon weapon;
+    public Animator animator;
+    private bool alreadyAttacked = false;
+    public float attackDelay = 0.2f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        weapon = gameObject.GetComponentInChildren<IWeapon>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -17,8 +20,18 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            weapon.PerformAttack();
+            if (!alreadyAttacked)
+            {
+                animator.SetTrigger("baseAttack");
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), attackDelay);
+            }
+            
         }
     }
 
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
 }

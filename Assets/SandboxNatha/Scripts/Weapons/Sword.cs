@@ -7,21 +7,18 @@ public class Sword : MonoBehaviour,IWeapon
     private Animator animator;
     public float _damage = 3;
 
+    private void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
+
     public float damage
     {
         get { return _damage; }
     }
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     public void PerformAttack()
     {
-        animator.SetTrigger("Base_Attack");
+        animator.SetTrigger("baseAttack");
     }
-
-
-
 }
