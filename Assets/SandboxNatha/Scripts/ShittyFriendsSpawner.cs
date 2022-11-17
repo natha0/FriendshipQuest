@@ -40,6 +40,10 @@ public class ShittyFriendsSpawner : MonoBehaviour
             {
                 Instantiate(shittyFriendsType[1], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
             }
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                Instantiate(shittyFriendsType[2], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+            }
         }
     }
 

@@ -87,6 +87,7 @@ MonoBehaviour:
   shittyFriendsType:
   - {fileID: 8681666898452057147, guid: d7dbf6c0af48f7c46815eccf0595b43c, type: 3}
   - {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
+  - {fileID: 8681666898452057147, guid: a3dde1083272d5448affc2428db23a41, type: 3}
   deltaSpawn: {x: -5, y: 0, z: -3}
   wallWidth: 1
   randomSpawn: 0

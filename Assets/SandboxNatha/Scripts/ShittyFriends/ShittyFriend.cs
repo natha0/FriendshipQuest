@@ -32,7 +32,7 @@ public class ShittyFriend : MonoBehaviour
 
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (attached)
         {

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Billy : ShittyFriend,IShittyFriends
 {
-    private Player player;
+    private Player playerProperties;
     public float healthHealed = 10;
 
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        playerProperties = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void UsePower()
     {
-        player.HealPlayer(healthHealed);
+        playerProperties.HealPlayer(healthHealed);
     }
 }

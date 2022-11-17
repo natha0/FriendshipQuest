@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8681666898452057144}
   - component: {fileID: 8681666898452057145}
   - component: {fileID: 8681666898452057146}
-  - component: {fileID: 8681666898452057150}
   - component: {fileID: 8681666898452057149}
+  - component: {fileID: 2610317174038947129}
   m_Layer: 0
   m_Name: Timmy
   m_TagString: ShittyFriend
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee5facf80c074d142a0ec0e3d8c58392, type: 2}
+  - {fileID: 2100000, guid: 7c24e34ac11dcd74b870883a5729547e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,29 +100,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8681666898452057150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681666898452057147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6fd8010b670fe8438ca4549f1ebe714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  number: 0
-  distanceFromPlayer: 2
-  distanceBetweenFriends: 1.1
-  smoothTime: 0.2
-  floatAmplitude: 0.05
-  floatFrequency: 0.3
-  delay: 0
-  floatyness: {x: 0, y: 0, z: 0}
-  projectile: {fileID: 0}
-  healthHealed: 10
 --- !u!54 &8681666898452057149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,3 +116,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2610317174038947129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681666898452057147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e4448e94263eb49bf3b1a657cf3a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  roomNumber: 0
+  playerNumber: 0
+  addedToList: 0
+  attached: 0
+  distanceFromPlayer: 1.5
+  distanceBetweenFriends: 1.2
+  smoothTime: 0.2
+  floatAmplitude: 0.05
+  floatFrequency: 0.3
+  bomba: {fileID: 943427347280502146, guid: 03c07edf00c95ce478d9cc81da0fa9ca, type: 3}

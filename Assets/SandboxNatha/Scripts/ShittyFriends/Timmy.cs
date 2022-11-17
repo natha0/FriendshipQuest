@@ -8,9 +8,9 @@ public class Timmy : ShittyFriend,IShittyFriends
     private Transform playerTransform;
     public GameObject bomba;
 
-    private void Awake()
+    private void Start()
     {
-        
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
 
