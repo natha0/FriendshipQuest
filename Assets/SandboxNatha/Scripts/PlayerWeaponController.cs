@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    private Collider weaponCollider;
+    private BoxCollider weaponCollider;
     public Animator animator;
     private bool alreadyAttacked = false;
     public float attackDelay = 0.2f;
@@ -25,7 +25,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             if (!alreadyAttacked)
             {
-                weaponCollider.enabled = true;
+                weaponCollider.enabled = false;
                 animator.SetTrigger("baseAttack");
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), attackDelay);
@@ -36,6 +36,13 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void ResetAttack()
     {
+        weaponCollider.enabled = false;
         alreadyAttacked = false;
     }
+
+    public void ChangeSwordState()
+    {
+        weaponCollider.enabled = !weaponCollider.enabled;
+    }
+
 }

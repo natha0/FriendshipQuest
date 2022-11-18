@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 10
   contactDamage: 1
   invulnerabilityTime: 0.5
   healthBar: {fileID: 5302061109570114459}
@@ -190,12 +190,11 @@ MonoBehaviour:
   addedToList: 0
   detectPlayerRange: 3
   teleportDelay: 2
-  teleportRange: 6
+  teleportRange: 8
   maxSearch: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  previousPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &8783075990316288040
 PrefabInstance:
   m_ObjectHideFlags: 0

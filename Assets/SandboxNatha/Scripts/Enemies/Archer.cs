@@ -14,11 +14,10 @@ public class Archer : Enemy
     private float inRangeTime;
     private Vector3 teleportPoint;
     private bool teleportPointSet;
-    public Vector3 previousPosition;
 
-
-    void Start()
+    public override void Start()
     {
+        base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
@@ -30,11 +29,9 @@ public class Archer : Enemy
             {
                 if ((Time.time - inRangeTime) > teleportDelay)
                 {
-                    
                     if (!teleportPointSet)
                     {
                         SearchTeleportPoint(transform.position, maxSearch);
-                        
                     }
                     else
                     {
@@ -56,15 +53,20 @@ public class Archer : Enemy
 
     public void SearchTeleportPoint(Vector3 position,int maxSearch=1)
     {
-        for(int i = 0; i < maxSearch; i++)
+        int i = 0;
+        while(i < maxSearch &&!teleportPointSet)
         {
             if (!teleportPointSet)
             {
+                /*                Vector3 position=playerTransform.position;
                 float randomZ = Random.Range(-teleportRange, teleportRange);
-                float randomX = Random.Range(-teleportRange, teleportRange);
+                float randomX = Random.Range(-teleportRange, teleportRange);*/
 
-                teleportPoint = new Vector3(position.x + randomX, position.y, position.z + randomZ);
-                if (Physics.Raycast(teleportPoint, -transform.up, 2f, whatIsGround) && (playerTransform.position- teleportPoint).magnitude>detectPlayerRange)
+                float theta = Random.Range(0, 2*Mathf.PI);
+                Vector3 direction = new Vector3(Mathf.Cos(theta),0,Mathf.Sin(theta));
+
+                teleportPoint = playerTransform.position + teleportRange * direction;
+                if (Physics.Raycast(teleportPoint, -transform.up, 2f, whatIsGround) && isInRoom(teleportPoint))
                 {
                     teleportPointSet = true;
                 }
@@ -74,7 +76,6 @@ public class Archer : Enemy
 
     public void Teleport()
     {
-        previousPosition = transform.position;
         transform.position = teleportPoint;
         teleportPointSet = false;
     }

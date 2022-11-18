@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSword : MonoBehaviour
+public class PlayerSword : MonoBehaviour,IWeapon
 {
     
     public float _damage = 3;
@@ -12,6 +12,8 @@ public class PlayerSword : MonoBehaviour
         get { return _damage; }
     }
 
-
-
+    public void PerformAttack()
+    {
+        
+    }
 }

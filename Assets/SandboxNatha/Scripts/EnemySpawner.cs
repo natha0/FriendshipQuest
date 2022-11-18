@@ -14,29 +14,34 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> enemyInRoom = new();
 
     public Vector3 deltaSpawn;
-    public float wallWidth = 1;
 
-    private float x,z;
-    private float dx, dz;
     private float xMin, xMax, zMin, zMax;
     public bool randomSpawn;
 
     private bool isPlayerInside = false;
 
+    private Vector3 minPosition;
+    private Vector3 maxPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         alreadySpawned = false;
+        float x, y, z,dx,dz;
         x = transform.position.x;
+        y = transform.position.y;
         z = transform.position.z;
 
-        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2-wallWidth);
-        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2-wallWidth);
+        dx = Mathf.Clamp(deltaSpawn.x, 0, transform.localScale.x / 2);
+        dz = Mathf.Clamp(deltaSpawn.z, 0, transform.localScale.z / 2);
 
         xMin = x - dx;
         xMax = x + dx;
         zMin = z - dz;
         zMax = z + dz;
+
+        minPosition = transform.position - transform.localScale / 2;
+        maxPosition = transform.position + transform.localScale / 2;
     }
 
     IEnumerator EnemyDrop()
@@ -80,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (!other.gameObject.GetComponent<Enemy>().addedToList)
             {
-                other.gameObject.GetComponent<Enemy>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList);
+                other.gameObject.GetComponent<Enemy>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList,IsInRoom);
                 enemyInRoom.Add(other.gameObject);
             }
         }
@@ -99,9 +104,6 @@ public class EnemySpawner : MonoBehaviour
         {
             other.GetComponent<Enemy>().ResetPosition();
         }
-
-            
-        
     }
 
     private void RemoveEnnemyFromList(int number)
@@ -113,4 +115,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public bool IsInRoom(Vector3 position)
+    {
+        bool isIn = true;
+
+        for (int i=0;i<3; i++)
+        {
+            if (position[i] < minPosition[i] || position[i] > maxPosition[i])
+                isIn = false;
+        }
+        return isIn;
+    }
 }

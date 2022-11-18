@@ -19,34 +19,37 @@ public class Enemy : MonoBehaviour,IDamageable
     public int number;
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
+    public delegate bool IsInRoom(Vector3 position);
+    public IsInRoom isInRoom;
     public bool addedToList=false;
 
     private Vector3 initialPosition;
 
-    void Start()
+    public virtual void Start()
     {
         health = maxHealth;
         initialPosition = transform.position;
-        
     }
 
-    public void InitiateProperties(int enemyNumber,SpawnerCallback callback)
+    public void InitiateProperties(int enemyNumber,SpawnerCallback callback, IsInRoom isInRoomFunction)
     {
         addedToList = true;
         number = enemyNumber;
         spawnerCallback = callback;
+        isInRoom = isInRoomFunction;
     }
 
     public void UpdateHealthBar()
     {
-        health = Mathf.Clamp(health, 0, maxHealth);
-
         slider.value = Mathf.Clamp(health / maxHealth, 0, 1f);
         if (health < maxHealth)
         {
             healthBar.SetActive(true);
         }
-
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         if (health <= 0)
         {
             spawnerCallback(number);
@@ -56,7 +59,7 @@ public class Enemy : MonoBehaviour,IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if(Time.time - lastDamageTime > invulnerabilityTime)
+        if((Time.time - lastDamageTime) > invulnerabilityTime)
         {
             if (other.CompareTag("PlayerWeapon"))
             {
