@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    private Collider weaponCollider;
     public Animator animator;
     private bool alreadyAttacked = false;
     public float attackDelay = 0.2f;
@@ -12,6 +13,8 @@ public class PlayerWeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weaponCollider = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<BoxCollider>();
+        weaponCollider.enabled = false;
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -22,6 +25,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             if (!alreadyAttacked)
             {
+                weaponCollider.enabled = true;
                 animator.SetTrigger("baseAttack");
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), attackDelay);

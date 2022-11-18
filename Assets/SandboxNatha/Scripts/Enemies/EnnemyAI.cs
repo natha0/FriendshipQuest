@@ -24,7 +24,7 @@ public class EnnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     private bool playerInSightRange, playerInAttackRange;
 
-    private void Awake()
+    private void Start()
     {
         weapon = gameObject.GetComponentInChildren<IWeapon>();
         player = GameObject.Find("Player").transform;
@@ -66,7 +66,7 @@ public class EnnemyAI : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 3f, whatIsGround))
         {
             walkPointSet = true;
         }

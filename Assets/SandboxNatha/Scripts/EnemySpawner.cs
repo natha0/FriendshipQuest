@@ -78,9 +78,9 @@ public class EnemySpawner : MonoBehaviour
                 other.gameObject.SetActive(false);
             }
 
-            if (!other.gameObject.GetComponent<EnemyProperties>().addedToList)
+            if (!other.gameObject.GetComponent<Enemy>().addedToList)
             {
-                other.gameObject.GetComponent<EnemyProperties>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList);
+                other.gameObject.GetComponent<Enemy>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList);
                 enemyInRoom.Add(other.gameObject);
             }
         }
@@ -95,6 +95,13 @@ public class EnemySpawner : MonoBehaviour
                 enemy.SetActive(false);
             }
         }
+        else if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().ResetPosition();
+        }
+
+            
+        
     }
 
     private void RemoveEnnemyFromList(int number)
@@ -102,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
         enemyInRoom.RemoveAt(number);
         for (int i=number;i<enemyInRoom.Count; i++)
         {
-            enemyInRoom[i].GetComponent<EnemyProperties>().number = i;
+            enemyInRoom[i].GetComponent<Enemy>().number = i;
         }
     }
 

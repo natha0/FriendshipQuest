@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IDamageable
 {
 
     public float health;
@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy") && Time.time - lastDamageTime >invulnerabilityTime)
         {
-            float damage = collision.gameObject.GetComponent<EnemyProperties>().playerDamage;
-            TakeDamage(damage);
+            float damage = collision.gameObject.GetComponent<Enemy>().contactDamage;
+            Damage(damage);
             lastDamageTime = Time.time;
         }
     }
@@ -63,19 +63,19 @@ public class Player : MonoBehaviour
             if (other.CompareTag("EnemyProjectile"))
             {
                 float damage = other.gameObject.GetComponent<ProjectileProperties>().damage;
-                TakeDamage(damage);
+                Damage(damage);
                 lastDamageTime = Time.time;
             }
             else if (other.CompareTag("EnemyWeapon"))
             {
                 float damage = other.gameObject.GetComponent<IWeapon>().damage;
-                TakeDamage(damage);
+                Damage(damage);
                 lastDamageTime = Time.time;
             }
         }
     }
 
-    public void TakeDamage(float damage)
+    public void Damage(float damage)
     {
         if (!playerController.isDashing)
         {
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void HealPlayer(float heal)
+    public void Heal(float heal)
     {
         health += heal;
         healthBar.UpdateHealthBar();
@@ -130,5 +130,6 @@ public class Player : MonoBehaviour
             shittyFriendsList[i].GetComponent<ShittyFriend>().playerNumber = i;
         }
     }
+
 
 }

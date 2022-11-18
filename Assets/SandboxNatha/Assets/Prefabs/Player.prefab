@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7.5
   rotationSmoothness: 40
+  isDashing: 0
   dashingPower: 24
   dashingTime: 0.2
   dashingCooldown: 0.3
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  attackDelay: 0.2
 --- !u!96 &6309993539319362351
 TrailRenderer:
   serializedVersion: 2
@@ -241,6 +243,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6381738761062665760}
     m_Modifications:
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Center.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299923791317364687, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7290439238514328460, guid: 7cfc6bfad135c4b4d8f598f7d41bf7b5, type: 3}
       propertyPath: m_Name
       value: princess

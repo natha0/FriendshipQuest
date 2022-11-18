@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TimmySurprise : MonoBehaviour,IWeapon
 {
+
+    public float range = 4f;
+    public LayerMask whatAreEnemies;
+
     public float _damage = 10;
     public float damage { 
         get { return _damage; } 
@@ -19,7 +23,14 @@ public class TimmySurprise : MonoBehaviour,IWeapon
     }
     public void PerformAttack()
     {
-        //Kaboom
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range, whatAreEnemies);
+        foreach(Collider c in colliders)
+        {
+            if (c.CompareTag("Enemy"))
+            {
+                c.GetComponent<IDamageable>().Damage(_damage);
+            }
+        }
     }
 
     void Update()

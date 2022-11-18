@@ -14,6 +14,6 @@ public class Billy : ShittyFriend,IShittyFriends
 
     public void UsePower()
     {
-        playerProperties.HealPlayer(healthHealed);
+        playerProperties.Heal(healthHealed);
     }
 }
