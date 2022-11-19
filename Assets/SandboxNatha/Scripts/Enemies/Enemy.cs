@@ -25,10 +25,13 @@ public class Enemy : MonoBehaviour,IDamageable
 
     private Vector3 initialPosition;
 
+    private MeshRenderer[] renderers;
+
     public virtual void Start()
     {
         health = maxHealth;
         initialPosition = transform.position;
+        renderers = GetComponentsInChildren<MeshRenderer>();
     }
 
     public void InitiateProperties(int enemyNumber,SpawnerCallback callback, IsInRoom isInRoomFunction)
@@ -79,6 +82,7 @@ public class Enemy : MonoBehaviour,IDamageable
     {
         health -= damage;
         UpdateHealthBar();
+        StartCoroutine(nameof(Blink));
     }
 
     public void Heal(float heal)
@@ -87,10 +91,23 @@ public class Enemy : MonoBehaviour,IDamageable
         UpdateHealthBar();
     }
 
+    public IEnumerator Blink()
+    {
+        foreach (MeshRenderer rend in renderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        foreach (MeshRenderer rend in renderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        yield return new WaitForSeconds(0.1f);
+    }
+
     public void ResetPosition()
     {
         transform.position = initialPosition;
     }
-
-
 }

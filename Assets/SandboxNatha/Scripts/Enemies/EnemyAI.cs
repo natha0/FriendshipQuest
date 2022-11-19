@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
@@ -18,11 +18,12 @@ public class EnnemyAI : MonoBehaviour
     private IWeapon weapon;
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
 
     //States 
     public float sightRange, attackRange;
-    private bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange;
+
+    int i;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class EnnemyAI : MonoBehaviour
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position,attackRange,whatIsPlayer);
+        
 
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -48,7 +50,9 @@ public class EnnemyAI : MonoBehaviour
 
         if (walkPointSet)
         {
+            print(i++.ToString() + transform.position.ToString());
             agent.SetDestination(walkPoint);
+            print(i++.ToString() + transform.position.ToString());
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -66,7 +70,7 @@ public class EnnemyAI : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (Physics.Raycast(walkPoint, -transform.up, 3f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 5f, whatIsGround))
         {
             walkPointSet = true;
         }
@@ -86,7 +90,10 @@ public class EnnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             //useAttack code
-            weapon.PerformAttack();
+            if (weapon!=null)
+            {
+                weapon.PerformAttack();
+            }
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -102,4 +109,5 @@ public class EnnemyAI : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
+
 }

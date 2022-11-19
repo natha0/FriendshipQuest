@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 943427347280502147}
-  - component: {fileID: 3696950394311209473}
+  - component: {fileID: 8965139030418174757}
   - component: {fileID: 5128054772140541492}
   m_Layer: 0
-  m_Name: TimmySurprise
-  m_TagString: ShittyFriend
+  m_Name: BossSurprise
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3696950394311209473
+--- !u!114 &8965139030418174757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 943427347280502146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca74a2ceb5cac042a597354872f9cef, type: 3}
+  m_Script: {fileID: 11500000, guid: 620bc10a0ea1d8d4da2bd017fc1b264c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
+  range: 4
   whatAreEnemies:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   _damage: 10
   explosionDelay: 3
 --- !u!95 &5128054772140541492

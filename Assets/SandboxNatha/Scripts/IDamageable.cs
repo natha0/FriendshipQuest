@@ -9,4 +9,6 @@ public interface IDamageable
 
     void Heal(float heal);
 
+    IEnumerator Blink();
+
 }

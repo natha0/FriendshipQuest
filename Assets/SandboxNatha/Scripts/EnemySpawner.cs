@@ -82,7 +82,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 other.gameObject.SetActive(false);
             }
-
             if (!other.gameObject.GetComponent<Enemy>().addedToList)
             {
                 other.gameObject.GetComponent<Enemy>().InitiateProperties(enemyInRoom.Count, RemoveEnnemyFromList,IsInRoom);

@@ -22,6 +22,9 @@ public class Player : MonoBehaviour,IDamageable
 
     private PlayerController playerController;
 
+    private MeshRenderer[] renderers;
+    private SkinnedMeshRenderer[] skinnedRenderers;
+
     void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
@@ -32,6 +35,9 @@ public class Player : MonoBehaviour,IDamageable
         }
         healthBar = GameObject.Find("UI/PlayerHealth").GetComponent<HealthBar>();
         health = maxHealth;
+
+        renderers = GetComponentsInChildren<MeshRenderer>();
+        skinnedRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     private void Update()
@@ -58,7 +64,7 @@ public class Player : MonoBehaviour,IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Time.time - lastDamageTime > invulnerabilityTime)
+        if (Time.time - lastDamageTime > invulnerabilityTime && !playerController.isDashing)
         {
             if (other.CompareTag("EnemyProjectile"))
             {
@@ -77,17 +83,38 @@ public class Player : MonoBehaviour,IDamageable
 
     public void Damage(float damage)
     {
-        if (!playerController.isDashing)
-        {
-            health -= damage;
-            healthBar.UpdateHealthBar();
-        }
+        health -= damage;
+        healthBar.UpdateHealthBar();
+        StartCoroutine(nameof(Blink));
     }
 
     public void Heal(float heal)
     {
         health += heal;
         healthBar.UpdateHealthBar();
+    }
+
+    public IEnumerator Blink()
+    {
+        foreach (MeshRenderer rend in renderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        foreach (SkinnedMeshRenderer rend in skinnedRenderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        foreach (MeshRenderer rend in renderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        foreach (SkinnedMeshRenderer rend in skinnedRenderers)
+        {
+            rend.enabled = !rend.enabled;
+        }
+        yield return new WaitForSeconds(0.1f);
     }
 
     public void AddShittyFriend(GameObject shittyFriend)
