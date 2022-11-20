@@ -13,9 +13,6 @@ public class Player : MonoBehaviour,IDamageable
 
     public HealthBar healthBar;
 
-    public List<GameObject> shittyFriendsList = new();
-    public List<GameObject> ShittyFriendsType = new();
-
     public string[] dialogue;
     public string npcName;
     public bool showControls = false;
@@ -24,6 +21,8 @@ public class Player : MonoBehaviour,IDamageable
 
     private MeshRenderer[] renderers;
     private SkinnedMeshRenderer[] skinnedRenderers;
+
+    private PlayerShittyFriendsManager shittyFriendsManager;
 
     void Start()
     {
@@ -38,17 +37,19 @@ public class Player : MonoBehaviour,IDamageable
 
         renderers = GetComponentsInChildren<MeshRenderer>();
         skinnedRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        shittyFriendsManager = gameObject.GetComponent<PlayerShittyFriendsManager>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1) && shittyFriendsList.Count>=1)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))
         {
-            UseShittyFriend();
+            shittyFriendsManager.UseShittyFriend();
         }
-        if (Input.GetKeyDown(KeyCode.E)  && shittyFriendsList.Count >= 1)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            SwitchShittyFriends();
+            shittyFriendsManager.SwitchShittyFriends();
         }
     }
 
@@ -116,47 +117,4 @@ public class Player : MonoBehaviour,IDamageable
         }
         yield return new WaitForSeconds(0.1f);
     }
-
-    public void AddShittyFriend(GameObject shittyFriend)
-    {
-        shittyFriendsList.Add(shittyFriend);
-    }
-
-    public GameObject GetShittyFriend(int id)
-    {
-        if (shittyFriendsList.Count>=id)
-        {
-            return shittyFriendsList[id];
-        }
-        Debug.LogWarningFormat("The shitty friend with id: {0} doesn't exist!", id);
-        return null;
-    }
-
-    public void UseShittyFriend()
-    {
-        if (shittyFriendsList.Count >= 1)
-        {
-            shittyFriendsList[0].GetComponent<IShittyFriends>().UsePower();
-            Destroy(shittyFriendsList[0]);
-            shittyFriendsList.RemoveAt(0);
-
-            foreach (GameObject shittyFriend in shittyFriendsList)
-            {
-                shittyFriend.GetComponent<ShittyFriend>().playerNumber--;
-            }
-        }
-    }
-
-    public void SwitchShittyFriends()
-    {
-        shittyFriendsList.Add(shittyFriendsList[0]);
-        shittyFriendsList.RemoveAt(0);
-
-        for (int i=0;i< shittyFriendsList.Count; i++)
-        {
-            shittyFriendsList[i].GetComponent<ShittyFriend>().playerNumber = i;
-        }
-    }
-
-
 }

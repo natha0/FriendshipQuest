@@ -165,9 +165,10 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
-  projectile: {fileID: 6932497953198856542, guid: 0100bdfc4c6bcd14491065f31cf00761, type: 3}
   sightRange: 13
   attackRange: 1
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!114 &913441216244279836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4284522320891589152}
     m_Modifications:
+    - target: {fileID: 174445440805314813, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 649014465943732840, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2299565929445549904, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -283,6 +292,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3492389128862407603, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603941341011882022, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962748002312646195, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5044796288322821325, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -290,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 5044796288322821325, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406132119991454888, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ShittyFriend : MonoBehaviour
 {
- 
-    public enum ShittyFriendType {Attack,Heal}
-    public ShittyFriendType type;
+    public string type=null;
     private GameObject player;
+    private PlayerShittyFriendsManager shittyFriendsManager;
 
     public int roomNumber;
     public int playerNumber;
@@ -30,8 +29,6 @@ public class ShittyFriend : MonoBehaviour
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
 
-
-
     private void Update()
     {
         if (attached)
@@ -43,7 +40,7 @@ public class ShittyFriend : MonoBehaviour
             }
             else
             {
-                previousShittyFriend = player.GetComponent<Player>().GetShittyFriend(playerNumber - 1);
+                previousShittyFriend = shittyFriendsManager.GetShittyFriend(playerNumber - 1);
                 transform.LookAt(previousShittyFriend.transform);
                 targetPosition = previousShittyFriend.transform.position -  distanceBetweenFriends * transform.forward;
             }
@@ -70,10 +67,42 @@ public class ShittyFriend : MonoBehaviour
         if (other.CompareTag("Player") && !attached)
         {
             player = other.gameObject;
-            playerNumber = player.GetComponent<Player>().shittyFriendsList.Count;
-            player.GetComponent<Player>().AddShittyFriend(gameObject);
-            attached = true;
-            spawnerCallback(roomNumber);
+            shittyFriendsManager = player.GetComponent<PlayerShittyFriendsManager>();
+
+            if (!shittyFriendsManager.limitShittyFriendsNumber)
+            {
+                playerNumber = shittyFriendsManager.shittyFriendsList.Count;
+                shittyFriendsManager.AddShittyFriend(gameObject);
+                attached = true;
+                spawnerCallback(roomNumber);
+            }
+            else
+            {
+                spawnerCallback(roomNumber);
+                shittyFriendsManager.AddShittyFriend(gameObject);
+                if (shittyFriendsManager.doDestroyShittyFriend)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    string type = null;
+                    if (gameObject.GetComponent<Karen>())
+                    {
+                        type = "Karen";
+                    }
+                    else if (gameObject.GetComponent<Billy>())
+                    {
+                        type = "Billy";
+                    }
+                    else if (gameObject.GetComponent<Timmy>())
+                    {
+                        type = "Timmy";
+                    }
+                    playerNumber = shittyFriendsManager.shittyFriendsTypes.IndexOf(type);
+                    attached = true;
+                }
+            }
         }
     }
 }
