@@ -9,6 +9,10 @@ public class ShittyFriendsCounter : MonoBehaviour
     public GameObject counterPanel;
 
     private TMP_Text Karen, Billy, Timmy;
+    private TMP_Text selectedType=null;
+
+    int i;
+    PlayerShittyFriendsManager manager;
 
     void Start()
     {
@@ -21,17 +25,10 @@ public class ShittyFriendsCounter : MonoBehaviour
             Instance = this;
         }
 
-        PlayerShittyFriendsManager manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShittyFriendsManager>();
+        manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShittyFriendsManager>();
 
-        if (!manager.limitShittyFriendsNumber)
-        {
-            counterPanel.SetActive(false);
-        }
-        else
-        {
-            counterPanel.SetActive(true);
-        }
 
+        counterPanel.SetActive(true);
         Karen = counterPanel.transform.Find("Karen").GetComponent<TMP_Text>();
         Billy = counterPanel.transform.Find("Billy").GetComponent<TMP_Text>();
         Timmy = counterPanel.transform.Find("Timmy").GetComponent<TMP_Text>();
@@ -50,6 +47,43 @@ public class ShittyFriendsCounter : MonoBehaviour
             case "Timmy":
                 Timmy.SetText("Timmy<br>{0}", number);
                 break;
+        }
+    }
+
+    public void SetSelectedShittyFriend(string type,bool activated=true)
+    {
+        if (activated)
+        {
+            TMP_Text textToChange = null;
+            switch (type)
+            {
+                case "Karen":
+                    textToChange = Karen;
+                    break;
+                case "Billy":
+                    textToChange = Billy;
+                    break;
+                case "Timmy":
+                    textToChange = Timmy;
+                    break;
+            }
+            if (textToChange != null)
+            {
+                if (selectedType != null)
+                {
+                    selectedType.outlineWidth = 0;
+                }
+                textToChange.outlineWidth = 0.3f;
+                selectedType = textToChange;
+            }
+            else
+            {
+                Debug.LogWarningFormat("Selected Shitty Friend type {} has not been implemented",type);
+            }
+        }
+        else
+        {
+            selectedType.outlineWidth = 0;
         }
     }
 }

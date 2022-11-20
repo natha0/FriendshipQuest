@@ -69,40 +69,17 @@ public class ShittyFriend : MonoBehaviour
             player = other.gameObject;
             shittyFriendsManager = player.GetComponent<PlayerShittyFriendsManager>();
 
-            if (!shittyFriendsManager.limitShittyFriendsNumber)
+            spawnerCallback(roomNumber);
+            if (shittyFriendsManager.AddShittyFriend(gameObject))
             {
-                playerNumber = shittyFriendsManager.shittyFriendsList.Count;
-                shittyFriendsManager.AddShittyFriend(gameObject);
-                attached = true;
-                spawnerCallback(roomNumber);
+                Destroy(gameObject);
             }
             else
             {
-                spawnerCallback(roomNumber);
-                shittyFriendsManager.AddShittyFriend(gameObject);
-                if (shittyFriendsManager.doDestroyShittyFriend)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    string type = null;
-                    if (gameObject.GetComponent<Karen>())
-                    {
-                        type = "Karen";
-                    }
-                    else if (gameObject.GetComponent<Billy>())
-                    {
-                        type = "Billy";
-                    }
-                    else if (gameObject.GetComponent<Timmy>())
-                    {
-                        type = "Timmy";
-                    }
-                    playerNumber = shittyFriendsManager.shittyFriendsTypes.IndexOf(type);
-                    attached = true;
-                }
+                playerNumber = shittyFriendsManager.shittyFriendsTypes.IndexOf(type);
+                attached = true;
             }
+            
         }
     }
 }
