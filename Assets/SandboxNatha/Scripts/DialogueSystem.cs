@@ -15,6 +15,8 @@ public class DialogueSystem : MonoBehaviour
     TMP_Text dialogueText, nameText;
     int dialogueIndex;
 
+    public delegate void DialogueEndCallback();
+    private DialogueEndCallback dialogueEndCallback;
 
 
     private void Awake()
@@ -36,19 +38,24 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void AddNewDialogue(string[] lines, string[] npcName)
+    public void AddNewDialogue(string[] lines, string[] npcName,DialogueEndCallback callback=null)
     {
         dialogueIndex = 0;
         dialogueLines = new List<string>(lines.Length);
         dialogueLines.AddRange(lines);
         this.npcName = npcName;
         CreateDialogue();
+        
+
+        dialogueEndCallback = callback;
+
     }
 
     public void CreateDialogue()
     {
+
         dialogueText.text = dialogueLines[dialogueIndex];
-        nameText.text = npcName[0];
+        nameText.text = npcName.Length!=0?npcName[0]:"";
         dialoguePanel.SetActive(true);
     }
 
@@ -66,6 +73,7 @@ public class DialogueSystem : MonoBehaviour
         else
         {
             dialoguePanel.SetActive(false);
+            dialogueEndCallback?.Invoke();
         }
     }
 }

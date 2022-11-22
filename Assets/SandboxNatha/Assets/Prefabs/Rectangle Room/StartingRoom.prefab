@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6918433079454526292}
   - component: {fileID: 6918433079454526293}
-  - component: {fileID: 478217808540115760}
+  - component: {fileID: 5370470866576873424}
   m_Layer: 0
   m_Name: StartingRoom
   m_TagString: Untagged
@@ -55,18 +55,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &478217808540115760
-MonoBehaviour:
+--- !u!65 &5370470866576873424
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6918433079454526291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcffbfb3e8eefd84ebfa7ed3ccae15ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 18, y: 4, z: 13}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1001 &992511408049353800
 PrefabInstance:
   m_ObjectHideFlags: 0

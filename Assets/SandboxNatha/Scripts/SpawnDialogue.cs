@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnDialogue : MonoBehaviour
 {
+    // add dialogue in dialogue
     public string[] dialogue;
+    // add one npc name for all of dialogue or one npc name per dialogue line
     public string[] npcName;
 
     private bool played = false;
@@ -15,7 +17,7 @@ public class SpawnDialogue : MonoBehaviour
         if (other.CompareTag("Player") && !played)
         {
             DialogueSystem.Instance.AddNewDialogue(dialogue, npcName);
-            if (replayable)
+            if (!replayable)
             {
                 played = true;
             }

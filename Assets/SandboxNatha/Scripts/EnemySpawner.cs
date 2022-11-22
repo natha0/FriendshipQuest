@@ -23,9 +23,13 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 minPosition;
     private Vector3 maxPosition;
 
+    private RoomProperties parentRoom;
+
     // Start is called before the first frame update
     void Start()
     {
+        parentRoom = GetComponentInParent<RoomProperties>();
+
         alreadySpawned = false;
         float x, y, z,dx,dz;
         x = transform.position.x;
@@ -62,18 +66,13 @@ public class EnemySpawner : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
-            if (!alreadySpawned)
+            if (!parentRoom.onEnterPlayed)
             {
-                if (randomSpawn)
-                {
-                    StartCoroutine(EnemyDrop());
-                    alreadySpawned = true;
-                }
+                parentRoom.DisplayOnEnterDialogue(callback: SpawnEnemies);
             }
-            
-            foreach (GameObject enemy in enemyInRoom)
+            else
             {
-                enemy.SetActive(true);
+                SpawnEnemies();
             }
         }
         else if (other.CompareTag("Enemy"))
@@ -111,6 +110,30 @@ public class EnemySpawner : MonoBehaviour
         for (int i=number;i<enemyInRoom.Count; i++)
         {
             enemyInRoom[i].GetComponent<Enemy>().number = i;
+        }
+
+        if (enemyInRoom.Count == 0)
+        {
+            parentRoom.DisplayClearDialogue();
+        }
+
+    }
+
+    public void SpawnEnemies()
+    {
+
+        if (!alreadySpawned)
+        {
+            if (randomSpawn)
+            {
+                StartCoroutine(EnemyDrop());
+                alreadySpawned = true;
+            }
+        }
+
+        foreach (GameObject enemy in enemyInRoom)
+        {
+            enemy.SetActive(true);
         }
     }
 

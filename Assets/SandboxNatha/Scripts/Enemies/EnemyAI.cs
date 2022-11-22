@@ -30,6 +30,12 @@ public class EnemyAI : MonoBehaviour
         weapon = gameObject.GetComponentInChildren<IWeapon>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        NavMeshHit closestHit;
+        if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
+            gameObject.transform.position = closestHit.position;
+        else
+            Debug.LogError("Could not find position on NavMesh!");
     }
 
     private void Update()
@@ -76,7 +82,15 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        try
+        {
+            agent.SetDestination(player.position);
+        }
+        catch
+        {
+            print(name);
+        }
+        
         transform.LookAt(player);
     }
 
