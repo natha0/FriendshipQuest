@@ -14,7 +14,7 @@ public class Player : MonoBehaviour,IDamageable
     public HealthBar healthBar;
 
     public string[] dialogue;
-    public string npcName;
+    public string[] npcName;
     public bool showControls = false;
 
     private PlayerController playerController;

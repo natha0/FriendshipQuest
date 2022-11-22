@@ -9,7 +9,7 @@ public class DialogueSystem : MonoBehaviour
     public static DialogueSystem Instance { get; set; }
     public GameObject dialoguePanel;
     public List<string> dialogueLines = new();
-    public string npcName;
+    public string[] npcName;
 
     Button continueButton;
     TMP_Text dialogueText, nameText;
@@ -36,7 +36,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void AddNewDialogue(string[] lines, string npcName)
+    public void AddNewDialogue(string[] lines, string[] npcName)
     {
         dialogueIndex = 0;
         dialogueLines = new List<string>(lines.Length);
@@ -48,7 +48,7 @@ public class DialogueSystem : MonoBehaviour
     public void CreateDialogue()
     {
         dialogueText.text = dialogueLines[dialogueIndex];
-        nameText.text = npcName;
+        nameText.text = npcName[0];
         dialoguePanel.SetActive(true);
     }
 
@@ -58,6 +58,10 @@ public class DialogueSystem : MonoBehaviour
         {
             dialogueIndex++;
             dialogueText.text = dialogueLines[dialogueIndex];
+            if (npcName.Length > 1)
+            {
+                nameText.text = npcName[dialogueIndex];
+            }
         }
         else
         {
