@@ -18,6 +18,8 @@ public class DialogueSystem : MonoBehaviour
     public delegate void DialogueEndCallback();
     private DialogueEndCallback dialogueEndCallback;
 
+    public bool deactivateDialogues;
+
 
     private void Awake()
     {
@@ -44,19 +46,24 @@ public class DialogueSystem : MonoBehaviour
         dialogueLines = new List<string>(lines.Length);
         dialogueLines.AddRange(lines);
         this.npcName = npcName;
-        CreateDialogue();
-        
-
         dialogueEndCallback = callback;
 
+        CreateDialogue();
     }
 
     public void CreateDialogue()
     {
+        if (!deactivateDialogues)
+        {
+            dialogueText.text = dialogueLines[dialogueIndex];
+            nameText.text = npcName.Length != 0 ? npcName[0] : "";
+            dialoguePanel.SetActive(true);
+        }
+        else
+        {
+            dialogueEndCallback?.Invoke();
+        }
 
-        dialogueText.text = dialogueLines[dialogueIndex];
-        nameText.text = npcName.Length!=0?npcName[0]:"";
-        dialoguePanel.SetActive(true);
     }
 
     public void ContinueDialogue()
