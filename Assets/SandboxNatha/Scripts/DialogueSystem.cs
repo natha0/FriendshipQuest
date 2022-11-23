@@ -18,7 +18,7 @@ public class DialogueSystem : MonoBehaviour
     public delegate void DialogueEndCallback();
     private DialogueEndCallback dialogueEndCallback;
 
-    public bool deactivateDialogues;
+    private bool deactivateDialogues { get { return GodModeManager.Instance.deactivateDialogues; } }
 
 
     private void Awake()

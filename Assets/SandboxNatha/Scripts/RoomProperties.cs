@@ -9,8 +9,8 @@ public class RoomProperties : MonoBehaviour
     private Vector3 roomMax;
     private CameraProperties cameraProperties;
 
-    public string[] onEnterDialogue = new string[1];
-    public string[] onEnterNpcName = new string[1];
+    public string[] onEnterDialogue;
+    public string[] onEnterNpcName;
     public bool onEnterReplayable;
     [HideInInspector] public bool onEnterPlayed;
 
@@ -18,6 +18,11 @@ public class RoomProperties : MonoBehaviour
     public string[] onClearNpcName;
     public bool onClearReplayable;
     [HideInInspector] public bool onClearPlayed;
+
+    readonly List<BoxCollider> doorColliders=new();
+    EnemySpawner spawner;
+
+    private bool letDoorsOpen { get { return GodModeManager.Instance.letDoorsOpen; } }
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +34,16 @@ public class RoomProperties : MonoBehaviour
 
         cameraProperties = Camera.main.GetComponent<CameraProperties>();
 
+        TeleportPlayer[] doorsTeleport = GetComponentsInChildren<TeleportPlayer>();
+
+        foreach(TeleportPlayer door in doorsTeleport)
+        {
+            doorColliders.Add(door.gameObject.GetComponent<BoxCollider>());
+
+        }
+
+        spawner = GetComponentInChildren<EnemySpawner>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +52,13 @@ public class RoomProperties : MonoBehaviour
         {
             cameraProperties.SetRoomBorders(roomCenter, roomMin, roomMax);
         }
+
+        if (spawner.enemiesInRoom > 0)
+        {
+            DeactivateDoors();
+        }
+
+
     }
 
     public void DisplayOnEnterDialogue(DialogueSystem.DialogueEndCallback callback=null)
@@ -77,5 +99,25 @@ public class RoomProperties : MonoBehaviour
                 onClearPlayed = true;
             }
         }
+    }
+
+    public void ActivateDoors()
+    {
+        foreach (BoxCollider door in doorColliders)
+        {
+            door.isTrigger = true;
+        }
+    }
+
+    public void DeactivateDoors()
+    {
+        if (!letDoorsOpen)
+        {
+            foreach (BoxCollider door in doorColliders)
+            {
+                door.isTrigger = false;
+            }
+        }
+
     }
 }

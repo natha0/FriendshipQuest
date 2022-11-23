@@ -12,6 +12,7 @@ TagManager:
   - Spawner
   - EnemyWeapon
   - PlayerWeapon
+  - Door
   layers:
   - Default
   - TransparentFX

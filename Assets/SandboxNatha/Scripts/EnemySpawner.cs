@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private bool alreadySpawned;
 
     private List<GameObject> enemyInRoom = new();
+    public int enemiesInRoom { get { return enemyInRoom.Count; } }
 
     public Vector3 deltaSpawn;
 
@@ -114,7 +115,8 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemyInRoom.Count == 0)
         {
-            parentRoom.DisplayClearDialogue();
+            RoomCleared();
+
         }
 
     }
@@ -147,5 +149,11 @@ public class EnemySpawner : MonoBehaviour
                 isIn = false;
         }
         return isIn;
+    }
+
+    void RoomCleared()
+    {
+        parentRoom.DisplayClearDialogue(parentRoom.ActivateDoors);
+
     }
 }
