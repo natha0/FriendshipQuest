@@ -19,7 +19,7 @@ public class RoomProperties : MonoBehaviour
     public bool onClearReplayable;
     [HideInInspector] public bool onClearPlayed;
 
-    readonly List<BoxCollider> doorColliders=new();
+    public readonly List<BoxCollider> doorColliders=new();
     EnemySpawner spawner;
 
     private bool letDoorsOpen { get { return GodModeManager.Instance.letDoorsOpen; } }
@@ -52,7 +52,6 @@ public class RoomProperties : MonoBehaviour
         {
             cameraProperties.SetRoomBorders(roomCenter, roomMin, roomMax);
         }
-
         if (spawner.enemiesInRoom > 0)
         {
             DeactivateDoors();
