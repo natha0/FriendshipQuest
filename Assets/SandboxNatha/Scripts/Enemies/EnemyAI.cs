@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform player;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patrolling
-    public Vector3 walkPoint;
+    private Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
 
     //States 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [HideInInspector] public bool playerInSightRange, playerInAttackRange;
 
     int i;
 

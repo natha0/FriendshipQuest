@@ -183,15 +183,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
-  contactDamage: 1
   invulnerabilityTime: 0.5
+  contactDamage: 1
   healthBar: {fileID: 5302061109570114459}
   slider: {fileID: 6437606360858839917}
   number: 0
   addedToList: 0
-  detectPlayerRange: 3
-  teleportDelay: 2
-  teleportRange: 8
+  detectPlayerRange: 4
+  teleportDelay: 0.2
+  teleportRange: 14
   maxSearch: 1
   whatIsGround:
     serializedVersion: 2

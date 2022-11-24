@@ -22,9 +22,8 @@ public class RoomProperties : MonoBehaviour
     public readonly List<BoxCollider> doorColliders=new();
     EnemySpawner spawner;
 
-    private bool letDoorsOpen { get { return GodModeManager.Instance.letDoorsOpen; } }
+    private bool letDoorsOpen => GodModeManager.Instance.letDoorsOpen;
 
-    // Start is called before the first frame update
     void Start()
     {
         Bounds bounds = GetComponent<BoxCollider>().bounds;
@@ -51,13 +50,11 @@ public class RoomProperties : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             cameraProperties.SetRoomBorders(roomCenter, roomMin, roomMax);
+            if (spawner.enemiesInRoom > 0 && !letDoorsOpen)
+            {
+                DeactivateDoors();
+            }
         }
-        if (spawner.enemiesInRoom > 0)
-        {
-            DeactivateDoors();
-        }
-
-
     }
 
     public void DisplayOnEnterDialogue(DialogueSystem.DialogueEndCallback callback=null)

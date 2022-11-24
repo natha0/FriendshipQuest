@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float verticallInput;
 
     private bool canDash = true;
-    public bool isDashing;
+    [HideInInspector] public bool isDashing;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
@@ -20,9 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TrailRenderer tr;
 
-    public Animator animator;
-
-    public Vector3 mousePos;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()

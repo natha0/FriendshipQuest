@@ -7,9 +7,8 @@ public class Player : MonoBehaviour,IDamageable
 
     public float health;
     public float maxHealth = 10f;
-
     public float invulnerabilityTime = 1f;
-    private float lastDamageTime = 0;
+    private bool damageable = true;
 
     public HealthBar healthBar;
 
@@ -24,6 +23,8 @@ public class Player : MonoBehaviour,IDamageable
 
     private PlayerShittyFriendsManager shittyFriendsManager;
 
+    private bool deactivateGameOver => GodModeManager.Instance.deactivateGameOver;
+
     void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour,IDamageable
         }
         healthBar = GameObject.Find("UI/PlayerHealth").GetComponent<HealthBar>();
         health = maxHealth;
+        damageable = true;
 
         renderers = GetComponentsInChildren<MeshRenderer>();
         skinnedRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -55,29 +57,26 @@ public class Player : MonoBehaviour,IDamageable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") && Time.time - lastDamageTime >invulnerabilityTime)
+        if(collision.gameObject.CompareTag("Enemy") && damageable)
         {
             float damage = collision.gameObject.GetComponent<Enemy>().contactDamage;
             Damage(damage);
-            lastDamageTime = Time.time;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Time.time - lastDamageTime > invulnerabilityTime && !playerController.isDashing)
+        if (damageable && !playerController.isDashing)
         {
             if (other.CompareTag("EnemyProjectile"))
             {
                 float damage = other.gameObject.GetComponent<ProjectileProperties>().damage;
                 Damage(damage);
-                lastDamageTime = Time.time;
             }
             else if (other.CompareTag("EnemyWeapon"))
             {
                 float damage = other.gameObject.GetComponent<IWeapon>().damage;
                 Damage(damage);
-                lastDamageTime = Time.time;
             }
         }
     }
@@ -86,35 +85,58 @@ public class Player : MonoBehaviour,IDamageable
     {
         health -= damage;
         healthBar.UpdateHealthBar();
+        damageable = false;
+        Invoke(nameof(ResetDamageable), invulnerabilityTime);
         StartCoroutine(nameof(Blink));
+        if (health <= 0 && !deactivateGameOver)
+        {
+            GameOver();
+        }
+    }
+
+    void ResetDamageable()
+    {
+        damageable = true;
     }
 
     public void Heal(float heal)
     {
         health += heal;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         healthBar.UpdateHealthBar();
     }
 
     public IEnumerator Blink()
     {
-        foreach (MeshRenderer rend in renderers)
+        while (!damageable)
         {
-            rend.enabled = !rend.enabled;
+            foreach (MeshRenderer rend in renderers)
+            {
+                rend.enabled = !rend.enabled;
+            }
+            foreach (SkinnedMeshRenderer rend in skinnedRenderers)
+            {
+                rend.enabled = !rend.enabled;
+            }
+            yield return new WaitForSeconds(0.1f);
         }
-        foreach (SkinnedMeshRenderer rend in skinnedRenderers)
-        {
-            rend.enabled = !rend.enabled;
-        }
-        yield return new WaitForSeconds(0.1f);
 
         foreach (MeshRenderer rend in renderers)
         {
-            rend.enabled = !rend.enabled;
+            rend.enabled = true;
         }
         foreach (SkinnedMeshRenderer rend in skinnedRenderers)
         {
-            rend.enabled = !rend.enabled;
+            rend.enabled = true;
+
         }
-        yield return new WaitForSeconds(0.1f);
+    }
+
+    void GameOver()
+    {
+        print("gameOver");
     }
 }

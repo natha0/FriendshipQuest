@@ -7,21 +7,20 @@ public class Enemy : MonoBehaviour,IDamageable
 {
     public float health;
     public float maxHealth = 10f;
+    public float invulnerabilityTime = 0.5f;
+    private bool damageable = true;
 
     public float contactDamage = 1f;
-
-    public float invulnerabilityTime = 0.5f;
-    private float lastDamageTime = 0;
 
     public GameObject healthBar;
     public Slider slider;
 
-    public int number;
+    [HideInInspector] public int number;
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
     public delegate bool IsInRoom(Vector3 position);
     public IsInRoom isInRoom;
-    public bool addedToList=false;
+    [HideInInspector] public bool addedToList=false;
 
     private Vector3 initialPosition;
 
@@ -32,6 +31,7 @@ public class Enemy : MonoBehaviour,IDamageable
         health = maxHealth;
         initialPosition = transform.position;
         renderers = GetComponentsInChildren<MeshRenderer>();
+        damageable = true;
     }
 
     public void InitiateProperties(int enemyNumber,SpawnerCallback callback, IsInRoom isInRoomFunction)
@@ -62,11 +62,10 @@ public class Enemy : MonoBehaviour,IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if((Time.time - lastDamageTime) > invulnerabilityTime)
+        if(damageable)
         {
             if (other.CompareTag("PlayerWeapon"))
             {
-                lastDamageTime = Time.time;
                 float damage = other.GetComponent<IWeapon>().damage;
                 Damage(damage);
             }
@@ -82,7 +81,14 @@ public class Enemy : MonoBehaviour,IDamageable
     {
         health -= damage;
         UpdateHealthBar();
+        damageable = false;
+        Invoke(nameof(resetDamageable), invulnerabilityTime);
         StartCoroutine(nameof(Blink));
+    }
+
+    void resetDamageable()
+    {
+        damageable = true;
     }
 
     public void Heal(float heal)

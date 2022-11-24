@@ -8,10 +8,10 @@ public class ShittyFriend : MonoBehaviour
     private GameObject player;
     private PlayerShittyFriendsManager shittyFriendsManager;
 
-    public int roomNumber;
-    public int playerNumber;
-    public bool addedToList=false;
-    public bool attached = false;
+    [HideInInspector] public int roomNumber;
+    [HideInInspector] public int playerNumber;
+    [HideInInspector] public bool addedToList=false;
+    [HideInInspector] public bool attached = false;
     public float distanceFromPlayer = 1.5f;
     public float distanceBetweenFriends = 1.2f;
 
