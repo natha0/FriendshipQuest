@@ -12,8 +12,7 @@ public class Player : MonoBehaviour,IDamageable
 
     public HealthBar healthBar;
 
-    public string[] dialogue;
-    public string[] npcName;
+    public DialogueLine[] dialogue;
     public bool showControls = false;
 
     private PlayerController playerController;
@@ -33,7 +32,7 @@ public class Player : MonoBehaviour,IDamageable
 
         if (showControls)
         {
-            DialogueSystem.Instance.AddNewDialogue(dialogue, npcName);
+            DialogueSystem.Instance.AddNewDialogue(dialogue);
         }
         healthBar = GameObject.Find("UI/PlayerHealth").GetComponent<HealthBar>();
         health = maxHealth;

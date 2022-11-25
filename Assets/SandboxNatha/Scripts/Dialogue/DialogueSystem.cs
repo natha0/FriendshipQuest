@@ -8,8 +8,11 @@ public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem Instance { get; set; }
     public GameObject dialoguePanel;
-    public List<string> dialogueLines = new();
-    public string[] npcName;
+
+    public DialogueLine[] dialogueLines;
+    private DialogueLine currentLine;
+    private int lineCount;
+    private int lineIndex;
 
     Button continueButton;
     TMP_Text dialogueText, nameText;
@@ -40,14 +43,11 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void AddNewDialogue(string[] lines, string[] npcName,DialogueEndCallback callback=null)
+    public void AddNewDialogue(DialogueLine[] dialogue, DialogueEndCallback callback = null)
     {
         dialogueIndex = 0;
-        dialogueLines = new List<string>(lines.Length);
-        dialogueLines.AddRange(lines);
-        this.npcName = npcName;
+        dialogueLines = dialogue;
         dialogueEndCallback = callback;
-
         CreateDialogue();
     }
 
@@ -55,27 +55,25 @@ public class DialogueSystem : MonoBehaviour
     {
         if (!deactivateDialogues)
         {
-            dialogueText.text = dialogueLines[dialogueIndex];
-            nameText.text = npcName.Length != 0 ? npcName[0] : "";
+            currentLine = dialogueLines[dialogueIndex];
+            dialogueText.text = GetLineText(currentLine);
+            nameText.text = dialogueLines[dialogueIndex].npcName;
             dialoguePanel.SetActive(true);
         }
         else
         {
             dialogueEndCallback?.Invoke();
         }
-
     }
 
     public void ContinueDialogue()
     {
-        if (dialogueIndex < dialogueLines.Count-1)
+        if (dialogueIndex < dialogueLines.Length-1)
         {
             dialogueIndex++;
-            dialogueText.text = dialogueLines[dialogueIndex];
-            if (npcName.Length > 1)
-            {
-                nameText.text = npcName[dialogueIndex];
-            }
+            currentLine = dialogueLines[dialogueIndex];
+            dialogueText.text = GetLineText(currentLine);
+            nameText.text = dialogueLines[dialogueIndex].npcName;
         }
         else
         {
@@ -83,4 +81,19 @@ public class DialogueSystem : MonoBehaviour
             dialogueEndCallback?.Invoke();
         }
     }
+
+    private string GetLineText(DialogueLine dialogueLine)
+    {
+        string line = "";
+        for (int i = 0; i < dialogueLine.Lines.Length; i++)
+        {
+            line += dialogueLine.Lines[i];
+            if (i != dialogueLine.Lines.Length - 1)
+            {
+                line += "<br>";
+            }
+        }
+        return line;
+    }
+
 }

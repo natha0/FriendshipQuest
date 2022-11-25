@@ -9,13 +9,11 @@ public class RoomProperties : MonoBehaviour
     private Vector3 roomMax;
     private CameraProperties cameraProperties;
 
-    public string[] onEnterDialogue;
-    public string[] onEnterNpcName;
+    public DialogueLine[] onEnterDialogue;
     public bool onEnterReplayable;
     [HideInInspector] public bool onEnterPlayed;
 
-    public string[] onClearDialogue;
-    public string[] onClearNpcName;
+    public DialogueLine[] onClearDialogue;
     public bool onClearReplayable;
     [HideInInspector] public bool onClearPlayed;
 
@@ -63,7 +61,7 @@ public class RoomProperties : MonoBehaviour
         {
             if (onEnterDialogue.Length > 0)
             {
-                DialogueSystem.Instance.AddNewDialogue(onEnterDialogue, onEnterNpcName, callback);
+                DialogueSystem.Instance.AddNewDialogue(onEnterDialogue, callback);
             }
             else
             {
@@ -82,7 +80,7 @@ public class RoomProperties : MonoBehaviour
         {
             if (onClearDialogue.Length > 0)
             {
-                DialogueSystem.Instance.AddNewDialogue(onClearDialogue, onClearNpcName, callback);
+                DialogueSystem.Instance.AddNewDialogue(onClearDialogue, callback);
             }
             else
             {
