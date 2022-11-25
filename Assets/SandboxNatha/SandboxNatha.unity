@@ -591,26 +591,56 @@ MonoBehaviour:
   sounds:
   - name: SwordSwing
     clip: {fileID: 0}
-    volume: 1
-    pitch: 0.1
+    volume: 0.5
+    pitch: 1
     loop: 0
     aSource: {fileID: 0}
   - name: Player Hit
     clip: {fileID: 8300000, guid: 47de000deb0684c498405784dcc3c85f, type: 3}
-    volume: 1
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     aSource: {fileID: 0}
   - name: EnemyHurt
     clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     aSource: {fileID: 0}
   - name: Dash
     clip: {fileID: 8300000, guid: 0d3b6086bec4949949b1101c02756798, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Piew
+    clip: {fileID: 8300000, guid: 161571fb288a949248af00ea932226e0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Sword Hit 1
+    clip: {fileID: 8300000, guid: 5badcbcecdcb248f9bc3c83c03d912c2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Sword Hit 2
+    clip: {fileID: 8300000, guid: 326f0b52668344d7a89da2ce639ab718, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Sword Hit 3
+    clip: {fileID: 8300000, guid: 7434fd848218b40f6aceee8e93d7e0b5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Sword Hit 4
+    clip: {fileID: 8300000, guid: 2310012da6613435385dc1282a25bdb9, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     aSource: {fileID: 0}
 --- !u!4 &579260666
@@ -620,13 +650,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579260664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2151424, y: -0.8093113, z: -24.569086}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.0002, y: -0.50001, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618569516 stripped
 GameObject:
@@ -646,6 +676,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shittyFriendsTypes: []
+--- !u!4 &618569531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+  m_PrefabInstance: {fileID: 6381738759651901574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &618569532
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618569516}
+  m_Enabled: 1
 --- !u!4 &647664319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6918433079454526292, guid: 0c9c9548e1ec70841a97c0ee14860f48, type: 3}
@@ -1120,7 +1163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1083397646}
   - component: {fileID: 1083397645}
-  - component: {fileID: 1083397644}
   - component: {fileID: 1083397647}
   - component: {fileID: 1083397648}
   m_Layer: 0
@@ -1130,14 +1172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1083397644
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083397643}
-  m_Enabled: 1
 --- !u!20 &1083397645
 Camera:
   m_ObjectHideFlags: 0
@@ -2039,9 +2073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e512de6709e49a04ca73d03bf478af30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivateDialogues: 0
-  letDoorsOpen: 0
-  deactivateGameOver: 0
+  deactivateDialogues: 1
+  letDoorsOpen: 1
+  deactivateGameOver: 1
+  DontPlayMusicAtStart: 1
 --- !u!1 &1491232687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,9 +2144,9 @@ MonoBehaviour:
   musics:
   - name: Theme
     clip: {fileID: 8300000, guid: 32e9120c627ee6747af38685ebd2ff17, type: 3}
-    volume: 0.498
+    volume: 0.5
     pitch: 1
-    loop: 0
+    loop: 1
     aSource: {fileID: 0}
 --- !u!4 &1500559312
 Transform:
@@ -2126,7 +2161,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1523556729
 PrefabInstance:
@@ -2202,6 +2237,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6918433079454526292, guid: d190c83b487799249a5b87cef0960567, type: 3}
   m_PrefabInstance: {fileID: 1523556729}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1654120768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654120769}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1654120769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654120768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 618569531}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700759975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,7 +2574,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1969361812
 PrefabInstance:
@@ -2793,6 +2859,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 832429807, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 832429807, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993071897, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993071897, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013376802, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013376802, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636738884535147349, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636738884535147349, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 8860450740108758414, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2840,10 +2938,6 @@ PrefabInstance:
     - target: {fileID: 8860450740108758415, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: deactivateDialogues
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf330e272c087114c87096d7087553e5, type: 3}

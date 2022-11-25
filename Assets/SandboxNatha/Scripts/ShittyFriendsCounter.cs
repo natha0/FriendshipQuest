@@ -8,11 +8,8 @@ public class ShittyFriendsCounter : MonoBehaviour
     public static ShittyFriendsCounter Instance { get; set; }
     public GameObject counterPanel;
 
-    private TMP_Text Karen, Billy, Timmy;
+    private TMP_Text Karen, Billy, Randy, Jimi;
     private TMP_Text selectedType=null;
-
-    int i;
-    PlayerShittyFriendsManager manager;
 
     void Start()
     {
@@ -25,13 +22,11 @@ public class ShittyFriendsCounter : MonoBehaviour
             Instance = this;
         }
 
-        manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShittyFriendsManager>();
-
-
         counterPanel.SetActive(true);
         Karen = counterPanel.transform.Find("Karen").GetComponent<TMP_Text>();
         Billy = counterPanel.transform.Find("Billy").GetComponent<TMP_Text>();
-        Timmy = counterPanel.transform.Find("Timmy").GetComponent<TMP_Text>();
+        Randy = counterPanel.transform.Find("Randy").GetComponent<TMP_Text>();
+        Jimi = counterPanel.transform.Find("Jimi").GetComponent<TMP_Text>();
     }
 
     public void SetShittyFriendCount(string type,int number)
@@ -39,13 +34,16 @@ public class ShittyFriendsCounter : MonoBehaviour
         switch (type)
         {
             case "Karen":
-                Karen.SetText("Karen<br>{0}", number);
+                Karen.SetText(type + "<br>{0}", number);
                 break;
             case "Billy":
-                Billy.SetText("Billy<br>{0}", number);
+                Billy.SetText(type + "<br>{0}", number);
                 break;
-            case "Timmy":
-                Timmy.SetText("Timmy<br>{0}", number);
+            case "Randy":
+                Randy.SetText(type + "<br>{0}", number);
+                break;
+            case "Jimi":
+                Jimi.SetText(type + "<br>{0}", number);
                 break;
         }
     }
@@ -63,8 +61,11 @@ public class ShittyFriendsCounter : MonoBehaviour
                 case "Billy":
                     textToChange = Billy;
                     break;
-                case "Timmy":
-                    textToChange = Timmy;
+                case "Randy":
+                    textToChange = Randy;
+                    break;          
+                case "Jimi":
+                    textToChange = Jimi;
                     break;
             }
             if (textToChange != null)

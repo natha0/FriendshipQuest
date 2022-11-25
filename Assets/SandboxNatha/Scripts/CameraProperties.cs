@@ -8,9 +8,9 @@ public class CameraProperties : MonoBehaviour
     public Vector3 cameraOffset;
     public Vector3 deltas;
 
-    private float xmin, xmax, zmin, zmax;
-    private float x, z;
-    private Vector3 pos;
+    public float xmin, xmax, zmin, zmax;
+    public float x, z;
+    public Vector3 pos;
 
     private Transform playerTransform;
 

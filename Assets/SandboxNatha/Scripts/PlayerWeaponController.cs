@@ -9,6 +9,8 @@ public class PlayerWeaponController : MonoBehaviour
     private bool alreadyAttacked = false;
     public float attackDelay = 0.2f;
 
+    private AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class PlayerWeaponController : MonoBehaviour
         weaponCollider = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<BoxCollider>();
         weaponCollider.enabled = false;
         animator = gameObject.GetComponentInChildren<Animator>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class PlayerWeaponController : MonoBehaviour
                 weaponCollider.enabled = false;
                 animator.SetTrigger("baseAttack");
                 alreadyAttacked = true;
+                audioManager.Play("Sword Hit "+Random.Range(1,4).ToString());
                 Invoke(nameof(ResetAttack), attackDelay);
             }
             

@@ -164,8 +164,8 @@ MonoBehaviour:
     m_Bits: 128
   walkPointRange: 5
   timeBetweenAttacks: 2
-  sightRange: 13
-  attackRange: 7
+  sightRange: 35
+  attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &582897758235383675
@@ -189,7 +189,7 @@ MonoBehaviour:
   number: 0
   addedToList: 0
   detectPlayerRange: 4
-  teleportDelay: 0.2
+  teleportCooldown: 3
   teleportRange: 14
   maxSearch: 1
   whatIsGround:

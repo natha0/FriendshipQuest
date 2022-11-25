@@ -6,19 +6,20 @@ public class Archer : Enemy
 {
     private Transform playerTransform;
     public float detectPlayerRange = 2f;
-    public float teleportDelay = 2f;
+    public float teleportCooldown = 2f;
     public float teleportRange = 5f;
     public int maxSearch = 1;
     public LayerMask whatIsGround;
     private bool isPlayerInRange;
-    private float inRangeTime;
     private Vector3 teleportPoint;
     private bool teleportPointSet;
+    private bool canTeleport;
 
     public override void Start()
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        canTeleport = true;
     }
 
     void Update()
@@ -27,7 +28,7 @@ public class Archer : Enemy
         {
             if (isPlayerInRange)
             {
-                if ((Time.time - inRangeTime) > teleportDelay)
+                if (canTeleport)
                 {
                     if (!teleportPointSet)
                     {
@@ -42,7 +43,6 @@ public class Archer : Enemy
             else
             {
                 isPlayerInRange = true;
-                inRangeTime = Time.time;
             }
         }
         else
@@ -58,10 +58,6 @@ public class Archer : Enemy
         {
             if (!teleportPointSet)
             {
-                /*                Vector3 position=playerTransform.position;
-                float randomZ = Random.Range(-teleportRange, teleportRange);
-                float randomX = Random.Range(-teleportRange, teleportRange);*/
-
                 float theta = Random.Range(0, 2*Mathf.PI);
                 Vector3 direction = new Vector3(Mathf.Cos(theta),0,Mathf.Sin(theta));
 
@@ -78,5 +74,12 @@ public class Archer : Enemy
     {
         transform.position = teleportPoint;
         teleportPointSet = false;
+        canTeleport = false;
+        Invoke(nameof(ResetTeleport), teleportCooldown);
+    }
+
+    void ResetTeleport()
+    {
+        canTeleport = true;
     }
 }

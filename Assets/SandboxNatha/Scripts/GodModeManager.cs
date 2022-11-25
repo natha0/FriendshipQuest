@@ -6,7 +6,7 @@ public class GodModeManager : MonoBehaviour
 {
     public static GodModeManager Instance { get; set; }
 
-    public bool deactivateDialogues, letDoorsOpen,deactivateGameOver;
+    public bool deactivateDialogues, letDoorsOpen,deactivateGameOver, DontPlayMusicAtStart;
 
     void Start()
     {

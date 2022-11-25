@@ -22,7 +22,7 @@ public class Player : MonoBehaviour,IDamageable
 
     private PlayerShittyFriendsManager shittyFriendsManager;
 
-    private AudioManager audioManager;
+    public AudioManager audioManager;
 
     [HideInInspector] public GameObject BillyProtector=null;
 

@@ -14,6 +14,7 @@ public class MusicTheme : MonoBehaviour
 
     [SerializeField]
     private Sound[] musics;
+    private bool DontPlayMusicAtStart;
 
     private void Awake()
     {
@@ -42,7 +43,10 @@ public class MusicTheme : MonoBehaviour
 
     void Start()
     {
-        Play("Theme");
+        if (!DontPlayMusicAtStart)
+        {
+            Play("Theme");
+        }
     }
 
 

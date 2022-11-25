@@ -12,12 +12,14 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
 
-
     void Awake()
     {
         foreach (Sound s in sounds)
         {
-            s.aSource = gameObject.AddComponent<AudioSource>();
+            if (s.aSource == null)
+            {
+                s.aSource = gameObject.AddComponent<AudioSource>();
+            }
             s.aSource.clip = s.clip;
             s.aSource.volume = s.volume;
             s.aSource.pitch = s.pitch;
@@ -33,7 +35,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        s.aSource.PlayOneShot(s.clip);
+        s.aSource.PlayOneShot(s.aSource.clip);
     }
 
     public void Play(string name, float randomRangeMin, float randomRangeMax)
