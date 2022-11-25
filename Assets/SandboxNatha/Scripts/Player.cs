@@ -22,12 +22,15 @@ public class Player : MonoBehaviour,IDamageable
 
     private PlayerShittyFriendsManager shittyFriendsManager;
 
+    private AudioManager audioManager;
+
     [HideInInspector] public GameObject BillyProtector=null;
 
     private bool deactivateGameOver => GodModeManager.Instance.deactivateGameOver;
 
     void Start()
     {
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         playerController = gameObject.GetComponent<PlayerController>();
 
         if (showControls)
@@ -86,6 +89,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         if (BillyProtector == null)
         {
+            audioManager.Play("Player Hit");
             health -= damage;
             healthBar.UpdateHealthBar();
             if (health <= 0 && !deactivateGameOver)

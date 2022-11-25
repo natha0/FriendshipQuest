@@ -591,18 +591,24 @@ MonoBehaviour:
   sounds:
   - name: SwordSwing
     clip: {fileID: 0}
-    volume: 0
+    volume: 1
     pitch: 0.1
     loop: 0
     aSource: {fileID: 0}
-  - name: PlayerHurt
-    clip: {fileID: 0}
-    volume: 0
+  - name: Player Hit
+    clip: {fileID: 8300000, guid: 47de000deb0684c498405784dcc3c85f, type: 3}
+    volume: 1
     pitch: 0
     loop: 0
     aSource: {fileID: 0}
   - name: EnemyHurt
     clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 0d3b6086bec4949949b1101c02756798, type: 3}
     volume: 0
     pitch: 0
     loop: 0

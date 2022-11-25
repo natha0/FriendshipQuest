@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TrailRenderer tr;
 
     private Animator animator;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
         rb.velocity = dashingPower * movementDirection.normalized;
         tr.emitting = true;
+        audioManager.Play("Dash");
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         rb.useGravity = true;

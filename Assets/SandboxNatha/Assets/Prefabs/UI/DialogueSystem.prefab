@@ -328,7 +328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 5669004677028695162}
   dialogueLines: []
-  npcName: 
 --- !u!1 &5669004676726808545
 GameObject:
   m_ObjectHideFlags: 0
