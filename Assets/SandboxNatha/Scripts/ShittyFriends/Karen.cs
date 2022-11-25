@@ -12,9 +12,11 @@ public class Karen : ShittyFriend,IShittyFriends
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
-    public void UsePower()
+    public bool UsePower()
     {
         Rigidbody rb = Instantiate(projectile, playerTransform.position, playerTransform.rotation).GetComponent<Rigidbody>();
         rb.AddForce(playerTransform.forward * 32f, ForceMode.Impulse);
+        bool PowerUsed = true;
+        return PowerUsed;
     }
 }

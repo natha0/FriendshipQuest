@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IShittyFriends
 {
-    public void UsePower();
+    public bool UsePower();
 
 }

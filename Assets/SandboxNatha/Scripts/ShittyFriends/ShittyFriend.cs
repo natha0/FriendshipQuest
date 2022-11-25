@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShittyFriend : MonoBehaviour
 {
     public string type=null;
-    private GameObject player;
+    private GameObject playerObject;
     private PlayerShittyFriendsManager shittyFriendsManager;
 
     [HideInInspector] public int roomNumber;
@@ -29,14 +29,14 @@ public class ShittyFriend : MonoBehaviour
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
 
-    private void Update()
+    public virtual void Update()
     {
         if (attached)
         {
             if (playerNumber == 0)
             {
-                transform.LookAt(player.transform);
-                targetPosition = player.transform.position - distanceFromPlayer * transform.forward;
+                transform.LookAt(playerObject.transform);
+                targetPosition = playerObject.transform.position - distanceFromPlayer * transform.forward;
             }
             else
             {
@@ -66,8 +66,8 @@ public class ShittyFriend : MonoBehaviour
     {
         if (other.CompareTag("Player") && !attached)
         {
-            player = other.gameObject;
-            shittyFriendsManager = player.GetComponent<PlayerShittyFriendsManager>();
+            playerObject = other.gameObject;
+            shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
 
             spawnerCallback(roomNumber);
             if (shittyFriendsManager.AddShittyFriend(gameObject))

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timmy : ShittyFriend,IShittyFriends
+public class Randy : ShittyFriend,IShittyFriends
 {
 
     private Transform playerTransform;
@@ -14,9 +14,12 @@ public class Timmy : ShittyFriend,IShittyFriends
     }
 
 
-    public void UsePower()
+    public bool UsePower()
     {
+
         Instantiate(bomba, playerTransform.position, playerTransform.rotation);
+        bool PowerUsed = true;
+        return PowerUsed;
     }
 
 

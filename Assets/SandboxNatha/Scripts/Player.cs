@@ -23,6 +23,8 @@ public class Player : MonoBehaviour,IDamageable
 
     private PlayerShittyFriendsManager shittyFriendsManager;
 
+    [HideInInspector] public GameObject BillyProtector=null;
+
     private bool deactivateGameOver => GodModeManager.Instance.deactivateGameOver;
 
     void Start()
@@ -83,15 +85,24 @@ public class Player : MonoBehaviour,IDamageable
 
     public void Damage(float damage)
     {
-        health -= damage;
-        healthBar.UpdateHealthBar();
+        if (BillyProtector == null)
+        {
+            health -= damage;
+            healthBar.UpdateHealthBar();
+            if (health <= 0 && !deactivateGameOver)
+            {
+                GameOver();
+            }
+        }
+        else
+        {
+            Destroy(BillyProtector);
+            BillyProtector = null;
+        }
+
         damageable = false;
         Invoke(nameof(ResetDamageable), invulnerabilityTime);
         StartCoroutine(nameof(Blink));
-        if (health <= 0 && !deactivateGameOver)
-        {
-            GameOver();
-        }
     }
 
     void ResetDamageable()
@@ -132,6 +143,16 @@ public class Player : MonoBehaviour,IDamageable
         {
             rend.enabled = true;
 
+        }
+    }
+
+    public void AddProtector(string type,GameObject protector=null)
+    {
+        switch (type)
+        {
+            case "Billy":
+                BillyProtector = protector;
+                break;
         }
     }
 

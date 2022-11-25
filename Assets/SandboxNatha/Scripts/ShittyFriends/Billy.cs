@@ -4,16 +4,47 @@ using UnityEngine;
 
 public class Billy : ShittyFriend,IShittyFriends
 {
-    private Player playerProperties;
-    public float healthHealed = 10;
+    Player player;
+    Transform playerTransform;
+
+    [HideInInspector] public bool protectsPlayer;
+    public float floatingRange=1;
+    public float floatingFrequency = 2;
 
     private void Start()
     {
-        playerProperties = GameObject.Find("Player").GetComponent<Player>();
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerObject.GetComponent<Player>();
+        playerTransform = playerObject.GetComponent<Transform>();
     }
 
-    public void UsePower()
+    public bool UsePower()
     {
-        playerProperties.Heal(healthHealed);
+        bool PowerUsed = false;
+        if (player.BillyProtector == null)
+        {
+            GameObject BillyProtector = Instantiate(gameObject, transform.position, Quaternion.identity);
+            BillyProtector.GetComponent<Billy>().protectsPlayer = true;
+            player.AddProtector(type, BillyProtector);
+            PowerUsed = true;
+        }
+        return PowerUsed;
     }
+
+    public override void Update()
+    {
+        if (protectsPlayer)
+        {
+            float phase = 2 * Mathf.PI * Time.time * floatingFrequency;
+            Vector3 targetPos = floatingRange* new Vector3(Mathf.Cos(phase),0,Mathf.Sin(phase));
+
+            transform.position = playerTransform.position + targetPos;
+        }
+        else
+        {
+            base.Update();
+        }
+    }
+
+
 }

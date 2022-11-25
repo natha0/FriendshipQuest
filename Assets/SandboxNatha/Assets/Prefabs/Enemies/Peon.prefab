@@ -162,7 +162,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
   sightRange: 13
@@ -183,8 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
-  contactDamage: 1
   invulnerabilityTime: 0.5
+  contactDamage: 1
   healthBar: {fileID: 3827009263815013787}
   slider: {fileID: 2728627471217651053}
   number: 0

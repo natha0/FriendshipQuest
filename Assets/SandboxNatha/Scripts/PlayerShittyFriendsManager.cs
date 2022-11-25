@@ -41,7 +41,6 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
 
     public GameObject GetShittyFriend(int id)
     {
-
         if (shittyFriendsList.Count >= id)
         {
             return shittyFriendsList[id].shittyFriend;
@@ -53,35 +52,38 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
 
     public void UseShittyFriend()
     {
-
         if (shittyFriendsList.Count >= 1)
         {
-            shittyFriendsList[0].shittyFriend.GetComponent<IShittyFriends>().UsePower();
-            string type = shittyFriendsList[0].shittyFriend.GetComponent<ShittyFriend>().type;
-            if (shittyFriendsList[0].number == 1)
+            bool PowerUsed = shittyFriendsList[0].shittyFriend.GetComponent<IShittyFriends>().UsePower();
+            if(PowerUsed)
             {
-                Destroy(shittyFriendsList[0].shittyFriend);
-                shittyFriendsList.RemoveAt(0);
-                shittyFriendsTypes.RemoveAt(0);
-                for (int i=0;i< shittyFriendsList.Count; i++)
+                string type = shittyFriendsList[0].shittyFriend.GetComponent<ShittyFriend>().type;
+                if (shittyFriendsList[0].number == 1)
                 {
-                    shittyFriendsList[i].shittyFriend.GetComponent<ShittyFriend>().playerNumber--;
-                }
-                UpdateShittyFriendCounter(type, 0);
-                if (shittyFriendsTypes.Count > 0)
-                {
-                    ShittyFriendsCounter.Instance.SetSelectedShittyFriend(shittyFriendsTypes[0]);
+                    Destroy(shittyFriendsList[0].shittyFriend);
+                    shittyFriendsList.RemoveAt(0);
+                    shittyFriendsTypes.RemoveAt(0);
+                    for (int i = 0; i < shittyFriendsList.Count; i++)
+                    {
+                        shittyFriendsList[i].shittyFriend.GetComponent<ShittyFriend>().playerNumber--;
+                    }
+                    UpdateShittyFriendCounter(type, 0);
+                    if (shittyFriendsTypes.Count > 0)
+                    {
+                        ShittyFriendsCounter.Instance.SetSelectedShittyFriend(shittyFriendsTypes[0]);
+                    }
+                    else
+                    {
+                        ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type, false);
+                    }
                 }
                 else
                 {
-                    ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type,false);
+                    shittyFriendsList[0] = (shittyFriendsList[0].number - 1, shittyFriendsList[0].shittyFriend);
+                    UpdateShittyFriendCounter(type);
                 }
             }
-            else
-            {
-                shittyFriendsList[0] = (shittyFriendsList[0].number - 1, shittyFriendsList[0].shittyFriend);
-                UpdateShittyFriendCounter(type);
-            }
+            
         }
             
         
