@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
     {
         //Making sure pitch range can not overflow
         if (randomRangeMin < 0.1f) randomRangeMin = .1f;
-        if (randomRangeMax < 3f) randomRangeMin = 3f;
+        if (randomRangeMax > 3f) randomRangeMax = 3f;
 
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
