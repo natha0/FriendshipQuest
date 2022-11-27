@@ -5,17 +5,17 @@ using UnityEngine;
 public class ShittyFriend : MonoBehaviour
 {
     public string type=null;
-    private GameObject playerObject;
+    private GameObject playerObject=null;
     private PlayerShittyFriendsManager shittyFriendsManager;
 
     [HideInInspector] public int roomNumber;
-    [HideInInspector] public int playerNumber;
+    public int playerNumber;
     [HideInInspector] public bool addedToList=false;
     [HideInInspector] public bool attached = false;
     public float distanceFromPlayer = 1.5f;
     public float distanceBetweenFriends = 1.2f;
 
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
     public float smoothTime = 0.2f;
     private Vector3 velocity = Vector3.zero;
 
@@ -29,10 +29,18 @@ public class ShittyFriend : MonoBehaviour
     public delegate void SpawnerCallback(int num);
     SpawnerCallback spawnerCallback;
 
+    public Vector3 pos;
+
     public virtual void Update()
     {
         if (attached)
         {
+            if (playerObject == null)
+            {
+                playerObject = GameObject.FindGameObjectWithTag("Player");
+                shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
+            }
+
             if (playerNumber == 0)
             {
                 transform.LookAt(playerObject.transform);
@@ -42,6 +50,7 @@ public class ShittyFriend : MonoBehaviour
             {
                 previousShittyFriend = shittyFriendsManager.GetShittyFriend(playerNumber - 1);
                 transform.LookAt(previousShittyFriend.transform);
+                pos = previousShittyFriend.transform.position;
                 targetPosition = previousShittyFriend.transform.position -  distanceBetweenFriends * transform.forward;
             }
             delay = playerNumber * Mathf.PI / 3;
@@ -66,20 +75,11 @@ public class ShittyFriend : MonoBehaviour
     {
         if (other.CompareTag("Player") && !attached)
         {
-            playerObject = other.gameObject;
-            shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
-
-            spawnerCallback(roomNumber);
-            if (shittyFriendsManager.AddShittyFriend(gameObject))
+            if (other.gameObject.GetComponent<PlayerShittyFriendsManager>().AddShittyFriend(gameObject))
             {
+                spawnerCallback(roomNumber);
                 Destroy(gameObject);
             }
-            else
-            {
-                playerNumber = shittyFriendsManager.shittyFriendsTypes.IndexOf(type);
-                attached = true;
-            }
-            
         }
     }
 }

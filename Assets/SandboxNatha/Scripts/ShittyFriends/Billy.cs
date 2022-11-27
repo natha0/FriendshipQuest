@@ -13,9 +13,11 @@ public class Billy : ShittyFriend,IShittyFriends
 
     private void Start()
     {
+
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
         playerTransform = playerObject.GetComponent<Transform>();
+
     }
 
     public bool UsePower()

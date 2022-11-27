@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rasta : ShittyFriend,IShittyFriends
+public class Jimi : ShittyFriend,IShittyFriends
 {
 
     private Player playerProperties;

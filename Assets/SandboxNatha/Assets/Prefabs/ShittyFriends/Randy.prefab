@@ -136,10 +136,12 @@ MonoBehaviour:
   attached: 0
   distanceFromPlayer: 1.5
   distanceBetweenFriends: 1.2
+  targetPosition: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
   floatAmplitude: 0.05
   floatFrequency: 0.3
-  bomba: {fileID: 1654021514867831710, guid: 66400a94c74d428439a62bcd7457b3c9, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  bomba: {fileID: 943427347280502146, guid: 03c07edf00c95ce478d9cc81da0fa9ca, type: 3}
 --- !u!1001 &5199615777149107049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7843009731491659075, guid: 44011c63b46ea2a4086c77ae1da21ac2, type: 3}
       propertyPath: m_Name
-      value: Timmy
+      value: Randy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44011c63b46ea2a4086c77ae1da21ac2, type: 3}

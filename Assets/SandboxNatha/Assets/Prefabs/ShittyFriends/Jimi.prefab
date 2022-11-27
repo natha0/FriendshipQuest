@@ -128,14 +128,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af05b644be7a57c4c90e7fad8cf676c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  type: Jimi
   roomNumber: 0
   playerNumber: 0
   addedToList: 0
   attached: 0
   distanceFromPlayer: 1.5
   distanceBetweenFriends: 1.2
+  targetPosition: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
   floatAmplitude: 0.05
   floatFrequency: 0.3
+  pos: {x: 0, y: 0, z: 0}
   healthHealed: 10

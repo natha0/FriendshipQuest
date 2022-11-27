@@ -1,49 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerShittyFriendsManager : MonoBehaviour { 
-    public List<(int number, GameObject shittyFriend)> shittyFriendsList = new();
-    public List<string> shittyFriendsTypes = new();
+    public ShittyFriendManagerModule[] shittyFriendsList;
+    private ShittyFriendManagerModule currentModule;
+    private int ShittyFriendTotal
+    {
+        get
+        { int sum = 0; foreach (ShittyFriendManagerModule mod in shittyFriendsList) { sum += mod.number; } return sum; }
+    }
+
+    private int ShittyFriendTypeCount { get { 
+            int count = 0;
+            foreach (ShittyFriendManagerModule mod in shittyFriendsList)
+            {
+                count += mod.number > 0 ? 1 : 0;
+            }
+            return count;
+        } 
+    }
+
+    private void Start()
+    {
+        foreach(ShittyFriendManagerModule module in shittyFriendsList)
+        {
+            module.Initialise();
+        }
+    }
 
     public bool AddShittyFriend(GameObject shittyFriend)
     {
+        bool shittyFriendAdded = false;
+
         string type = shittyFriend.GetComponent<ShittyFriend>().type;
         if (type != null)
         {
-            bool doDestroyShittyFriend;
-            if (shittyFriendsTypes.Contains(type))
+            ShittyFriendManagerModule module = Array.Find(shittyFriendsList,mod => mod.type == type);
+            if (module.number < module.maxNumber)
             {
-                int index = shittyFriendsTypes.IndexOf(type);
-                shittyFriendsList[index] = (shittyFriendsList[index].number + 1, shittyFriendsList[index].shittyFriend);
-                doDestroyShittyFriend = true;
-            }
-            else
-            {
-                shittyFriendsList.Add((1, shittyFriend));
-                shittyFriendsTypes.Add(type);
-                doDestroyShittyFriend = false;
-                if (shittyFriendsList.Count == 1)
+                module.number++;
+
+                if (module.number == 1)
                 {
-                    ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type);
+                    module.shittyFriendClone = Instantiate(module.shittyFriend, shittyFriend.transform.position, Quaternion.identity);
+                    module.orderNumber = ShittyFriendTypeCount - 1;
+
+                    ShittyFriend cloneProperties = module.shittyFriendProperties;
+                    cloneProperties.playerNumber = module.orderNumber;
+                    cloneProperties.attached = true;
+
+                    if (ShittyFriendTypeCount == 1)
+                    {
+                        currentModule = module;
+                        ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type);
+                    }
                 }
+
+                UpdateShittyFriendCounter(type, module.number);
+                shittyFriendAdded = true;
             }
-            UpdateShittyFriendCounter(type);
-            return doDestroyShittyFriend;
         }
         else
         {
             Debug.LogWarningFormat("The shitty Friend of type {} has not been implemented", type);
-            return true;
         }
-        
+        return shittyFriendAdded;
     }
 
     public GameObject GetShittyFriend(int id)
     {
-        if (shittyFriendsList.Count >= id)
+        if (shittyFriendsList.Length >= id)
         {
-            return shittyFriendsList[id].shittyFriend;
+            ShittyFriendManagerModule module= Array.Find(shittyFriendsList, mod => mod.orderNumber == id);
+            return module.shittyFriendClone;
         }
 
         Debug.LogWarningFormat("The shitty friend with id: {0} doesn't exist!", id);
@@ -52,25 +83,31 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
 
     public void UseShittyFriend()
     {
-        if (shittyFriendsList.Count >= 1)
+        if (ShittyFriendTotal >= 1)
         {
-            bool PowerUsed = shittyFriendsList[0].shittyFriend.GetComponent<IShittyFriends>().UsePower();
+            bool PowerUsed = currentModule.shittyFriendClone.GetComponent<IShittyFriends>().UsePower();
             if(PowerUsed)
             {
-                string type = shittyFriendsList[0].shittyFriend.GetComponent<ShittyFriend>().type;
-                if (shittyFriendsList[0].number == 1)
+                currentModule.number--;
+                string type = currentModule.type;
+                if (currentModule.number == 0)
                 {
-                    Destroy(shittyFriendsList[0].shittyFriend);
-                    shittyFriendsList.RemoveAt(0);
-                    shittyFriendsTypes.RemoveAt(0);
-                    for (int i = 0; i < shittyFriendsList.Count; i++)
+                    Destroy(currentModule.shittyFriendClone);
+                    currentModule.orderNumber = -1;
+                    foreach (ShittyFriendManagerModule module in shittyFriendsList)
                     {
-                        shittyFriendsList[i].shittyFriend.GetComponent<ShittyFriend>().playerNumber--;
+                        if (module.orderNumber != -1)
+                        {
+                            module.orderNumber--;
+                            module.shittyFriendProperties.playerNumber--;
+                        }
                     }
+
                     UpdateShittyFriendCounter(type, 0);
-                    if (shittyFriendsTypes.Count > 0)
+                    if (ShittyFriendTotal > 0)
                     {
-                        ShittyFriendsCounter.Instance.SetSelectedShittyFriend(shittyFriendsTypes[0]);
+                        currentModule = Array.Find(shittyFriendsList, mod => mod.orderNumber == 0);
+                        ShittyFriendsCounter.Instance.SetSelectedShittyFriend(currentModule.type);
                     }
                     else
                     {
@@ -79,32 +116,32 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                 }
                 else
                 {
-                    shittyFriendsList[0] = (shittyFriendsList[0].number - 1, shittyFriendsList[0].shittyFriend);
                     UpdateShittyFriendCounter(type);
                 }
             }
-            
         }
-            
-        
 
     }
 
     public void SwitchShittyFriends()
     {
-        if (shittyFriendsList.Count > 0)
+        if (ShittyFriendTotal > 0)
         {
-            shittyFriendsList.Add(shittyFriendsList[0]);
-            shittyFriendsList.RemoveAt(0);
-
-            shittyFriendsTypes.Add(shittyFriendsTypes[0]);
-            shittyFriendsTypes.RemoveAt(0);
-
-            for (int i = 0; i < shittyFriendsList.Count; i++)
+            foreach(ShittyFriendManagerModule module in shittyFriendsList)
             {
-                shittyFriendsList[i].shittyFriend.GetComponent<ShittyFriend>().playerNumber = i;
+                if (module.orderNumber > 0)
+                {
+                    module.orderNumber--;
+                    module.shittyFriendProperties.playerNumber--;
+                }
+                else if (module.orderNumber == 0)
+                {
+                    module.orderNumber = ShittyFriendTypeCount - 1;
+                    module.shittyFriendProperties.playerNumber = ShittyFriendTypeCount - 1;
+                }
             }
-            ShittyFriendsCounter.Instance.SetSelectedShittyFriend(shittyFriendsTypes[0]);
+            currentModule = Array.Find(shittyFriendsList,module => module.orderNumber==0);
+            ShittyFriendsCounter.Instance.SetSelectedShittyFriend(currentModule.type);
         }
     }
 
@@ -112,9 +149,11 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
     {
         if (number == -1)
         {
-            int index = shittyFriendsTypes.IndexOf(type);
-            number = shittyFriendsList[index].number;
+            ShittyFriendManagerModule module = Array.Find(shittyFriendsList, mod => mod.type == type);
+            number = module.number;
         }
         ShittyFriendsCounter.Instance.SetShittyFriendCount(type, number);
     }
 }
+
+

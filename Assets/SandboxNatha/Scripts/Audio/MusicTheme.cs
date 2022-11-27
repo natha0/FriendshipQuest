@@ -14,7 +14,7 @@ public class MusicTheme : MonoBehaviour
 
     [SerializeField]
     private Sound[] musics;
-    private bool DontPlayMusicAtStart;
+    private bool DontPlayMusicAtStart => GodModeManager.Instance.DontPlayMusicAtStart;
 
     private void Awake()
     {

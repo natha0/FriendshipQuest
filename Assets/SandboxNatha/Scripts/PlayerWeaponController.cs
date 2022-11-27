@@ -31,7 +31,7 @@ public class PlayerWeaponController : MonoBehaviour
                 weaponCollider.enabled = false;
                 animator.SetTrigger("baseAttack");
                 alreadyAttacked = true;
-                audioManager.Play("Sword Hit "+Random.Range(1,4).ToString());
+                audioManager.Play("Sword Hit "+Random.Range(1,5).ToString());
                 Invoke(nameof(ResetAttack), attackDelay);
             }
             

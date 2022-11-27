@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2034938926582131172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18, y: 4, z: 13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2034938927116693587}
@@ -87,6 +87,7 @@ MonoBehaviour:
   - {fileID: 8681666898452057147, guid: d7dbf6c0af48f7c46815eccf0595b43c, type: 3}
   - {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
   - {fileID: 8681666898452057147, guid: a3dde1083272d5448affc2428db23a41, type: 3}
+  - {fileID: 8681666898452057147, guid: a1fff77ee4cc9c2449e73dc179cc915a, type: 3}
   deltaSpawn: {x: -5, y: 0, z: -3}
   wallWidth: 1
   randomSpawn: 0
