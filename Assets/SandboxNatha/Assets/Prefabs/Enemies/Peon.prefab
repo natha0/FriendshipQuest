@@ -136,6 +136,7 @@ MonoBehaviour:
   slider: {fileID: 2728627471217651053}
   number: 0
   addedToList: 0
+  damage: 5
 --- !u!1001 &390460557466349096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +259,10 @@ PrefabInstance:
     - target: {fileID: 5044796288322821325, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140675365717281464, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8406132119991454888, guid: 4d80ae2487042e740b9964e5f60a3471, type: 3}
       propertyPath: m_Layer
