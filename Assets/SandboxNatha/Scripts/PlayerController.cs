@@ -59,9 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-
-
-
     }
 
     // Update is called once per frame

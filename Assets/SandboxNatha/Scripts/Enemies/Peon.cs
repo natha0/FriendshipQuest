@@ -14,7 +14,6 @@ public class Peon : Enemy
         base.Start();
         animator = gameObject.GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        print(agent);
     }
 
     private void Update()

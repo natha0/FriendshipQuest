@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Archer : Enemy
 {
@@ -15,11 +16,22 @@ public class Archer : Enemy
     private bool teleportPointSet;
     private bool canTeleport;
 
+    public float damage = 5;
+    private Animator animator;
+    private NavMeshAgent agent;
+
+    public GameObject projectile;
+    private AudioManager audioManager;
+
     public override void Start()
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         canTeleport = true;
+        animator = gameObject.GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -49,6 +61,16 @@ public class Archer : Enemy
         {
             isPlayerInRange = false;
         }
+
+        if (agent.velocity.magnitude > 1)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
     }
 
     public void SearchTeleportPoint(Vector3 position,int maxSearch=1)
@@ -82,6 +104,17 @@ public class Archer : Enemy
     void ResetTeleport()
     {
         canTeleport = true;
+    }
+
+    public override void PerformAttack()
+    {
+        animator.SetTrigger("Attack");
+
+        GameObject proj = Instantiate(projectile, transform.position, Quaternion.identity);
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
+        proj.GetComponent<ProjectileProperties>().damage = damage;
+        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        audioManager.Play("Piew", 0.8f, 1.2f);
     }
 
 }
