@@ -15,6 +15,18 @@ ModelImporter:
   - first:
       74: 2262335617444635451
     second: weapon|PeonAttack
+  - first:
+      74: 3677304999024438853
+    second: PeonRig|PeonIdle
+  - first:
+      74: -4585478419086525073
+    second: PeonRig|Origin
+  - first:
+      74: 3837140108963725425
+    second: PeonRig|PeonAttack
+  - first:
+      74: 8038603175944762276
+    second: PeonRig|PeonWalk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -45,8 +57,37 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rig|PeonAttack
-      takeName: rig|PeonAttack
+      name: PeonRig|Origin
+      takeName: PeonRig|Origin
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: PeonRig|PeonAttack
+      takeName: PeonRig|PeonAttack
       internalID: 0
       firstFrame: 0
       lastFrame: 24
@@ -74,8 +115,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|PeonWalk
-      takeName: rig|PeonWalk
+      name: PeonRig|PeonIdle
+      takeName: PeonRig|PeonIdle
       internalID: 0
       firstFrame: 0
       lastFrame: 24
@@ -103,11 +144,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|Origin
-      takeName: rig|Origin
+      name: PeonRig|PeonWalk
+      takeName: PeonRig|PeonWalk
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
