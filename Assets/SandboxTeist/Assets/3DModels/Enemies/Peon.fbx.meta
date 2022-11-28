@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: c26a2198b0d59e04590eb561a16e82b4
+guid: 3baebc1904c96e94c8417e4613dde70f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
-  - first:
-      74: 4502752750131169099
-    second: rig|Origin
-  - first:
-      74: 4799671010627100311
-    second: rig|PeonAttack
-  - first:
-      74: 8666399897355378607
-    second: rig|PeonWalk
-  - first:
-      74: 2262335617444635451
-    second: weapon|PeonAttack
-  - first:
-      74: 3677304999024438853
-    second: PeonRig|PeonIdle
   - first:
       74: -4585478419086525073
     second: PeonRig|Origin
@@ -25,8 +10,11 @@ ModelImporter:
       74: 3837140108963725425
     second: PeonRig|PeonAttack
   - first:
-      74: 8038603175944762276
-    second: PeonRig|PeonWalk
+      74: 3677304999024438853
+    second: PeonRig|PeonIdle
+  - first:
+      74: -8249989863871697696
+    second: PeonRig|PeonRig_Walk_24
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -144,8 +132,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PeonRig|PeonWalk
-      takeName: PeonRig|PeonWalk
+      name: PeonRig|PeonRig_Walk_24
+      takeName: PeonRig|PeonRig_Walk_24
       internalID: 0
       firstFrame: 0
       lastFrame: 24
@@ -181,9 +169,9 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 0
-    importLights: 0
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
