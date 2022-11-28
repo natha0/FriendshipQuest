@@ -190,7 +190,7 @@ MonoBehaviour:
   addedToList: 0
   detectPlayerRange: 4
   teleportCooldown: 3
-  teleportRange: 14
+  teleportRange: 12
   maxSearch: 1
   whatIsGround:
     serializedVersion: 2

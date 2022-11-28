@@ -105,18 +105,21 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        canDash = false;
-        isDashing = true;
-        rb.useGravity = false;
-        rb.velocity = dashingPower * movementDirection.normalized;
-        tr.emitting = true;
-        audioManager.Play("Dash");
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.useGravity = true;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+        if (movementDirection.magnitude > 0.1)
+        {
+            canDash = false;
+            isDashing = true;
+            rb.useGravity = false;
+            rb.velocity = dashingPower * movementDirection.normalized;
+            tr.emitting = true;
+            audioManager.Play("Dash");
+            yield return new WaitForSeconds(dashingTime);
+            tr.emitting = false;
+            rb.useGravity = true;
+            isDashing = false;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+        }
     }
 
 }

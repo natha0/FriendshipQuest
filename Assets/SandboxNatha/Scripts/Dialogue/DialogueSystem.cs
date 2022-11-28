@@ -11,15 +11,13 @@ public class DialogueSystem : MonoBehaviour
 
     public DialogueLine[] dialogueLines;
     private DialogueLine currentLine;
-    private int lineCount;
-    private int lineIndex;
 
     Button continueButton;
     TMP_Text dialogueText, nameText;
     int dialogueIndex;
 
     public delegate void DialogueEndCallback();
-    private DialogueEndCallback dialogueEndCallback;
+    public DialogueEndCallback dialogueEndCallback;
 
     private bool deactivateDialogues => GodModeManager.Instance.deactivateDialogues;
 
@@ -47,12 +45,23 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueIndex = 0;
         dialogueLines = dialogue;
-        dialogueEndCallback = callback;
-        CreateDialogue();
+
+        if (callback != null)
+        {
+            dialogueEndCallback += callback;
+        }
+
+        if (dialogue!=null)
+        {
+            CreateDialogue();
+        }
+
     }
 
     public void CreateDialogue()
     {
+
+
         if (!deactivateDialogues)
         {
             currentLine = dialogueLines[dialogueIndex];
@@ -63,6 +72,7 @@ public class DialogueSystem : MonoBehaviour
         else
         {
             dialogueEndCallback?.Invoke();
+            dialogueEndCallback = null;
         }
     }
 
@@ -79,6 +89,7 @@ public class DialogueSystem : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
             dialogueEndCallback?.Invoke();
+            dialogueEndCallback = null;
         }
     }
 

@@ -20,6 +20,10 @@ public class RoomProperties : MonoBehaviour
     public readonly List<BoxCollider> doorColliders=new();
     EnemySpawner spawner;
 
+    public delegate void  OnDialogue();
+    public OnDialogue onEnterDialoguePlayed;
+
+
     private bool letDoorsOpen => GodModeManager.Instance.letDoorsOpen;
 
     void Start()
@@ -41,6 +45,9 @@ public class RoomProperties : MonoBehaviour
 
         spawner = GetComponentInChildren<EnemySpawner>();
 
+        onEnterDialoguePlayed += () => onEnterPlayed = onEnterReplayable ?  true:false;
+        GetComponent<EnemySpawner>().onRoomCleared += OnRoomCleared;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,26 +59,31 @@ public class RoomProperties : MonoBehaviour
             {
                 DeactivateDoors();
             }
+
+            if (!onEnterPlayed)
+            {
+                if (onEnterDialogue.Length > 0)
+                {
+                    DisplayOnEnterDialogue();
+                    DialogueSystem.Instance.dialogueEndCallback += PlayEnterCallbacks;
+                }
+                else
+                {
+                    PlayEnterCallbacks();
+
+                }
+            }
         }
     }
 
-    public void DisplayOnEnterDialogue(DialogueSystem.DialogueEndCallback callback=null)
+    void PlayEnterCallbacks()
     {
-        if (!onEnterPlayed)
-        {
-            if (onEnterDialogue.Length > 0)
-            {
-                DialogueSystem.Instance.AddNewDialogue(onEnterDialogue, callback);
-            }
-            else
-            {
-                callback?.Invoke();
-            }
-            if (!onEnterReplayable)
-            {
-                onEnterPlayed = true;
-            }
-        }
+        onEnterDialoguePlayed();
+    }
+
+    public void DisplayOnEnterDialogue()
+    {
+        DialogueSystem.Instance.AddNewDialogue(onEnterDialogue, PlayEnterCallbacks);
     }
 
     public void DisplayClearDialogue(DialogueSystem.DialogueEndCallback callback=null)
@@ -80,7 +92,7 @@ public class RoomProperties : MonoBehaviour
         {
             if (onClearDialogue.Length > 0)
             {
-                DialogueSystem.Instance.AddNewDialogue(onClearDialogue, callback);
+                DialogueSystem.Instance.AddNewDialogue(onClearDialogue,callback:callback);
             }
             else
             {
@@ -93,6 +105,11 @@ public class RoomProperties : MonoBehaviour
                 onClearPlayed = true;
             }
         }
+    }
+
+    private void OnRoomCleared()
+    {
+        DisplayClearDialogue(ActivateDoors);
     }
 
     public void ActivateDoors()

@@ -56,6 +56,7 @@ public class Archer : Enemy
         int i = 0;
         while(i < maxSearch &&!teleportPointSet)
         {
+            i++;
             if (!teleportPointSet)
             {
                 float theta = Random.Range(0, 2*Mathf.PI);

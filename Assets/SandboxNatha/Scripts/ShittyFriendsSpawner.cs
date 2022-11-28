@@ -1,31 +1,44 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShittyFriendsSpawner : MonoBehaviour
 {
-    public GameObject ShittyFriends;
-    public float xPos, zPos;
-    public int shittyFriendsNumber;
-    public float timeBetweenSpawn = 0.01f;
-    private bool alreadySpawned;
-    public float spawnDelay = 5;
+    private float xPos, zPos;
+    private bool alreadySpawning;
+    public int initialSpawnNumber = 5;
+    public float spawnDelay = 10;
+    public float spawnCooldown = 5;
 
+    private RoomProperties room;
+    public ShittyFriendSpawnerModule[] shittyFriendsList;
     private List<GameObject> shittyFriendsInRoom = new();
-    public List<GameObject> shittyFriendsType = new();
 
-    public Vector3 deltaSpawn;
-    public float wallWidth = 1;
-
-    public bool randomSpawn;
-    private float x, z;
+    public float xmin, xmax, zmin, zmax;
 
     private bool isPlayerInside = false;
 
+    int i;
+
+    private bool AllSpawned { get { 
+            foreach (ShittyFriendSpawnerModule module in shittyFriendsList) 
+            { if (module.number < module.maxNumber) { return false; } } 
+            return true; } }
+
     private void Start()
     {
-        x = transform.position.x;
-        z = transform.position.z;
+        Bounds bounds = GetComponent<BoxCollider>().bounds;
+        Vector3 min = bounds.min;
+        Vector3 max = bounds.max;
+        xmin = min.x;
+        zmin = min.z;
+        xmax = max.x;
+        zmax = max.z;
+
+
+        alreadySpawning = false;
+
+        room = GetComponent<RoomProperties>();
+        room.onEnterDialoguePlayed += StartSpawn;
     }
 
     private void Update()
@@ -34,19 +47,19 @@ public class ShittyFriendsSpawner : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Instantiate(shittyFriendsType[0], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+                SpawnShittyFriend(module: shittyFriendsList[0]);
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Instantiate(shittyFriendsType[1], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+                SpawnShittyFriend(module: shittyFriendsList[1]);
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                Instantiate(shittyFriendsType[2], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
-            }  
+                SpawnShittyFriend(module: shittyFriendsList[2]);
+            }
             if (Input.GetKeyDown(KeyCode.G))
             {
-                Instantiate(shittyFriendsType[3], new Vector3(x + xPos, 0, z + zPos), Quaternion.identity);
+                SpawnShittyFriend(module: shittyFriendsList[3]);
             }
         }
     }
@@ -82,19 +95,116 @@ public class ShittyFriendsSpawner : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
-            foreach (GameObject enemy in shittyFriendsInRoom)
+            foreach (GameObject shittyFriend in shittyFriendsInRoom)
             {
-                enemy.SetActive(false);
+                shittyFriend.SetActive(false);
             }
         }
     }
 
     private void RemoveShittyFriendFromList(int number)
     {
+        string type = shittyFriendsInRoom[number].GetComponent<ShittyFriend>().type;
+        ShittyFriendSpawnerModule module = System.Array.Find(shittyFriendsList, mod => mod.type == type);
+        module.number--;
         shittyFriendsInRoom.RemoveAt(number);
         for (int i = number; i < shittyFriendsInRoom.Count; i++)
         {
             shittyFriendsInRoom[i].GetComponent<ShittyFriend>().roomNumber = i;
         }
     }
+
+    private void StartSpawn()
+    {
+        if (!alreadySpawning)
+        {
+            for (int i = 0; i < initialSpawnNumber; i++)
+            {
+                SpawnRandomShittyFriend();
+            }
+            alreadySpawning = true;
+
+            InvokeRepeating(nameof(SpawnRandomShittyFriend), spawnDelay, spawnCooldown);
+        }
+    }
+
+    void SpawnRandomShittyFriend()
+    {
+        if (isPlayerInside && !AllSpawned)
+        {
+            ShittyFriendSpawnerModule module = shittyFriendsList[ChooseRandomPossibleShittyFriend()];
+            int i = 0;
+            while (module.number == module.maxNumber && i != -1)
+            {
+                i = ChooseRandomPossibleShittyFriend();
+                if (i != -1)
+                {
+                    module = shittyFriendsList[i];
+                }
+            }
+            if (module.number < module.maxNumber && i!=-1)
+            {
+                float x, z;
+                x = Random.Range(xmin, xmax);
+                z = Random.Range(zmin, zmax);
+
+                Vector3 position = new(x, 0, z);
+
+                Instantiate(module.shittyFriend, position, Quaternion.identity);
+                module.number++;
+            }
+        }
+    }
+
+    void SpawnShittyFriend(ShittyFriendSpawnerModule module)
+    {
+        Instantiate(module.shittyFriend, transform.position- new Vector3(8,transform.position.y,3), Quaternion.identity);
+        module.number++;
+    }
+        
+
+    int ChooseRandomPossibleShittyFriend()
+    {
+        float totalWeight = 0;
+        foreach(ShittyFriendSpawnerModule module in shittyFriendsList)
+        {
+            if (module.number != module.maxNumber)
+            {
+                totalWeight += module.spawnWeight;
+            }
+        }
+        if (totalWeight > 0 || AllSpawned)
+        {
+            float currentTotalWeight = 0;
+            float weight;
+            float result = Random.Range(0f, totalWeight);
+
+            for (int i = 0; i < shittyFriendsList.Length; i++)
+            {
+                ShittyFriendSpawnerModule module = shittyFriendsList[i];
+                if (module.number != module.maxNumber)
+                {
+                    weight = module.spawnWeight;
+                    if (currentTotalWeight <= result && result < currentTotalWeight + weight)
+                    {
+                        return i;
+                    }
+                    currentTotalWeight += weight;
+                }
+            }
+        }
+
+        return -1;
+    }
 }
+
+    [System.Serializable]
+    public class ShittyFriendSpawnerModule
+    {
+        public string name;
+        public GameObject shittyFriend;
+        [HideInInspector] public string type => shittyFriend.GetComponent<ShittyFriend>().type;
+        public int number = 0;
+        public int maxNumber;
+        public float spawnWeight;
+    }

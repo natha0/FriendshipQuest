@@ -65,9 +65,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.52
-  m_Height: 2.1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &6381738761062665761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,8 +89,6 @@ MonoBehaviour:
   lookAtMouse: 1
   rb: {fileID: 0}
   tr: {fileID: 6309993539319362351}
-  animator: {fileID: 0}
-  mousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6381738761062665772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,16 +105,12 @@ MonoBehaviour:
   maxHealth: 20
   invulnerabilityTime: 1
   healthBar: {fileID: 0}
-  shittyFriendsList: []
-  ShittyFriendsType:
-  - {fileID: 8681666898452057147, guid: d7dbf6c0af48f7c46815eccf0595b43c, type: 3}
-  - {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
   dialogue:
-  - ZQSD to move <br> LeftClick to attack <br> Right click or space to use ShittyFriends
-    <br> R and F to spawn Karen and Billys <br> LeftShift to dash
-  npcName: Player
+  - npcName: 
+    Lines: []
   showControls: 0
-  limitShittyFriendsNumber: 0
+  audioManager: {fileID: 0}
+  BillyProtector: {fileID: 0}
 --- !u!114 &4614412471270204742
 MonoBehaviour:
   m_ObjectHideFlags: 0

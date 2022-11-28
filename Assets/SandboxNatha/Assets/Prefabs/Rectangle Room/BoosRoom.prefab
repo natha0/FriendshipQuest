@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6918433079454526292}
   - component: {fileID: 6918433079454526294}
   - component: {fileID: 6918433079454526293}
-  - component: {fileID: 6004562706957344470}
+  - component: {fileID: 1562654152788716696}
+  - component: {fileID: 6877508179525304265}
+  - component: {fileID: -1296206572380277293}
   m_Layer: 0
   m_Name: BoosRoom
   m_TagString: Untagged
@@ -36,7 +38,6 @@ Transform:
   - {fileID: 492159464298372927}
   - {fileID: 8691931390547742330}
   - {fileID: 7281465462628240242}
-  - {fileID: 690938757911789881}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,7 +70,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &6004562706957344470
+--- !u!114 &1562654152788716696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,79 +79,78 @@ MonoBehaviour:
   m_GameObject: {fileID: 6918433079454526291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcffbfb3e8eefd84ebfa7ed3ccae15ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 67068736763e60b46a75781bd2bcc34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1561406634250152156
-PrefabInstance:
+  onEnterDialogue: []
+  onEnterReplayable: 0
+  onEnterPlayed: 0
+  onClearDialogue: []
+  onClearReplayable: 0
+  onClearPlayed: 0
+--- !u!114 &6877508179525304265
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6918433079454526292}
-    m_Modifications:
-    - target: {fileID: 2034938926582131172, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_Name
-      value: Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
---- !u!4 &690938757911789881 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2034938926582131173, guid: 69b446334cb5fef43bd8ab76932c45c3, type: 3}
-  m_PrefabInstance: {fileID: 1561406634250152156}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918433079454526291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c040fa1ba914c042bd085ce2ad9f416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 4284522320891589157, guid: 5875312ef6bb478498a5b5aa26724df8, type: 3}
+  enemyNumber: 2
+  timeBetweenSpawn: 0.01
+  deltaSpawn: {x: 3, y: 0, z: 3}
+  randomSpawn: 0
+--- !u!114 &-1296206572380277293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918433079454526291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8cab0190d71e248b1488633a31962b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShittyFriends: {fileID: 0}
+  xPos: -6
+  zPos: 4
+  shittyFriendsNumber: 0
+  timeBetweenSpawn: 0.01
+  initialSpawnNumber: 5
+  spawnDelay: 5
+  spawnCooldown: 5
+  shittyFriendsList:
+  - name: Karen
+    shittyFriend: {fileID: 8681666898452057147, guid: d7dbf6c0af48f7c46815eccf0595b43c, type: 3}
+    type: 
+    number: 0
+    maxNumber: 4
+    spawnWeight: 2
+  - name: Billy
+    shittyFriend: {fileID: 8681666898452057147, guid: 048e5a8c84e07804b98261dec5110adb, type: 3}
+    type: 
+    number: 0
+    maxNumber: 2
+    spawnWeight: 1
+  - name: Randy
+    shittyFriend: {fileID: 8681666898452057147, guid: a3dde1083272d5448affc2428db23a41, type: 3}
+    type: 
+    number: 0
+    maxNumber: 2
+    spawnWeight: 1.5
+  - name: Jimi
+    shittyFriend: {fileID: 8681666898452057147, guid: a1fff77ee4cc9c2449e73dc179cc915a, type: 3}
+    type: 
+    number: 0
+    maxNumber: 2
+    spawnWeight: 1
+  deltaSpawn: {x: -5, y: 0, z: -3}
 --- !u!1001 &2801536785568501972
 PrefabInstance:
   m_ObjectHideFlags: 0

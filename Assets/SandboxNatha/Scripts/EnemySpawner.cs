@@ -24,13 +24,13 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 minPosition;
     private Vector3 maxPosition;
 
-    private RoomProperties parentRoom;
+    private RoomProperties room;
 
-    // Start is called before the first frame update
+    public delegate void OnRoomCleared();
+    public OnRoomCleared onRoomCleared;
+
     void Start()
     {
-        parentRoom = GetComponentInParent<RoomProperties>();
-
         alreadySpawned = false;
         float x, y, z,dx,dz;
         x = transform.position.x;
@@ -45,8 +45,14 @@ public class EnemySpawner : MonoBehaviour
         zMin = z - dz;
         zMax = z + dz;
 
-        minPosition = transform.position - transform.localScale / 2;
-        maxPosition = transform.position + transform.localScale / 2;
+        Bounds bounds = GetComponent<BoxCollider>().bounds;
+
+        minPosition = bounds.min;
+        maxPosition = bounds.max;
+
+        room = GetComponent<RoomProperties>();
+        room.onEnterDialoguePlayed += SpawnEnemies;
+
     }
 
     IEnumerator EnemyDrop()
@@ -67,14 +73,12 @@ public class EnemySpawner : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
-            if (!parentRoom.onEnterPlayed)
-            {
-                parentRoom.DisplayOnEnterDialogue(callback: SpawnEnemies);
-            }
-            else
+
+            if (alreadySpawned)
             {
                 SpawnEnemies();
             }
+
         }
         else if (other.CompareTag("Enemy"))
         {
@@ -115,22 +119,19 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemyInRoom.Count == 0)
         {
-            RoomCleared();
-
+            onRoomCleared();
         }
-
     }
 
     public void SpawnEnemies()
     {
-
         if (!alreadySpawned)
         {
             if (randomSpawn)
             {
                 StartCoroutine(EnemyDrop());
-                alreadySpawned = true;
             }
+            alreadySpawned = true;
         }
 
         foreach (GameObject enemy in enemyInRoom)
@@ -149,11 +150,5 @@ public class EnemySpawner : MonoBehaviour
                 isIn = false;
         }
         return isIn;
-    }
-
-    void RoomCleared()
-    {
-        parentRoom.DisplayClearDialogue(parentRoom.ActivateDoors);
-
     }
 }
