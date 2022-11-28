@@ -26,12 +26,17 @@ public class Enemy : MonoBehaviour,IDamageable
 
     private MeshRenderer[] renderers;
 
+    private IWeapon weapon;
+
+
     public virtual void Start()
     {
         health = maxHealth;
         initialPosition = transform.position;
         renderers = GetComponentsInChildren<MeshRenderer>();
         damageable = true;
+
+        weapon = gameObject.GetComponentInChildren<IWeapon>();
     }
 
     public void InitiateProperties(int enemyNumber,SpawnerCallback callback, IsInRoom isInRoomFunction)
@@ -116,4 +121,13 @@ public class Enemy : MonoBehaviour,IDamageable
     {
         transform.position = initialPosition;
     }
+
+    public virtual void PerformAttack()
+    {
+        if (weapon != null)
+        {
+            weapon.PerformAttack();
+        }
+    }
+
 }

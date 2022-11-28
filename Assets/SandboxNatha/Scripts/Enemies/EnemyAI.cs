@@ -15,7 +15,6 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    private IWeapon weapon;
     public float timeBetweenAttacks;
     bool alreadyAttacked;
 
@@ -23,19 +22,14 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     [HideInInspector] public bool playerInSightRange, playerInAttackRange;
 
-    int i;
+    private Enemy enemyProperties;
 
     private void Start()
     {
-        weapon = gameObject.GetComponentInChildren<IWeapon>();
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
-        NavMeshHit closestHit;
-        if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
-            gameObject.transform.position = closestHit.position;
-        else
-            Debug.LogError("Could not find position on NavMesh!");
+        enemyProperties = GetComponent<Enemy>();
     }
 
     private void Update()
@@ -44,7 +38,6 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position,sightRange,whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position,attackRange,whatIsPlayer);
         
-
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
@@ -53,15 +46,11 @@ public class EnemyAI : MonoBehaviour
     private void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
-
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
         }
-
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        //Walkpoint reached
-
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
@@ -72,7 +61,6 @@ public class EnemyAI : MonoBehaviour
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
-
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if (Physics.Raycast(walkPoint, -transform.up, 5f, whatIsGround))
         {
@@ -82,15 +70,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        try
-        {
-            agent.SetDestination(player.position);
-        }
-        catch
-        {
-            print(name);
-        }
-        
+        agent.SetDestination(player.position);
         transform.LookAt(player);
     }
 
@@ -101,11 +81,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //useAttack code
-            if (weapon!=null)
-            {
-                weapon.PerformAttack();
-            }
+            enemyProperties.PerformAttack();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

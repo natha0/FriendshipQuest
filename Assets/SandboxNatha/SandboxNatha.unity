@@ -1870,8 +1870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e512de6709e49a04ca73d03bf478af30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivateDialogues: 0
-  letDoorsOpen: 1
+  deactivateDialogues: 1
+  letDoorsOpen: 0
   deactivateGameOver: 1
   DontPlayMusicAtStart: 1
 --- !u!1 &1491232687
