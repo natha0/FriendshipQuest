@@ -26,6 +26,11 @@ public class Player : MonoBehaviour,IDamageable
 
     [HideInInspector] public GameObject BillyProtector=null;
 
+    private ParticleSystem system;
+
+    public delegate void Teleport(Vector3 previousPosition,Vector3 newPosition);
+    public Teleport teleport;
+
     private bool deactivateGameOver => GodModeManager.Instance.deactivateGameOver;
 
     void Start()
@@ -45,6 +50,8 @@ public class Player : MonoBehaviour,IDamageable
         skinnedRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
 
         shittyFriendsManager = gameObject.GetComponent<PlayerShittyFriendsManager>();
+
+        system = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -121,6 +128,11 @@ public class Player : MonoBehaviour,IDamageable
             health = maxHealth;
         }
         healthBar.UpdateHealthBar();
+        if (system != null)
+        {
+            system.Play();
+        }
+
     }
 
     public IEnumerator Blink()
@@ -157,6 +169,17 @@ public class Player : MonoBehaviour,IDamageable
                 BillyProtector = protector;
                 break;
         }
+    }
+
+    public void TeleportPlayer(Vector3 position)
+    {
+        Vector3 previousPos = transform.position;
+        if (playerController.isDashing)
+        {
+            playerController.tr.emitting = false;
+        }
+        transform.position = position;
+        teleport?.Invoke(previousPosition:previousPos ,newPosition:position);
     }
 
     void GameOver()

@@ -31,16 +31,16 @@ public class ShittyFriend : MonoBehaviour
 
     public Vector3 pos;
 
+    public virtual void Start()
+    {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
+    }
+
     public virtual void Update()
     {
         if (attached)
         {
-            if (playerObject == null)
-            {
-                playerObject = GameObject.FindGameObjectWithTag("Player");
-                shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
-            }
-
             if (playerNumber == 0)
             {
                 transform.LookAt(playerObject.transform);
@@ -80,6 +80,15 @@ public class ShittyFriend : MonoBehaviour
                 spawnerCallback(roomNumber);
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void TeleportBehindPlayer(Vector3 previousPlayerPosition ,Vector3 newPosition)
+    {
+        if (attached)
+        {
+            Vector3 playerRelativePosition = previousPlayerPosition - transform.position;
+            transform.position = newPosition - playerRelativePosition;
         }
     }
 }

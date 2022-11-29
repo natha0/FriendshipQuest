@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerShittyFriendsManager : MonoBehaviour { 
     public ShittyFriendManagerModule[] shittyFriendsList;
     private ShittyFriendManagerModule currentModule;
+    private Player player;
+
     private int ShittyFriendTotal
     {
         get
@@ -28,6 +30,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
         {
             module.Initialise();
         }
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     public bool AddShittyFriend(GameObject shittyFriend)
@@ -50,6 +53,8 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                     ShittyFriend cloneProperties = module.shittyFriendProperties;
                     cloneProperties.playerNumber = module.orderNumber;
                     cloneProperties.attached = true;
+
+                    player.teleport += cloneProperties.TeleportBehindPlayer;
 
                     if (ShittyFriendTypeCount == 1)
                     {
@@ -92,6 +97,8 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                 string type = currentModule.type;
                 if (currentModule.number == 0)
                 {
+                    ShittyFriend cloneProperties = currentModule.shittyFriendProperties;
+                    player.teleport -= cloneProperties.TeleportBehindPlayer;
                     Destroy(currentModule.shittyFriendClone);
                     currentModule.orderNumber = -1;
                     foreach (ShittyFriendManagerModule module in shittyFriendsList)

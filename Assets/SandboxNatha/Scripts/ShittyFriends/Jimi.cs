@@ -8,8 +8,9 @@ public class Jimi : ShittyFriend,IShittyFriends
     private Player playerProperties;
     public float healthHealed = 10;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         playerProperties = GameObject.Find("Player").GetComponent<Player>();
     }
 

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool lookAtMouse = true;
     private Vector3 movementDirection;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private TrailRenderer tr;
+    [SerializeField] public TrailRenderer tr;
 
     private Animator animator;
     private AudioManager audioManager;

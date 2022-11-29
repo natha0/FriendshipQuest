@@ -8,8 +8,9 @@ public class Randy : ShittyFriend,IShittyFriends
     private Transform playerTransform;
     public GameObject bomba;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 

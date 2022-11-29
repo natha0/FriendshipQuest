@@ -11,9 +11,9 @@ public class Billy : ShittyFriend,IShittyFriends
     public float floatingRange=1;
     public float floatingFrequency = 2;
 
-    private void Start()
+    public override void Start()
     {
-
+        base.Start();
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
         playerTransform = playerObject.GetComponent<Transform>();

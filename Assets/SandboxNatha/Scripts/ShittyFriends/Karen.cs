@@ -7,8 +7,9 @@ public class Karen : ShittyFriend,IShittyFriends
     private Transform playerTransform;
     public GameObject projectile;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
