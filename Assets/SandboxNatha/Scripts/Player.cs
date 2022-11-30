@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     public bool isGameOver;
-    private GameObject gameOverPanel;
+    public GameObject gameOverCanvas;
 
     public float health;
     public float maxHealth = 10f;
@@ -39,8 +39,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
-        gameOverPanel = GameObject.Find("UI/GameOver");
-        gameOverPanel.SetActive(false);
+        gameOverCanvas.SetActive(false);
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         playerController = gameObject.GetComponent<PlayerController>();
 
@@ -66,9 +65,14 @@ public class Player : MonoBehaviour, IDamageable
         {
             shittyFriendsManager.UseShittyFriend();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.mouseScrollDelta.y > 0)
         {
             shittyFriendsManager.SwitchShittyFriends();
+        }
+
+        if(Input.mouseScrollDelta.y < 0)
+        {
+            shittyFriendsManager.SwitchShittyFriends(reverse: true);
         }
     }
 
@@ -193,7 +197,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         isGameOver = true;
         Destroy(gameObject);
-        gameOverPanel.SetActive(true);
+        gameOverCanvas.SetActive(true);
         gameOver?.Invoke();
     }
 }

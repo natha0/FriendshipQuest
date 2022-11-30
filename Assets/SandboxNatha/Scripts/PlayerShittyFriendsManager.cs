@@ -130,22 +130,39 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
 
     }
 
-    public void SwitchShittyFriends()
+    public void SwitchShittyFriends(bool reverse = true)
     {
         if (ShittyFriendTotal > 0)
         {
             foreach(ShittyFriendManagerModule module in shittyFriendsList)
             {
-                if (module.orderNumber > 0)
+                if (!reverse)
                 {
-                    module.orderNumber--;
-                    module.shittyFriendProperties.playerNumber--;
+                    if (module.orderNumber > 0)
+                    {
+                        module.orderNumber--;
+                        module.shittyFriendProperties.playerNumber--;
+                    }
+                    else if (module.orderNumber == 0)
+                    {
+                        module.orderNumber = ShittyFriendTypeCount - 1;
+                        module.shittyFriendProperties.playerNumber = ShittyFriendTypeCount - 1;
+                    }
                 }
-                else if (module.orderNumber == 0)
+                else
                 {
-                    module.orderNumber = ShittyFriendTypeCount - 1;
-                    module.shittyFriendProperties.playerNumber = ShittyFriendTypeCount - 1;
+                    if (module.orderNumber > -1 && module.orderNumber != ShittyFriendTypeCount - 1)
+                    {
+                        module.orderNumber++;
+                        module.shittyFriendProperties.playerNumber++;
+                    }
+                    else if (module.orderNumber == ShittyFriendTypeCount - 1)
+                    {
+                        module.orderNumber = 0;
+                        module.shittyFriendProperties.playerNumber = 0;
+                    }
                 }
+
             }
             currentModule = Array.Find(shittyFriendsList,module => module.orderNumber==0);
             ShittyFriendsCounter.Instance.SetSelectedShittyFriend(currentModule.type);
