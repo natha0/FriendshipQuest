@@ -89,7 +89,7 @@ MonoBehaviour:
   floatAmplitude: 0.05
   floatFrequency: 0.3
   pos: {x: 0, y: 0, z: 0}
-  healthHealed: 10
+  healthHealed: 33
 --- !u!1001 &917353354279177396
 PrefabInstance:
   m_ObjectHideFlags: 0

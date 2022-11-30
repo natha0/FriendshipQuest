@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 15
   lifeTime: 3
-  damage: 3
+  damage: 15
 --- !u!108 &7989151363186700568
 Light:
   m_ObjectHideFlags: 0

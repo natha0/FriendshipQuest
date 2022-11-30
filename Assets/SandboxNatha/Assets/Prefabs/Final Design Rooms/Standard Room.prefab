@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8cab0190d71e248b1488633a31962b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnNumber: 4
-  spawnDelay: 5
+  initialSpawnNumber: 3
+  spawnDelay: 15
   spawnCooldown: 5
   shittyFriendsList:
   - name: Karen

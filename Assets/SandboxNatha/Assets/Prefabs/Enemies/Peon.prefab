@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 40
+  maxHealth: 30
   invulnerabilityTime: 0.5
   damage: 15
   contactDamage: 1
@@ -137,7 +137,6 @@ MonoBehaviour:
   slider: {fileID: 2728627471217651053}
   number: 0
   addedToList: 0
-  damage: 5
 --- !u!1001 &390460557466349096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,6 +357,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8713388684777344221, guid: 76d22cfafc151d2439c86fb6d0e432fe, type: 3}
   m_PrefabInstance: {fileID: 6422640094704410165}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &6282279630357882758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435851415173092072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 1.2, z: 0.2}
+  m_Center: {x: 0.005046841, y: 0.4874384, z: 0.00083956367}
 --- !u!114 &8320253804594860588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,19 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 3
---- !u!65 &6282279630357882758
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2435851415173092072}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 1.2, z: 0.2}
-  m_Center: {x: 0.005046841, y: 0.4874384, z: 0.00083956367}
 --- !u!4 &6032649927490425380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 763793373333277713, guid: 76d22cfafc151d2439c86fb6d0e432fe, type: 3}
