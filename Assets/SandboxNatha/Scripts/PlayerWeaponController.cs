@@ -11,6 +11,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     private AudioManager audioManager;
 
+    private Player player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +21,17 @@ public class PlayerWeaponController : MonoBehaviour
         weaponCollider.enabled = false;
         animator = gameObject.GetComponentInChildren<Animator>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player.isGameOver)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (!alreadyAttacked)

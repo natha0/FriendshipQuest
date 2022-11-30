@@ -37,6 +37,8 @@ public class ShittyFriendsSpawner : MonoBehaviour
 
         room = GetComponent<RoomProperties>();
         room.onEnterDialoguePlayed += StartSpawn;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().gameOver += StopSpawn;
     }
 
     private void Update()
@@ -193,6 +195,11 @@ public class ShittyFriendsSpawner : MonoBehaviour
         }
 
         return -1;
+    }
+
+    private void StopSpawn()
+    {
+        CancelInvoke(nameof(SpawnRandomShittyFriend));
     }
 }
 

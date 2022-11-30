@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour,IDamageable
+public class Player : MonoBehaviour, IDamageable
 {
+    public bool isGameOver;
+    private GameObject gameOverPanel;
 
     public float health;
     public float maxHealth = 10f;
@@ -31,10 +33,14 @@ public class Player : MonoBehaviour,IDamageable
     public delegate void Teleport(Vector3 previousPosition,Vector3 newPosition);
     public Teleport teleport;
 
-    private bool deactivateGameOver => GodModeManager.Instance.deactivateGameOver;
+    public delegate void doGameOver();
+    public doGameOver gameOver;
+    private bool DeactivateGameOver => GodModeManager.Instance.DeactivateGameOver;
 
     void Start()
     {
+        gameOverPanel = GameObject.Find("UI/GameOver");
+        gameOverPanel.SetActive(false);
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         playerController = gameObject.GetComponent<PlayerController>();
 
@@ -99,7 +105,7 @@ public class Player : MonoBehaviour,IDamageable
             audioManager.Play("Player Hit");
             health -= damage;
             healthBar.UpdateHealthBar();
-            if (health <= 0 && !deactivateGameOver)
+            if (health <= 0 && !DeactivateGameOver)
             {
                 health = 0;
                 GameOver();
@@ -185,6 +191,9 @@ public class Player : MonoBehaviour,IDamageable
 
     void GameOver()
     {
-        print("gameOver");
+        isGameOver = true;
+        Destroy(gameObject);
+        gameOverPanel.SetActive(true);
+        gameOver?.Invoke();
     }
 }

@@ -15,6 +15,7 @@ public class MusicTheme : MonoBehaviour
     [SerializeField]
     private Sound[] musics;
     private bool DontPlayMusicAtStart => GodModeManager.Instance.DontPlayMusicAtStart;
+    private string theme = "Theme";
 
     private void Awake()
     {
@@ -45,8 +46,9 @@ public class MusicTheme : MonoBehaviour
     {
         if (!DontPlayMusicAtStart)
         {
-            Play("Theme");
+            Play(theme);
         }
+        GameObject.FindWithTag("Player").GetComponent<Player>().gameOver += Stop;
     }
 
 
@@ -59,6 +61,18 @@ public class MusicTheme : MonoBehaviour
             return;
         }
 
-        s.aSource.PlayOneShot(s.clip);
+        s.aSource.Play();
     }
+
+    private void Stop()
+    {
+        Sound s = Array.Find(musics, sound => sound.name == theme);
+        if (s == null)
+        {
+            Debug.LogWarning("Music: " + name + " note found!");
+            return;
+        }
+        s.aSource.Stop();
+    }
+
 }

@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour,IDamageable
         damageable = true;
 
         weapon = gameObject.GetComponentInChildren<IWeapon>();
+        GameObject.FindWithTag("Player").GetComponent<Player>().gameOver += GameOver;
     }
 
     public void InitiateProperties(int enemyNumber,SpawnerCallback callback, IsInRoom isInRoomFunction)
@@ -128,6 +129,11 @@ public class Enemy : MonoBehaviour,IDamageable
         {
             weapon.PerformAttack();
         }
+    }
+
+    private void GameOver()
+    {
+        Destroy(gameObject);
     }
 
 }

@@ -34,6 +34,7 @@ public class ShittyFriend : MonoBehaviour
     public virtual void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerObject.GetComponent<Player>().gameOver += GameOver;
         shittyFriendsManager = playerObject.GetComponent<PlayerShittyFriendsManager>();
     }
 
@@ -90,5 +91,10 @@ public class ShittyFriend : MonoBehaviour
             Vector3 playerRelativePosition = previousPlayerPosition - transform.position;
             transform.position = newPosition - playerRelativePosition;
         }
+    }
+
+    private void GameOver()
+    {
+        Destroy(gameObject);
     }
 }

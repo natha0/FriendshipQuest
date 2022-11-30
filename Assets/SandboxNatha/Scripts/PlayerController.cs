@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 initialPosition;
 
+    private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +34,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         initialPosition = transform.position;
+        player = GetComponent<Player>();
     }
 
     void Update()
     {
-        if (isDashing)
+        if (isDashing || player.isGameOver)
         {
             return;
         }
@@ -67,7 +70,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDashing)
+        if (isDashing || player.isGameOver)
         {
             return;
         }
