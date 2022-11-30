@@ -51,7 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _damage: 10
-  explosionDelay: 3
+  explosionDelay: 2
 --- !u!95 &5128054772140541492
 Animator:
   serializedVersion: 4

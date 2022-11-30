@@ -5,51 +5,40 @@ using UnityEngine;
 public class BigBoss : Enemy
 {
 
-    delegate void Powers();
-    Powers[] usePowers;
-
-    public GameObject[] shittyFriends;
-
     public float attackDelay=2f;
-    private float lastAttackTime;
+    public float attackCooldown=2f;
 
     public GameObject bomba;
+    public float bombaSpawnDistance = 5;
     public GameObject projectile;
 
     public float healthHealed = 10;
 
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        usePowers = new Powers[3];
-        usePowers[0] = UseKarenPower;
-        usePowers[1] = UseBillyPower;
-        usePowers[2] = UseTimmyPower;
+        InvokeRepeating(nameof(UseRandomPower), attackDelay, attackCooldown);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void UseRandomPower()
     {
-        if ((Time.time - lastAttackTime) > attackDelay)
+        int i = Random.Range(0, 4);
+        switch (i)
         {
-            int i = Random.Range(0, shittyFriends.Length-1);
-            usePowers[i]();
-            lastAttackTime = Time.time;
-        }
-    }
+            case 0: //Karen
+                Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                break;
+            case 1: //Jimi
+                Heal(healthHealed);
+                break;
+            case 2: //Randy
+                Instantiate(bomba, transform.position + bombaSpawnDistance * transform.forward, transform.rotation);
+                break;
+            case 3:
 
-    public void UseKarenPower()
-    {
-        Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-    }
-    public void UseBillyPower()
-    {
-        Heal(healthHealed);
-    }
-    public void UseTimmyPower()
-    {
-        Instantiate(bomba, transform.position+4*transform.forward, transform.rotation);
+                break;
+        }
     }
 }

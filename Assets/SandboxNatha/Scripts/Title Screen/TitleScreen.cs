@@ -39,7 +39,7 @@ public class TitleScreen : MonoBehaviour
 
     void StartGame()
     {
-        SceneManager.LoadScene("SandboxNatha");
+        SceneManager.LoadSceneAsync("SandboxNatha");
     }
 
     void ShowCommands()
