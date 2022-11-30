@@ -8,6 +8,9 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
     private ShittyFriendManagerModule currentModule;
     private Player player;
 
+    public delegate void UpdateShittyFriends();
+    public UpdateShittyFriends updateShittyFriends;
+
     private int ShittyFriendTotal
     {
         get
@@ -62,8 +65,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                         ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type);
                     }
                 }
-
-                UpdateShittyFriendCounter(type, module.number);
+                updateShittyFriends?.Invoke();
                 shittyFriendAdded = true;
             }
         }
@@ -110,7 +112,6 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                         }
                     }
 
-                    UpdateShittyFriendCounter(type, 0);
                     if (ShittyFriendTotal > 0)
                     {
                         currentModule = Array.Find(shittyFriendsList, mod => mod.orderNumber == 0);
@@ -121,13 +122,9 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                         ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type, false);
                     }
                 }
-                else
-                {
-                    UpdateShittyFriendCounter(type);
-                }
+                updateShittyFriends?.Invoke();
             }
         }
-
     }
 
     public void SwitchShittyFriends(bool reverse = true)
@@ -169,15 +166,6 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
         }
     }
 
-    private void UpdateShittyFriendCounter(string type, int number = -1)
-    {
-        if (number == -1)
-        {
-            ShittyFriendManagerModule module = Array.Find(shittyFriendsList, mod => mod.type == type);
-            number = module.number;
-        }
-        ShittyFriendsCounter.Instance.SetShittyFriendCount(type, number);
-    }
 }
 
 

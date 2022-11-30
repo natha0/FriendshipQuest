@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ShittyFriendsCounter : MonoBehaviour
 {
     public static ShittyFriendsCounter Instance { get; set; }
-    public GameObject counterPanel;
+    public GameObject canvas;
 
-    private TMP_Text Karen, Billy, Randy, Jimi;
-    private TMP_Text selectedType=null;
+    public CounterModule[] modules;
+    private CounterModule currentActiveModule;
+
+    PlayerShittyFriendsManager manager;
 
     void Start()
     {
@@ -21,70 +24,92 @@ public class ShittyFriendsCounter : MonoBehaviour
         {
             Instance = this;
         }
+        canvas.SetActive(true);
 
-        counterPanel.SetActive(true);
-        Karen = counterPanel.transform.Find("Karen").GetComponent<TMP_Text>();
-        Billy = counterPanel.transform.Find("Billy").GetComponent<TMP_Text>();
-        Randy = counterPanel.transform.Find("Randy").GetComponent<TMP_Text>();
-        Jimi = counterPanel.transform.Find("Jimi").GetComponent<TMP_Text>();
-    }
 
-    public void SetShittyFriendCount(string type,int number)
-    {
-        switch (type)
+        for (int i = 0; i < canvas.transform.childCount; i++)
         {
-            case "Karen":
-                Karen.SetText(type + "<br>{0}", number);
-                break;
-            case "Billy":
-                Billy.SetText(type + "<br>{0}", number);
-                break;
-            case "Randy":
-                Randy.SetText(type + "<br>{0}", number);
-                break;
-            case "Jimi":
-                Jimi.SetText(type + "<br>{0}", number);
-                break;
+            CounterModule module = modules[i];
+            module.panel = canvas.transform.Find("Panel " + i.ToString()).gameObject;
+            module.Type = module.panel.transform.Find("Type").gameObject.GetComponent<TMP_Text>();
+            module.Counter = module.panel.transform.Find("Counter").gameObject.GetComponent<TMP_Text>();
+            module.panel.SetActive(false);
         }
+        manager = GameObject.FindWithTag("Player").GetComponent<PlayerShittyFriendsManager>();
+        manager.updateShittyFriends += UpdateCounter;
+
+        UpdateCounter();
     }
 
-    public void SetSelectedShittyFriend(string type,bool activated=true)
+    private void UpdateCounter()
     {
-        if (activated)
+        int j = manager.shittyFriendsList.Length-1;
+        foreach (ShittyFriendManagerModule SFmodule in manager.shittyFriendsList)
         {
-            TMP_Text textToChange = null;
-            switch (type)
+            CounterModule module;
+            if (SFmodule.orderNumber != -1)
             {
-                case "Karen":
-                    textToChange = Karen;
-                    break;
-                case "Billy":
-                    textToChange = Billy;
-                    break;
-                case "Randy":
-                    textToChange = Randy;
-                    break;          
-                case "Jimi":
-                    textToChange = Jimi;
-                    break;
-            }
-            if (textToChange != null)
-            {
-                if (selectedType != null)
-                {
-                    selectedType.outlineWidth = 0;
-                }
-                textToChange.outlineWidth = 0.3f;
-                selectedType = textToChange;
+                module = modules[SFmodule.orderNumber];
+                module.panel.SetActive(true);
             }
             else
             {
-                Debug.LogWarningFormat("Selected Shitty Friend type {} has not been implemented",type);
+                module = modules[j];
+                module.panel.SetActive(false);
+                j--;
             }
+            module.SetCounter(SFmodule.type, SFmodule.number);
         }
-        else
+    }
+
+    public void SetSelectedShittyFriend(string type, bool activated = true)
+    {
+        if (currentActiveModule != null)
         {
-            selectedType.outlineWidth = 0;
+            currentActiveModule.Deselect();
+            currentActiveModule = null;
+        }
+
+        if (activated)
+        {
+            currentActiveModule = Array.Find(modules, module => module.type == type);
+            if (currentActiveModule != null)
+            {
+                currentActiveModule.SetSelected();
+            }
+            else
+            {
+                Debug.LogWarningFormat("Selected Shitty Friend type {} has not been implemented", type);
+            }
         }
     }
 }
+
+[System.Serializable]
+public class CounterModule
+{
+    public string type;
+    public Transform ui;
+    public GameObject panel;
+    public TMP_Text Type, Counter;
+
+    public void SetCounter(string SFtype, int count)
+    {
+        type = SFtype;
+        Type.text = type;
+        Counter.text = count.ToString();
+    }
+
+    public void SetSelected()
+    {
+        Type.outlineWidth = 0.3f;
+        Counter.outlineWidth = 0.3f;
+    }
+
+    public void Deselect()
+    {
+        Type.outlineWidth = 0;
+        Counter.outlineWidth = 0;
+    }
+}
+
