@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BigBoss : Enemy
 {
-
     public float attackDelay=2f;
     public float attackCooldown=2f;
 
@@ -36,7 +35,7 @@ public class BigBoss : Enemy
             case 2: //Randy
                 Instantiate(bomba, transform.position + bombaSpawnDistance * transform.forward, transform.rotation);
                 break;
-            case 3:
+            case 3: //Billy
 
                 break;
         }
