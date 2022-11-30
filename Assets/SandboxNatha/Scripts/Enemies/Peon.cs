@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Peon : Enemy
 {
-    public float damage = 5;
     private Animator animator;
     private NavMeshAgent agent;
 

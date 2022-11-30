@@ -5,11 +5,12 @@ using UnityEngine;
 public class Sword : MonoBehaviour,IWeapon
 {
     private Animator animator;
-    public float _damage = 3;
+    public float _damage = 15;
 
     private void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        _damage = GetComponentInParent<Enemy>().damage;
     }
 
     public float damage
@@ -19,6 +20,6 @@ public class Sword : MonoBehaviour,IWeapon
 
     public void PerformAttack()
     {
-        animator.SetTrigger("baseAttack");
+
     }
 }

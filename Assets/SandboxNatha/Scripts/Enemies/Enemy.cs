@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour,IDamageable
     public float maxHealth = 10f;
     public float invulnerabilityTime = 0.5f;
     private bool damageable = true;
+    public float damage = 5;
 
     public float contactDamage = 1f;
 
@@ -26,9 +27,6 @@ public class Enemy : MonoBehaviour,IDamageable
 
     private MeshRenderer[] renderers;
 
-    private IWeapon weapon;
-
-
     public virtual void Start()
     {
         health = maxHealth;
@@ -36,7 +34,6 @@ public class Enemy : MonoBehaviour,IDamageable
         renderers = GetComponentsInChildren<MeshRenderer>();
         damageable = true;
 
-        weapon = gameObject.GetComponentInChildren<IWeapon>();
         GameObject.FindWithTag("Player").GetComponent<Player>().gameOver += GameOver;
     }
 
@@ -88,11 +85,11 @@ public class Enemy : MonoBehaviour,IDamageable
         health -= damage;
         UpdateHealthBar();
         damageable = false;
-        Invoke(nameof(resetDamageable), invulnerabilityTime);
+        Invoke(nameof(ResetDamageable), invulnerabilityTime);
         StartCoroutine(nameof(Blink));
     }
 
-    void resetDamageable()
+    void ResetDamageable()
     {
         damageable = true;
     }
@@ -118,17 +115,14 @@ public class Enemy : MonoBehaviour,IDamageable
         yield return new WaitForSeconds(0.1f);
     }
 
+    public virtual void PerformAttack()
+    {
+
+    }
+
     public void ResetPosition()
     {
         transform.position = initialPosition;
-    }
-
-    public virtual void PerformAttack()
-    {
-        if (weapon != null)
-        {
-            weapon.PerformAttack();
-        }
     }
 
     private void GameOver()

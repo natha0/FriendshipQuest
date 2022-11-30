@@ -16,7 +16,6 @@ public class Archer : Enemy
     private bool teleportPointSet;
     private bool canTeleport;
 
-    public float damage = 5;
     private Animator animator;
     private NavMeshAgent agent;
 

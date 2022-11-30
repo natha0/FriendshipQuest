@@ -23,6 +23,9 @@ public class RoomProperties : MonoBehaviour
     public delegate void  OnDialogue();
     public OnDialogue onEnterDialoguePlayed;
 
+    public delegate void SetRoomName(string roomName);
+    public SetRoomName setRoomName;
+
 
     private bool letDoorsOpen => GodModeManager.Instance.letDoorsOpen;
 
@@ -54,6 +57,8 @@ public class RoomProperties : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            setRoomName?.Invoke(name);
+
             cameraProperties.SetRoomBorders(roomCenter, roomMin, roomMax);
             if (spawner.enemiesInRoom > 0 && !letDoorsOpen)
             {
