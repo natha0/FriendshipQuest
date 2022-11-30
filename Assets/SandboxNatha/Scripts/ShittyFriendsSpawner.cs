@@ -13,11 +13,9 @@ public class ShittyFriendsSpawner : MonoBehaviour
     public ShittyFriendSpawnerModule[] shittyFriendsList;
     private List<GameObject> shittyFriendsInRoom = new();
 
-    public float xmin, xmax, zmin, zmax;
+    private float xmin, xmax, zmin, zmax;
 
     private bool isPlayerInside = false;
-
-    int i;
 
     private bool AllSpawned { get { 
             foreach (ShittyFriendSpawnerModule module in shittyFriendsList) 

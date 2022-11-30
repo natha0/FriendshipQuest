@@ -23,12 +23,15 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private AudioManager audioManager;
 
+    private Vector3 initialPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        initialPosition = transform.position;
     }
 
     void Update()
@@ -95,6 +98,11 @@ public class PlayerController : MonoBehaviour
             {
                 rb.angularVelocity = new Vector3(0, 0, 0);
             }
+        }
+
+        if(Mathf.Abs(transform.position.y-initialPosition.y) > 0.3f)
+        {
+            transform.position = new Vector3(transform.position.x,initialPosition.y,transform.position.z);
         }
 
         

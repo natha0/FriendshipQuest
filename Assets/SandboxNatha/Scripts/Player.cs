@@ -101,6 +101,7 @@ public class Player : MonoBehaviour,IDamageable
             healthBar.UpdateHealthBar();
             if (health <= 0 && !deactivateGameOver)
             {
+                health = 0;
                 GameOver();
             }
         }

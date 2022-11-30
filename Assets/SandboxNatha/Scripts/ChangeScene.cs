@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public int sceneNumber;
-    private string[] sceneList = new string[] { "StarterScene", "SandboxNatha" };
+    private string[] sceneList = new string[] { "StarterScene", "SandboxNatha","TitleScreen" };
+
 
 
     // Start is called before the first frame update
