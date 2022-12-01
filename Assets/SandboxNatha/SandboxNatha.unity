@@ -6260,7 +6260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[0].npcName
@@ -6272,6 +6272,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[2].npcName
+      value: Princess
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[3].npcName
       value: Princess
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
@@ -6287,6 +6291,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 987a565c42be7684f8747d85a9f6fe6d, type: 3}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[3].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 987a565c42be7684f8747d85a9f6fe6d, type: 3}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[0].Lines.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6296,6 +6304,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[2].Lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[3].Lines.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
@@ -6311,9 +6323,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[2].Lines.Array.data[0]
-      value: Do you even understand how much time it takes to maintain a beauty like
-        mine ?! How can I keep my standards if I am trapped ?! Have you thought about
-        that ?!
+      value: " \u2026 At least we agree on one point. That place sucks. If I could
+        destoy the one that created it. "
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[3].Lines.Array.data[0]
+      value: " \u2026 At least we agree on one point. That place sucks. If I could
+        destoy the one that created it. "
       objectReference: {fileID: 0}
     - target: {fileID: 186170408315963077, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
