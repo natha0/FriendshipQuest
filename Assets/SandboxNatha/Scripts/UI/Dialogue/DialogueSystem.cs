@@ -22,6 +22,11 @@ public class DialogueSystem : MonoBehaviour
     public delegate void DialogueEndCallback();
     public DialogueEndCallback dialogueEndCallback;
 
+    public delegate void DialogueDelegate();
+    public DialogueDelegate DialogueStart;
+    public DialogueDelegate DialogueEnd;
+
+
     private bool deactivateDialogues => GodModeManager.Instance.deactivateDialogues;
 
 
@@ -80,6 +85,8 @@ public class DialogueSystem : MonoBehaviour
             }
             
             dialoguePanel.SetActive(true);
+
+            DialogueStart?.Invoke();
         }
         else
         {
@@ -115,6 +122,7 @@ public class DialogueSystem : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
             dialogueEndCallback?.Invoke();
+            DialogueEnd?.Invoke();
             dialogueEndCallback = null;
         }
     }

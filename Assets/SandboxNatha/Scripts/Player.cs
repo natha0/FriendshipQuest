@@ -33,6 +33,8 @@ public class Player : MonoBehaviour, IDamageable
     public delegate void Teleport(Vector3 previousPosition,Vector3 newPosition);
     public Teleport teleport;
 
+    private bool isDialogue = false;
+
     public delegate void doGameOver();
     public doGameOver gameOver;
     private bool DeactivateGameOver => GodModeManager.Instance.DeactivateGameOver;
@@ -57,10 +59,20 @@ public class Player : MonoBehaviour, IDamageable
         shittyFriendsManager = gameObject.GetComponent<PlayerShittyFriendsManager>();
 
         system = GetComponent<ParticleSystem>();
+        isDialogue = false;
+
+        DialogueSystem.Instance.DialogueStart += DialogueStart;
+        DialogueSystem.Instance.DialogueEnd += DialogueEnd;
     }
 
     private void Update()
     {
+        if (!isDialogue)
+        {
+            return;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))
         {
             shittyFriendsManager.UseShittyFriend();
@@ -193,6 +205,18 @@ public class Player : MonoBehaviour, IDamageable
         teleport?.Invoke(previousPosition:previousPos ,newPosition:position);
     }
 
+    private void DialogueStart()
+    {
+        isDialogue = true;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    private void DialogueEnd()
+    {
+        isDialogue = false;
+    }
+
     void GameOver()
     {
         isGameOver = true;
@@ -200,4 +224,6 @@ public class Player : MonoBehaviour, IDamageable
         gameOverCanvas.SetActive(true);
         gameOver?.Invoke();
     }
+
+
 }

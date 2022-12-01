@@ -17,6 +17,7 @@ public class BigBoss : Enemy
     private int phasesNumber=4;
     private int currentPhase;
 
+    private bool isDialogue;
 
     public DialogueLine[] dialoguePhase0;
     public DialogueLine[] dialoguePhase1;
@@ -28,26 +29,33 @@ public class BigBoss : Enemy
     {
         base.Start();
         InvokeRepeating(nameof(UseRandomPower), attackDelay, attackCooldown);
+        isDialogue = false;
+
+        DialogueSystem.Instance.DialogueStart += DialogueStart;
+        DialogueSystem.Instance.DialogueEnd += DialogueEnd;
     }
 
 
     private void UseRandomPower()
     {
-        int i = Random.Range(0, currentPhase);
-        switch (i)
+        if (!isDialogue)
         {
-            case 0: //Karen
-                Karen();
-                break;
-            case 1: //Jimi
-                Jimi();
-                break;
-            case 2: //Randy
-                Randy();
-                break;
-            case 3: //Billy
-                Billy();
-                break;
+            int i = Random.Range(0, currentPhase);
+            switch (i)
+            {
+                case 0: //Karen
+                    Karen();
+                    break;
+                case 1: //Jimi
+                    Jimi();
+                    break;
+                case 2: //Randy
+                    Randy();
+                    break;
+                case 3: //Billy
+                    Billy();
+                    break;
+            }
         }
     }
 
@@ -109,4 +117,17 @@ public class BigBoss : Enemy
         }
 
     }
+
+    private void DialogueStart()
+    {
+        isDialogue = true;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    private void DialogueEnd()
+    {
+        isDialogue = false;
+    }
+
 }

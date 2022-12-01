@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private Player player;
 
+    private bool isDialogue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,15 @@ public class PlayerController : MonoBehaviour
         audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         initialPosition = transform.position;
         player = GetComponent<Player>();
+        isDialogue = false;
+
+        DialogueSystem.Instance.DialogueStart += DialogueStart;
+        DialogueSystem.Instance.DialogueEnd += DialogueEnd;
     }
 
     void Update()
     {
-        if (isDashing || player.isGameOver)
+        if (isDashing || player.isGameOver || isDialogue)
         {
             return;
         }
@@ -70,7 +76,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDashing || player.isGameOver)
+        if (isDashing || player.isGameOver || isDialogue)
         {
             return;
         }
@@ -128,6 +134,16 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(dashingCooldown);
             canDash = true;
         }
+    }
+
+    private void DialogueStart()
+    {
+        isDialogue = true;
+    }
+
+    private void DialogueEnd()
+    {
+        isDialogue = false;
     }
 
 }
