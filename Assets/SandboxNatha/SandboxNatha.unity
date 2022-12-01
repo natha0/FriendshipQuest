@@ -739,7 +739,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &444991614
 PrefabInstance:
@@ -1461,105 +1461,6 @@ Transform:
   m_Father: {fileID: 934999443}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &579260664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 579260666}
-  - component: {fileID: 579260665}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &579260665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579260664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce23d4261f5dd9940a0a75558af79e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: SwordSwing
-    clip: {fileID: 0}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Player Hit
-    clip: {fileID: 8300000, guid: 47de000deb0684c498405784dcc3c85f, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: EnemyHurt
-    clip: {fileID: 0}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Dash
-    clip: {fileID: 8300000, guid: 0d3b6086bec4949949b1101c02756798, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Piew
-    clip: {fileID: 8300000, guid: 161571fb288a949248af00ea932226e0, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Sword Hit 1
-    clip: {fileID: 8300000, guid: 5badcbcecdcb248f9bc3c83c03d912c2, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Sword Hit 2
-    clip: {fileID: 8300000, guid: 326f0b52668344d7a89da2ce639ab718, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Sword Hit 3
-    clip: {fileID: 8300000, guid: 7434fd848218b40f6aceee8e93d7e0b5, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
-  - name: Sword Hit 4
-    clip: {fileID: 8300000, guid: 2310012da6613435385dc1282a25bdb9, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    aSource: {fileID: 0}
---- !u!4 &579260666
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579260664}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.0002, y: -0.50001, z: -33}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &618696277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1742,7 +1643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717905044 stripped
 GameObject:
@@ -1912,6 +1813,117 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f7a5dac83d7364799eb3158ac5f752, type: 3}
+--- !u!1 &818109785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 818109787}
+  - component: {fileID: 818109786}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &818109786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818109785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce23d4261f5dd9940a0a75558af79e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: SwordSwing
+    clip: {fileID: 8300000, guid: 702648ddd216141ae9c526bfc8a5b917, type: 3}
+    volume: 0.144
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: 'Sword Hit '
+    clip: {fileID: 8300000, guid: 187c5c36efd9941cc856b4fed69daef6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Player Hit
+    clip: {fileID: 8300000, guid: 47de000deb0684c498405784dcc3c85f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: EnemyHurt
+    clip: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 0d3b6086bec4949949b1101c02756798, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Piew
+    clip: {fileID: 8300000, guid: 161571fb288a949248af00ea932226e0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: Bomb
+    clip: {fileID: 8300000, guid: 231835b7af59a47caae4057feec4eec0, type: 3}
+    volume: 0.231
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: BillyPickUp
+    clip: {fileID: 8300000, guid: a31aa9637b3004803ac9d4254a7da2c8, type: 3}
+    volume: 0.357
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: KarenPickUp
+    clip: {fileID: 8300000, guid: fef482e31c5cd420eb7912d781151c82, type: 3}
+    volume: 0.231
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: RandyPickUp
+    clip: {fileID: 8300000, guid: 35644273613b34a6a8b1eb8c3bc2d0d3, type: 3}
+    volume: 0.231
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+  - name: BillyUse
+    clip: {fileID: 8300000, guid: e346f4a35054b4ba796333f36b1922e4, type: 3}
+    volume: 0.112
+    pitch: 1
+    loop: 0
+    aSource: {fileID: 0}
+--- !u!4 &818109787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818109785}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.0002, y: -0.50001, z: -33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &864103785
 PrefabInstance:
   m_ObjectHideFlags: 0
