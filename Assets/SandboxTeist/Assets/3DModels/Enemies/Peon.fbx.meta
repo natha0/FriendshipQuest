@@ -15,7 +15,57 @@ ModelImporter:
   - first:
       74: -8249989863871697696
     second: PeonRig|PeonRig_Walk_24
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: a856d39c65f292446af0e41cd315331d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Iris
+    second: {fileID: 2100000, guid: df13936bb01c0874aa2b2313822c1dcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupil
+    second: {fileID: 2100000, guid: 201a33436eec9204794ad6328d017ce3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: decal1
+    second: {fileID: 2100000, guid: ad2e6d41da4c3a047bf2868eb41cc47f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: 2318b3f6b94adf24ea89502744299730, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lips
+    second: {fileID: 2100000, guid: b80f186d77a873949918835373d01933, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: outfit1
+    second: {fileID: 2100000, guid: 029a2a8f51cc8ed4781f88c9b1b7058a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: outfit2
+    second: {fileID: 2100000, guid: 5d92c78a833565f45b88d823cf4f4171, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: outfit3
+    second: {fileID: 2100000, guid: e12822b6376f0d04caef9a3bf0aa5e14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 71b38c95276788f4db24b6b4cabdddac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

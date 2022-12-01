@@ -12,7 +12,72 @@ ModelImporter:
   - first:
       74: -6413142608338679171
     second: rig|origin
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: 0660bd233fe02064eab2f34bf0d09a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Iris
+    second: {fileID: 2100000, guid: 81a6ee4c9fbd1b94cb1f4390c1dafac7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupil
+    second: {fileID: 2100000, guid: f860f136cf22ed842b6dcbfbe2968e53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chemise1
+    second: {fileID: 2100000, guid: aa435e5c26c95194f8ca4e7acdc6e5b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chemise2
+    second: {fileID: 2100000, guid: 3ef71c5aa7212234992d868e2f27d095, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyebrows
+    second: {fileID: 2100000, guid: 8b803e3c98b3c2f44b4ab7dd82c60211, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: 9c6582d292c15de498cbfc1c7263a761, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hat1
+    second: {fileID: 2100000, guid: 48c6d2e6dcacdb946af6ae058a763974, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lips
+    second: {fileID: 2100000, guid: b719817c3836df946bf7bddc7866bb7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pants
+    second: {fileID: 2100000, guid: e2f99f5f691067344815e2ff860d22e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes
+    second: {fileID: 2100000, guid: 0442d4e68e185d14fb53ebb67729b351, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes.2
+    second: {fileID: 2100000, guid: a477cccb41a66de479fe5ca0677ca854, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: f5eb087f7c54f8a4aa7e53bb8a12e0dd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

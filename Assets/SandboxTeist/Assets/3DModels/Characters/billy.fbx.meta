@@ -9,7 +9,77 @@ ModelImporter:
   - first:
       74: -2233336622177795305
     second: rig|BillyIdle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: 4a735cf448b22ed4f8542fbe834ab062, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Iris
+    second: {fileID: 2100000, guid: 0a9df3d00bcc66147b49781e4fb313fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupil
+    second: {fileID: 2100000, guid: 3b6fceccb3544e5419d32e350b482fcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyebrows
+    second: {fileID: 2100000, guid: 43d2f576b13e7d24d8e13d3331bfdbf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: 2ac692775f0fefa4d9bde26670f2c1db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glasses
+    second: {fileID: 2100000, guid: abf221122d61e974da2197916fa2cb88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lips
+    second: {fileID: 2100000, guid: 8ccbe3b099a391f418cc4784e4bd7ef7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ornament
+    second: {fileID: 2100000, guid: 7c3b1ae8006096e46bd859cbd6b8385a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pants1
+    second: {fileID: 2100000, guid: 84eb3c87797bc484cba0ddaafa6da195, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pants2
+    second: {fileID: 2100000, guid: a5e004488f7411a4096a048399d8da0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: c71f3e1d1a3639b4ba378dad38edede9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: socks
+    second: {fileID: 2100000, guid: 9ad9b8d33f51e5349a024c22ca2de2b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top1
+    second: {fileID: 2100000, guid: 983b10df72d60744693a888ece330aec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top2
+    second: {fileID: 2100000, guid: fb1615ce937baf247b46a970b7e73f05, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
