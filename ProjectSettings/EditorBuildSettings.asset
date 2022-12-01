@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SandboxNatha/TitleScreen.unity
-    guid: e1bf70ba3b552b648a1249f34527b365
+    path: Assets/SandboxNatha/TitleScreenNew.unity
+    guid: 32c3f066c1d4e324e8a22e7a1d07fce0
   - enabled: 1
     path: Assets/SandboxNatha/SandboxNatha.unity
     guid: 368574c2d5d1143408bd803d4bf8af5a
