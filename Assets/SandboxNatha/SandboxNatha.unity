@@ -2531,6 +2531,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 937230238}
     m_Modifications:
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[0].npcName
+      value: princess
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[1].npcName
+      value: prince
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[0].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: adc32835c510e2948b0111465cbf582f, type: 3}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[0].Lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[1].Lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[0].Lines.Array.data[0]
+      value: coucou
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
+      propertyPath: onEnterDialogue.Array.data[1].Lines.Array.data[0]
+      value: bye
+      objectReference: {fileID: 0}
     - target: {fileID: 6918433079454526291, guid: 760a456ac0d186749b9e95b18a90734a, type: 3}
       propertyPath: m_Name
       value: Starting Room
@@ -4024,6 +4056,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6918433079454526292, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
   m_PrefabInstance: {fileID: 1434850248}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1448905431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 376008604120965124, guid: bf330e272c087114c87096d7087553e5, type: 3}
+  m_PrefabInstance: {fileID: 8860450739876869877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1476388864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4284522320891589152, guid: 18f7a5dac83d7364799eb3158ac5f752, type: 3}
@@ -4073,7 +4110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e512de6709e49a04ca73d03bf478af30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivateDialogues: 1
+  deactivateDialogues: 0
   letDoorsOpen: 1
   DeactivateGameOver: 1
   DontPlayMusicAtStart: 1
@@ -5569,7 +5606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.381714
+      value: -34.5
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5577,7 +5614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.10121
+      value: -27.9
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5628,6 +5665,10 @@ PrefabInstance:
       propertyPath: modules.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8860450738748384773, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8860450740108758414, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5675,6 +5716,54 @@ PrefabInstance:
     - target: {fileID: 8860450740108758415, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: portraitImgGO
+      value: 
+      objectReference: {fileID: 1448905431}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[0].npcName
+      value: prince
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[1].npcName
+      value: narrator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[0].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: adc32835c510e2948b0111465cbf582f, type: 3}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[0].Lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[1].Lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[0].Lines.Array.data[0]
+      value: coucou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[0].Lines.Array.data[1]
+      value: bye
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[1].Lines.Array.data[0]
+      value: coucou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
+      propertyPath: dialogueLines.Array.data[1].Lines.Array.data[1]
+      value: bye
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf330e272c087114c87096d7087553e5, type: 3}

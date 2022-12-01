@@ -9,6 +9,9 @@ public class DialogueSystem : MonoBehaviour
     public static DialogueSystem Instance { get; set; }
     public GameObject dialoguePanel;
 
+    public GameObject portraitImgGO;
+    private Image portraitImgSprite;
+
     public DialogueLine[] dialogueLines;
     private DialogueLine currentLine;
 
@@ -24,6 +27,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void Awake()
     {
+        portraitImgSprite = portraitImgGO.GetComponent<Image>();
         continueButton = dialoguePanel.transform.Find("Continue").gameObject.GetComponent<Button>();
         dialogueText = dialoguePanel.transform.Find("Dialogue Text").GetComponent<TMP_Text>();
         nameText = dialoguePanel.transform.Find("Name").GetChild(0).GetComponent<TMP_Text>();
@@ -60,13 +64,22 @@ public class DialogueSystem : MonoBehaviour
 
     public void CreateDialogue()
     {
-
-
         if (!deactivateDialogues)
         {
             currentLine = dialogueLines[dialogueIndex];
             dialogueText.text = GetLineText(currentLine);
             nameText.text = dialogueLines[dialogueIndex].npcName;
+
+            if (currentLine.portrait!= null){
+                portraitImgGO.SetActive(true);
+                portraitImgSprite.overrideSprite = currentLine.portrait;
+            }
+            else
+            {
+                portraitImgSprite.overrideSprite = null;
+                portraitImgGO.SetActive(false);
+            }
+            
             dialoguePanel.SetActive(true);
         }
         else
@@ -84,6 +97,20 @@ public class DialogueSystem : MonoBehaviour
             currentLine = dialogueLines[dialogueIndex];
             dialogueText.text = GetLineText(currentLine);
             nameText.text = dialogueLines[dialogueIndex].npcName;
+
+
+            if (currentLine.portrait != null)
+            {
+                portraitImgGO.SetActive(true);
+                portraitImgSprite.overrideSprite = currentLine.portrait;
+            }
+            else
+            {
+                portraitImgSprite.overrideSprite = null;
+                portraitImgGO.SetActive(false);
+            }
+
+
         }
         else
         {

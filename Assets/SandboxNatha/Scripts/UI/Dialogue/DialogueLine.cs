@@ -7,4 +7,5 @@ public class DialogueLine
 {
     public string npcName=null;
     public string[] Lines;
+    public Sprite portrait; 
 }
