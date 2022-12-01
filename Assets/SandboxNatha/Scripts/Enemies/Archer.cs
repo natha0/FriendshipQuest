@@ -19,6 +19,7 @@ public class Archer : Enemy
     private Animator animator;
     private NavMeshAgent agent;
 
+    public float projectileSpeed = 20f;
     public GameObject projectile;
     private AudioManager audioManager;
 
@@ -112,7 +113,7 @@ public class Archer : Enemy
         GameObject proj = Instantiate(projectile, transform.position, Quaternion.identity);
         Rigidbody rb = proj.GetComponent<Rigidbody>();
         proj.GetComponent<ProjectileProperties>().damage = damage;
-        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        rb.AddForce(projectileSpeed * transform.forward, ForceMode.Impulse);
         audioManager.Play("Piew", 0.8f, 1.2f);
     }
 

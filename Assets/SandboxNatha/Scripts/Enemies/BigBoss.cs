@@ -10,8 +10,19 @@ public class BigBoss : Enemy
     public GameObject bomba;
     public float bombaSpawnDistance = 5;
     public GameObject projectile;
+    public float projectileSpeed = 20f;
 
     public float healthHealed = 10;
+
+    private int phasesNumber=4;
+    private int currentPhase;
+
+
+    public DialogueLine[] dialoguePhase0;
+    public DialogueLine[] dialoguePhase1;
+    public DialogueLine[] dialoguePhase2;
+    public DialogueLine[] dialoguePhase3;
+    public DialogueLine[] endDialogue;
 
     public override void Start()
     {
@@ -22,22 +33,80 @@ public class BigBoss : Enemy
 
     private void UseRandomPower()
     {
-        int i = Random.Range(0, 4);
+        int i = Random.Range(0, currentPhase);
         switch (i)
         {
             case 0: //Karen
-                Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                Karen();
                 break;
             case 1: //Jimi
-                Heal(healthHealed);
+                Jimi();
                 break;
             case 2: //Randy
-                Instantiate(bomba, transform.position + bombaSpawnDistance * transform.forward, transform.rotation);
+                Randy();
                 break;
             case 3: //Billy
-
+                Billy();
                 break;
         }
+    }
+
+    private void Karen()
+    {
+        Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
+        rb.AddForce(projectileSpeed*transform.forward, ForceMode.Impulse);
+    } 
+    
+    private void Jimi()
+    {
+        Heal(healthHealed);
+    }
+
+    private void Randy()
+    {
+        Instantiate(bomba, transform.position + bombaSpawnDistance * transform.forward, transform.rotation);
+    }
+
+    private void Billy()
+    {
+
+    }
+
+
+
+    public override void KillSelf()
+    {
+        if (currentPhase < phasesNumber)
+        {
+            DialogueLine[] dialogue=null;
+            switch (currentPhase)
+            {
+                case 0:
+                    dialogue=dialoguePhase0;
+                    break;
+                case 1:
+                    dialogue = dialoguePhase1;
+                    break;
+                case 2:
+                    dialogue = dialoguePhase2;
+                    break;
+                case 3:
+                    dialogue = dialoguePhase3;
+                    break;
+            }
+            currentPhase++;
+            health = maxHealth;
+            UpdateHealthBar();
+            if (dialogue != null)
+            {
+                DialogueSystem.Instance.AddNewDialogue(dialogue);
+            }
+        }
+        else{
+            spawnerCallback(number);
+            DialogueSystem.Instance.AddNewDialogue(endDialogue);
+            DialogueSystem.Instance.dialogueEndCallback += delegate { Destroy(gameObject); };
+        }
+
     }
 }

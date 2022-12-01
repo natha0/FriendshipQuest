@@ -62,6 +62,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                     if (ShittyFriendTypeCount == 1)
                     {
                         currentModule = module;
+                        updateShittyFriends?.Invoke();
                         ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type);
                     }
                 }

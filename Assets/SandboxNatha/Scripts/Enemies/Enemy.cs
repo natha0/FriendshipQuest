@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour,IDamageable
 
     [HideInInspector] public int number;
     public delegate void SpawnerCallback(int num);
-    SpawnerCallback spawnerCallback;
+    public SpawnerCallback spawnerCallback;
     public delegate bool IsInRoom(Vector3 position);
     public IsInRoom isInRoom;
     [HideInInspector] public bool addedToList=false;
@@ -58,9 +58,14 @@ public class Enemy : MonoBehaviour,IDamageable
         }
         if (health <= 0)
         {
-            spawnerCallback(number);
-            Destroy(gameObject);
+            KillSelf();
         }
+    }
+
+    public virtual void KillSelf()
+    {
+        spawnerCallback(number);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

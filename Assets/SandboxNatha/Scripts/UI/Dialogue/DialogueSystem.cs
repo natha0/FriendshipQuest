@@ -59,7 +59,6 @@ public class DialogueSystem : MonoBehaviour
         {
             CreateDialogue();
         }
-
     }
 
     public void CreateDialogue()

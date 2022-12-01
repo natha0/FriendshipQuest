@@ -5,6 +5,7 @@ public class ShittyFriendsSpawner : MonoBehaviour
 {
     private float xPos, zPos;
     private bool alreadySpawning;
+    public bool canSpawn = true;
     public int initialSpawnNumber = 5;
     public float spawnDelay = 10;
     public float spawnCooldown = 5;

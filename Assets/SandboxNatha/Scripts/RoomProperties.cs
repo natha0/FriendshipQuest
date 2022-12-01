@@ -104,7 +104,6 @@ public class RoomProperties : MonoBehaviour
                 callback?.Invoke();
             }
 
-
             if (!onClearReplayable)
             {
                 onClearPlayed = true;
@@ -134,6 +133,5 @@ public class RoomProperties : MonoBehaviour
                 door.isTrigger = false;
             }
         }
-
     }
 }
