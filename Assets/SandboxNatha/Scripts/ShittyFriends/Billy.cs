@@ -11,17 +11,21 @@ public class Billy : ShittyFriend,IShittyFriends
     public float floatingRange=1;
     public float floatingFrequency = 2;
 
+    private AudioManager audioManager;
+
     public override void Start()
     {
         base.Start();
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
         playerTransform = playerObject.GetComponent<Transform>();
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
 
     }
 
     public bool UsePower()
     {
+        audioManager.Play("BillyUse");
         bool PowerUsed = false;
         if (player.BillyProtector == null)
         {

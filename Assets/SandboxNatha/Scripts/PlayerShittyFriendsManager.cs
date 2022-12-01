@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class PlayerShittyFriendsManager : MonoBehaviour { 
+public class PlayerShittyFriendsManager : MonoBehaviour {
     public ShittyFriendManagerModule[] shittyFriendsList;
     private ShittyFriendManagerModule currentModule;
     private Player player;
@@ -11,25 +11,28 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
     public delegate void UpdateShittyFriends();
     public UpdateShittyFriends updateShittyFriends;
 
+    private AudioManager audioManager;
+
     private int ShittyFriendTotal
     {
         get
         { int sum = 0; foreach (ShittyFriendManagerModule mod in shittyFriendsList) { sum += mod.number; } return sum; }
     }
 
-    private int ShittyFriendTypeCount { get { 
+    private int ShittyFriendTypeCount { get {
             int count = 0;
             foreach (ShittyFriendManagerModule mod in shittyFriendsList)
             {
                 count += mod.number > 0 ? 1 : 0;
             }
             return count;
-        } 
+        }
     }
 
     private void Start()
     {
-        foreach(ShittyFriendManagerModule module in shittyFriendsList)
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        foreach (ShittyFriendManagerModule module in shittyFriendsList)
         {
             module.Initialise();
         }
@@ -43,7 +46,8 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
         string type = shittyFriend.GetComponent<ShittyFriend>().type;
         if (type != null)
         {
-            ShittyFriendManagerModule module = Array.Find(shittyFriendsList,mod => mod.type == type);
+            PlayPickupSound(type);
+            ShittyFriendManagerModule module = Array.Find(shittyFriendsList, mod => mod.type == type);
             if (module.number < module.maxNumber)
             {
                 module.number++;
@@ -81,7 +85,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
     {
         if (shittyFriendsList.Length >= id)
         {
-            ShittyFriendManagerModule module= Array.Find(shittyFriendsList, mod => mod.orderNumber == id);
+            ShittyFriendManagerModule module = Array.Find(shittyFriendsList, mod => mod.orderNumber == id);
             return module.shittyFriendClone;
         }
 
@@ -94,7 +98,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
         if (ShittyFriendTotal >= 1)
         {
             bool PowerUsed = currentModule.shittyFriendClone.GetComponent<IShittyFriends>().UsePower();
-            if(PowerUsed)
+            if (PowerUsed)
             {
                 currentModule.number--;
                 string type = currentModule.type;
@@ -132,7 +136,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
     {
         if (ShittyFriendTotal > 0)
         {
-            foreach(ShittyFriendManagerModule module in shittyFriendsList)
+            foreach (ShittyFriendManagerModule module in shittyFriendsList)
             {
                 if (!reverse)
                 {
@@ -162,8 +166,17 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                 }
 
             }
-            currentModule = Array.Find(shittyFriendsList,module => module.orderNumber==0);
+            currentModule = Array.Find(shittyFriendsList, module => module.orderNumber == 0);
             ShittyFriendsCounter.Instance.SetSelectedShittyFriend(currentModule.type);
+        }
+    }
+
+    private void PlayPickupSound(string type){
+        switch (type)
+        {
+            case "Billy":
+                audioManager.Play("BillyPickUp");
+                break;
         }
     }
 
