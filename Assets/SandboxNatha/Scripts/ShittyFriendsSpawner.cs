@@ -17,6 +17,8 @@ public class ShittyFriendsSpawner : MonoBehaviour
 
     private bool isPlayerInside = false;
 
+    private bool CanSpawnShittyFriends => GodModeManager.Instance.CanSpawnShittyFriends;
+
     private bool AllSpawned { get { 
             foreach (ShittyFriendSpawnerModule module in shittyFriendsList) 
             { if (module.number < module.maxNumber) { return false; } } 
@@ -43,7 +45,7 @@ public class ShittyFriendsSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerInside)
+        if (isPlayerInside && CanSpawnShittyFriends)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
