@@ -5559,17 +5559,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 618569539, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 618569539, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 618569539, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.scalar
-      value: 10
+    - target: {fileID: 1945510570, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
+      propertyPath: _damage
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_RootOrder
@@ -5619,18 +5611,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6381738761062665772, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381738761062665772, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6381738761062665772, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
-      propertyPath: gameOverPanel
-      value: 
-      objectReference: {fileID: 717905044}
     - target: {fileID: 6381738761062665772, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: gameOverCanvas
       value: 

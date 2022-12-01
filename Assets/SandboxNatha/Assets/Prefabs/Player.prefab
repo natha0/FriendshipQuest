@@ -136,8 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52411f961ef43784187e7a4476cba266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  maxHealth: 20
+  isGameOver: 0
+  gameOverCanvas: {fileID: 0}
+  health: 100
+  maxHealth: 100
   invulnerabilityTime: 1
   healthBar: {fileID: 0}
   dialogue:
@@ -1245,7 +1247,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1303,7 +1305,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1361,7 +1363,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -11723,4 +11725,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8594d9de5106e64ba34cfa1f900597e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  _damage: 6

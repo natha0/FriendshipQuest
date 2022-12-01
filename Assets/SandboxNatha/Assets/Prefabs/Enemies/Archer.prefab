@@ -131,6 +131,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 10
   invulnerabilityTime: 0.5
+  damage: 5
   contactDamage: 1
   healthBar: {fileID: 5302061109570114459}
   slider: {fileID: 6437606360858839917}
@@ -138,12 +139,11 @@ MonoBehaviour:
   addedToList: 0
   detectPlayerRange: 4
   teleportCooldown: 5
-  teleportRange: 12
+  teleportRange: 8
   maxSearch: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  damage: 5
   projectile: {fileID: 6932497953198856542, guid: 0100bdfc4c6bcd14491065f31cf00761, type: 3}
 --- !u!1001 &5705668618130884319
 PrefabInstance:
