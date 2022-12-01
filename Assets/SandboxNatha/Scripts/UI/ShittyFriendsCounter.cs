@@ -58,7 +58,7 @@ public class ShittyFriendsCounter : MonoBehaviour
                 module.panel.SetActive(false);
                 j--;
             }
-            module.SetCounter(SFmodule.type, SFmodule.number);
+            module.SetCounter(SFmodule.type, SFmodule.number, SFmodule.maxNumber);
         }
     }
 
@@ -93,11 +93,11 @@ public class CounterModule
     public GameObject panel;
     public TMP_Text Type, Counter;
 
-    public void SetCounter(string SFtype, int count)
+    public void SetCounter(string SFtype, int count, int max)
     {
         type = SFtype;
         Type.text = type;
-        Counter.text = count.ToString();
+        Counter.text = count.ToString()+"/"+max.ToString();
     }
 
     public void SetSelected()
