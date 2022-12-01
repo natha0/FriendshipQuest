@@ -559,7 +559,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[0].npcName
@@ -575,6 +575,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[3].npcName
+      value: Princess
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[4].npcName
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[5].npcName
+      value: Princess
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[6].npcName
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[7].npcName
       value: Princess
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
@@ -594,6 +610,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2241fcb7d490b2c43a28d489988df9c0, type: 3}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[4].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: c7b6466b259bd2848821aa9238442f64, type: 3}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[5].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 2241fcb7d490b2c43a28d489988df9c0, type: 3}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[6].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: c7b6466b259bd2848821aa9238442f64, type: 3}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[7].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 2241fcb7d490b2c43a28d489988df9c0, type: 3}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[0].Lines.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -607,6 +639,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: onEnterDialogue.Array.data[3].Lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[4].Lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[5].Lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[6].Lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[7].Lines.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
@@ -629,6 +677,38 @@ PrefabInstance:
       propertyPath: onEnterDialogue.Array.data[3].Lines.Array.data[0]
       value: "Shitty friends! That\u2019s an accurate way of naming them."
       objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[4].Lines.Array.data[0]
+      value: "By the way. I do not appreciate the way you are using my creations.
+        I am tired of creating them all the time. Can\u2019t you just stay still
+        and keep your friends ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[4].Lines.Array.data[1]
+      value: How could I call it a friendship quest if you got rid of all of them
+        ?!
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[5].Lines.Array.data[0]
+      value: Not my problem guy. I remind you that I just happened to be here.
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[5].Lines.Array.data[1]
+      value: "How much longer is it? I\u2019m tired of talking with you."
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[6].Lines.Array.data[0]
+      value: "Not that much. The next shit\u2026 ahem friend will be the last one
+        before you encounter the great wizard."
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[6].Lines.Array.data[1]
+      value: "How much longer is it? I\u2019m tired of talking with you."
+      objectReference: {fileID: 0}
+    - target: {fileID: -6302691394886788305, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: onEnterDialogue.Array.data[7].Lines.Array.data[0]
+      value: "That\u2019s a relief."
+      objectReference: {fileID: 0}
     - target: {fileID: 186170408315963077, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -640,6 +720,10 @@ PrefabInstance:
     - target: {fileID: 370703097212269149, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: sendToTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 900697811923220741, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
@@ -2488,6 +2572,14 @@ PrefabInstance:
       propertyPath: sendToTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[0].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 900697811923220741, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4245,6 +4337,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[0].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[1].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 999396382768868492, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -4513,6 +4617,18 @@ PrefabInstance:
     - target: {fileID: 287162569270357748, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[0].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[1].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 900697811923220741, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
@@ -4949,6 +5065,14 @@ PrefabInstance:
     - target: {fileID: 287162569270357748, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[0].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 900697811923220741, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
@@ -6515,6 +6639,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 897809033961715011, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
+      propertyPath: shittyFriendsList.Array.data[3].spawnWeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 900697811923220741, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6769,7 +6897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2922666438409479692, guid: 100378780030db04d928b754c75b9065, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2922666438409479692, guid: 100378780030db04d928b754c75b9065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6834,7 +6962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6381738761062665760, guid: 7bed266576ce6db418e1a7e24bdc20fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6903,7 +7031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8860450740108758414, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8860450740108758414, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_LocalPosition.x
