@@ -22,6 +22,7 @@ public class RoomProperties : MonoBehaviour
 
     public delegate void  OnDialogue();
     public OnDialogue onEnterDialoguePlayed;
+    public OnDialogue onClearDialoguePlayed;
 
     public delegate void SetRoomName(string roomName);
     public SetRoomName setRoomName;
@@ -48,7 +49,7 @@ public class RoomProperties : MonoBehaviour
 
         spawner = GetComponentInChildren<EnemySpawner>();
 
-        onEnterDialoguePlayed += () => onEnterPlayed = onEnterReplayable ?  true:false;
+        onEnterDialoguePlayed += () => onEnterPlayed = onEnterReplayable ?  false:true;
         GetComponent<EnemySpawner>().onRoomCleared += OnRoomCleared;
 
     }
@@ -84,6 +85,11 @@ public class RoomProperties : MonoBehaviour
     void PlayEnterCallbacks()
     {
         onEnterDialoguePlayed();
+    }
+
+    void PlayClearCallbacks()
+    {
+
     }
 
     public void DisplayOnEnterDialogue()
