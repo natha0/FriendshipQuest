@@ -67,7 +67,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (!isDialogue)
+        if (isDialogue)
         {
             return;
         }

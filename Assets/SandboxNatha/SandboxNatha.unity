@@ -5400,11 +5400,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6918433079454526292, guid: cd43c8ac7eada5b4eaf0e5d6208a4551, type: 3}
   m_PrefabInstance: {fileID: 1434850248}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1448905431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 376008604120965124, guid: bf330e272c087114c87096d7087553e5, type: 3}
-  m_PrefabInstance: {fileID: 8860450739876869877}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1449543717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7244,14 +7239,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 636213655, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: modules.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450738748384773, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8860450740108758414, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7299,54 +7286,6 @@ PrefabInstance:
     - target: {fileID: 8860450740108758415, guid: bf330e272c087114c87096d7087553e5, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: portraitImgGO
-      value: 
-      objectReference: {fileID: 1448905431}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[0].npcName
-      value: prince
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[1].npcName
-      value: narrator
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[0].portrait
-      value: 
-      objectReference: {fileID: 21300000, guid: adc32835c510e2948b0111465cbf582f, type: 3}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[1].portrait
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[0].Lines.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[1].Lines.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[0].Lines.Array.data[0]
-      value: coucou
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[0].Lines.Array.data[1]
-      value: bye
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[1].Lines.Array.data[0]
-      value: coucou
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860450740311515691, guid: bf330e272c087114c87096d7087553e5, type: 3}
-      propertyPath: dialogueLines.Array.data[1].Lines.Array.data[1]
-      value: bye
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf330e272c087114c87096d7087553e5, type: 3}
