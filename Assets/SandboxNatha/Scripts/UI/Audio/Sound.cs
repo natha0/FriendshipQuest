@@ -17,4 +17,9 @@ public class Sound
 
     [HideInInspector]
     public AudioSource aSource=null;
+
+
+    public bool specifyMusicParams;
+    public int musicBPM, timeSignature, barsLength;
+
 }

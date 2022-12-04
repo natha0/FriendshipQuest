@@ -2139,66 +2139,110 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
-  - name: 'Sword Hit '
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
+  - name: Sword Hit
     clip: {fileID: 8300000, guid: 187c5c36efd9941cc856b4fed69daef6, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: Player Hit
     clip: {fileID: 8300000, guid: 47de000deb0684c498405784dcc3c85f, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: EnemyHurt
     clip: {fileID: 0}
     volume: 0.5
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: Dash
     clip: {fileID: 8300000, guid: 0d3b6086bec4949949b1101c02756798, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: Piew
     clip: {fileID: 8300000, guid: 161571fb288a949248af00ea932226e0, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: Bomb
     clip: {fileID: 8300000, guid: 231835b7af59a47caae4057feec4eec0, type: 3}
     volume: 0.231
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: BillyPickUp
     clip: {fileID: 8300000, guid: a31aa9637b3004803ac9d4254a7da2c8, type: 3}
     volume: 0.357
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: KarenPickUp
     clip: {fileID: 8300000, guid: fef482e31c5cd420eb7912d781151c82, type: 3}
     volume: 0.231
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: RandyPickUp
     clip: {fileID: 8300000, guid: 35644273613b34a6a8b1eb8c3bc2d0d3, type: 3}
     volume: 0.231
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
   - name: BillyUse
     clip: {fileID: 8300000, guid: e346f4a35054b4ba796333f36b1922e4, type: 3}
     volume: 0.112
     pitch: 1
     loop: 0
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
 --- !u!4 &818109787
 Transform:
   m_ObjectHideFlags: 0
@@ -5621,6 +5665,15 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     aSource: {fileID: 0}
+    specifyMusicParams: 0
+    musicBPM: 0
+    timeSignature: 0
+    barsLength: 0
+  specifyMusicParams: 0
+  musicBPM: 0
+  timeSignature: 0
+  barsLength: 0
+  switchCheckPeriod: 10
 --- !u!4 &1500559312
 Transform:
   m_ObjectHideFlags: 0
