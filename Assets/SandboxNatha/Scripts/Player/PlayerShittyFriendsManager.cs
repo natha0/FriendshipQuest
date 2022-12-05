@@ -101,6 +101,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
             if (PowerUsed)
             {
                 currentModule.number--;
+                updateShittyFriends?.Invoke();
                 string type = currentModule.type;
                 if (currentModule.number == 0)
                 {
@@ -116,7 +117,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                             module.shittyFriendProperties.playerNumber--;
                         }
                     }
-
+                    updateShittyFriends?.Invoke();
                     if (ShittyFriendTotal > 0)
                     {
                         currentModule = Array.Find(shittyFriendsList, mod => mod.orderNumber == 0);
@@ -124,15 +125,15 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
                     }
                     else
                     {
+                        updateShittyFriends?.Invoke();
                         ShittyFriendsCounter.Instance.SetSelectedShittyFriend(type, false);
                     }
                 }
-                updateShittyFriends?.Invoke();
             }
         }
     }
 
-    public void SwitchShittyFriends(bool reverse = true)
+    public void SwitchShittyFriends(bool reverse = false)
     {
         if (ShittyFriendTotal > 0)
         {
@@ -167,6 +168,7 @@ public class PlayerShittyFriendsManager : MonoBehaviour {
 
             }
             currentModule = Array.Find(shittyFriendsList, module => module.orderNumber == 0);
+            updateShittyFriends?.Invoke();
             ShittyFriendsCounter.Instance.SetSelectedShittyFriend(currentModule.type);
         }
     }

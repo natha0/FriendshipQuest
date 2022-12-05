@@ -92,6 +92,7 @@ public class CounterModule
     public Transform ui;
     public GameObject panel;
     public TMP_Text Type, Counter;
+    public float outlineWidth = 0.4f;
 
     public void SetCounter(string SFtype, int count, int max)
     {
@@ -102,8 +103,8 @@ public class CounterModule
 
     public void SetSelected()
     {
-        Type.outlineWidth = 0.3f;
-        Counter.outlineWidth = 0.3f;
+        Type.outlineWidth = outlineWidth;
+        Counter.outlineWidth = outlineWidth;
     }
 
     public void Deselect()

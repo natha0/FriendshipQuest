@@ -145,6 +145,7 @@ MonoBehaviour:
   dialogue:
   - npcName: 
     Lines: []
+    portrait: {fileID: 0}
   showControls: 0
   audioManager: {fileID: 0}
   BillyProtector: {fileID: 0}

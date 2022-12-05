@@ -77,12 +77,12 @@ public class Player : MonoBehaviour, IDamageable
         {
             shittyFriendsManager.UseShittyFriend();
         }
-        if (Input.GetKeyDown(KeyCode.E) || Input.mouseScrollDelta.y > 0)
+        if (Input.GetKeyDown(KeyCode.E) || Input.mouseScrollDelta.y < 0)
         {
             shittyFriendsManager.SwitchShittyFriends();
         }
 
-        if(Input.mouseScrollDelta.y < 0)
+        if(Input.mouseScrollDelta.y > 0)
         {
             shittyFriendsManager.SwitchShittyFriends(reverse: true);
         }
